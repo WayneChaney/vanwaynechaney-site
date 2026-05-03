@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanwayne Chaney Jr. — Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #06101D;
+      --bg-2:      #0A1728;
+      --bg-card:   #0D1B2B;
+      --gold:      #C9A84C;
+      --gold-2:    #E8C56A;
+      --gold-dim:  rgba(201,168,76,0.12);
+      --white:     #F0EDE6;
+      --muted:     #93A0B3;
+      --border:    rgba(201,168,76,0.15);
+      --radius:    12px;
+      --blue-glow: rgba(63, 157, 255, 0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(6,16,29,0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #09090E !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-2) !important; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+      gap: 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 75% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 80% at 10% 80%, rgba(40,111,194,0.12) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(3,10,22,0.18) 0%, rgba(3,10,22,0.72) 100%);
+      pointer-events: none;
+    }
+
+    /* subtle grid */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--gold-dim);
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .first { color: var(--white); }
+    .hero-name .last { color: var(--gold); }
+
+    .hero-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.75rem;
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-desc strong { color: var(--white); font-weight: 500; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #09090E;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(201,168,76,0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 32px rgba(201,168,76,0.35);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.25rem;
+      max-width: 760px;
+    }
+
+    .hero-strip-item {
+      padding: 1rem 0.85rem;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(8,18,32,0.9);
+      border: 1px solid rgba(201,168,76,0.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 12px 24px rgba(0,0,0,0.18);
+      text-align: center;
+    }
+
+    .hero-strip-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-strip-label {
+      font-size: 0.74rem;
+      line-height: 1.45;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-item { }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    /* ─── HERO PHOTO ─── */
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 420px;
+      max-width: 100%;
+    }
+
+    .hero-visual-card {
+      width: min(680px, 100%);
+      aspect-ratio: 16 / 11;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.18);
+      background: var(--bg-card);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.42), 0 0 0 1px rgba(76,146,255,0.08);
+      position: relative;
+    }
+
+    .hero-visual-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(9,9,14,0.02) 0%, rgba(9,9,14,0.2) 100%);
+      pointer-events: none;
+    }
+
+    .hero-visual-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      transform: none;
+      display: block;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--gold), transparent 60%, var(--gold));
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      image-orientation: from-image;
+    }
+
+    .photo-placeholder-text {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: -1rem;
+      left: -1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .hero-tagline-bar {
+      margin-top: 1.8rem;
+      max-width: 760px;
+      padding: 0.95rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201,168,76,0.16);
+      background: linear-gradient(90deg, rgba(201,168,76,0.06), rgba(41,118,214,0.08), rgba(201,168,76,0.06));
+      font-family: 'DM Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .badge-dot {
+      width: 8px; height: 8px;
+      background: #4ADE80;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(74,222,128,0.6);
+      flex-shrink: 0;
+    }
+
+    .badge-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .badge-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 7rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--bg-2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-body {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .about-body p { margin-bottom: 1.25rem; }
+    .about-body strong { color: var(--white); font-weight: 500; }
+
+    .about-photo-wrap {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .about-photo-card {
+      background: linear-gradient(180deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+
+    .about-photo-card img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      object-fit: cover;
+      max-height: 680px;
+    }
+
+    .about-photo-caption {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cred-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .cred-item:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    .cred-icon {
+      width: 36px; height: 36px;
+      background: var(--gold-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cred-text { font-size: 0.875rem; font-weight: 500; }
+    .cred-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+    .story-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .story-panel,
+    .education-panel,
+    .what-card,
+    .follow-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem;
+    }
+
+    .story-panel p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.85;
+    }
+
+    .story-panel p:last-child { margin-bottom: 0; }
+
+    .education-panel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .education-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .education-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .education-kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.45rem;
+    }
+
+    .education-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .education-copy {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .experience-grid {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .experience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.35);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.25);
+    }
+
+    .experience-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .experience-role {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .experience-org {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .experience-copy {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .skills-wrap {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skills-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.4rem;
+    }
+
+    .skills-card-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .skills-list li {
+      color: var(--white);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .skills-list span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    .what-section,
+    .follow {
+      background: var(--bg-2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .what-inner,
+    .follow-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .what-grid,
+    .follow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .what-card,
+    .follow-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+    }
+
+    .what-card:hover,
+    .follow-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.35);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.25);
+    }
+
+    .what-card::before,
+    .follow-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    .what-kicker,
+    .follow-kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .what-title,
+    .follow-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .what-copy,
+    .follow-copy {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    .follow-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    .follow-link {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .follow-link:hover { opacity: 0.85; }
+
+    /* ─── PRODUCTS ─── */
+    .products { max-width: 1200px; margin: 0 auto; }
+
+    .products-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .products-header .section-sub { margin: 0 auto; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .product-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 40px rgba(201,168,76,0.06);
+    }
+
+    .product-card:hover::before { opacity: 1; }
+
+    .product-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, #13131C 0%, #1A1508 100%);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: var(--gold);
+      color: #09090E;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .product-icon {
+      width: 48px; height: 48px;
+      background: var(--gold-dim);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .price-period {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .product-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .product-features li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .product-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .product-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      color: var(--white);
+      min-height: 48px;
+    }
+
+    .product-card.featured .product-cta {
+      background: var(--gold);
+      color: #09090E;
+      border-color: transparent;
+    }
+
+    .product-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ─── HOW IT WORKS ─── */
+    .how {
+      background: var(--bg-2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .how-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .how-header { margin-bottom: 4rem; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(16.666% + 1rem);
+      right: calc(16.666% + 1rem);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent 50%, var(--gold));
+      opacity: 0.3;
+    }
+
+    .step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+      background: var(--bg);
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-body {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section .section-title { font-size: clamp(2.5rem, 4vw, 4rem); }
+
+    .cta-section .section-sub { margin: 1.5rem auto 2.5rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2.5rem 4rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .footer-brand span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    body.page-about #products,
+    body.page-about #trackers,
+    body.page-about #vcii,
+    body.page-about #websites,
+    body.page-products #about,
+    body.page-products #story,
+    body.page-products #vcii,
+    body.page-products #websites,
+    body.page-real-estate #about,
+    body.page-real-estate #story,
+    body.page-real-estate #products,
+    body.page-real-estate #trackers,
+    body.page-real-estate #websites,
+    body.page-real-estate #how,
+    body.page-websites #about,
+    body.page-websites #story,
+    body.page-websites #products,
+    body.page-websites #trackers,
+    body.page-websites #vcii,
+    body.page-websites #how {
+      display: none;
+    }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(9,9,14,0.97);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      background: var(--gold);
+      color: #09090E;
+      padding: 0.9rem 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-top: 1rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 5.25rem 1rem 2rem;
+        text-align: left;
+        gap: 1.5rem;
+      }
+      .hero-photo { order: -1; }
+      .photo-frame { width: 100%; }
+      .hero-actions { justify-content: flex-start; flex-direction: column; }
+      .hero-actions a, .hero-actions button { width: 100%; text-align: center; }
+      .hero-stats { justify-content: flex-start; gap: 1.1rem; flex-wrap: wrap; margin-top: 1.75rem; padding-top: 1.25rem; }
+      .hero-strip { grid-template-columns: repeat(2, 1fr); max-width: none; margin-top: 1.5rem; }
+      .hero-desc { margin: 0 0 1.5rem; max-width: none; }
+      .btn-primary, .btn-secondary { padding: 1rem 1.5rem; font-size: 0.88rem; }
+
+      section { padding: 3.5rem 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .story-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .skills-wrap { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 1rem; }
+      .what-grid, .follow-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .steps::before { display: none; }
+
+      /* Product cards — full tap targets */
+      .product-card { padding: 1.5rem; }
+      .product-cta { padding: 1rem; font-size: 0.9rem; min-height: 48px; display: flex; align-items: center; justify-content: center; }
+
+      /* VCII bundle card stack */
+      .reveal > div[style*="justify-content:space-between"] { flex-direction: column !important; }
+
+      /* Info strip */
+      .info-strip { grid-template-columns: 1fr !important; padding: 2rem 1.5rem !important; }
+
+      /* Website demos grid */
+      div[style*="grid-template-columns: repeat(auto-fill"] { grid-template-columns: 1fr !important; }
+
+      /* Trade estimator mini grid */
+      div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+
+      /* Bundle card inner */
+      div[style*="display:flex;justify-content:space-between;align-items:center;gap:2rem"] {
+        flex-direction: column !important;
+        text-align: left !important;
+      }
+
+      /* Hero eyebrow pill */
+      .hero-eyebrow { justify-content: flex-start; }
+      .hero-tagline-bar { margin-left: 0; margin-right: 0; }
+
+      .hero-visual-card {
+        width: 100%;
+        aspect-ratio: 16 / 12;
+      }
+      .hero-visual-card img { object-fit: cover; object-position: 30% 30%; transform: scale(1.08); }
+      .photo-badge { left: 0.75rem; bottom: 0.75rem; }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .footer-links { justify-content: center; flex-wrap: wrap; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 0.875rem 1.25rem; }
+
+      .hero { padding: 5rem 1.25rem 2.5rem; }
+      .hero-name { font-size: 2.8rem; }
+      .hero-tag { font-size: 1rem; }
+      .hero-desc { font-size: 0.95rem; }
+      .hero-stats { gap: 1.25rem; }
+      .stat-num { font-size: 1.6rem; }
+      .hero-strip { grid-template-columns: 1fr; }
+      .hero-tagline-bar { border-radius: 18px; font-size: 0.7rem; letter-spacing: 0.16em; padding: 0.9rem 1rem; }
+
+      section { padding: 3rem 1.25rem; }
+      .section-title { font-size: 1.6rem; }
+
+      .product-card { padding: 1.25rem; }
+      .product-name { font-size: 1.25rem; }
+      .price-amount { font-size: 2rem; }
+
+      /* Trade estimators — stack fully on tiny screens */
+      div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+      /* Step cards */
+      .step { padding: 1.5rem 1rem; }
+
+      /* CTA section buttons */
+      .cta-section .btn-primary { width: 100%; text-align: center; padding: 1rem; }
+
+      .photo-frame { width: 100%; }
+      .hero-visual-card { aspect-ratio: 16 / 13; }
+      .hero-visual-card img { object-fit: cover; object-position: 31% 30%; transform: scale(1.12); }
+      .photo-badge { display: none; }
+    }
+  </style>
+</head>
+<body class="page-products">
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="./products.html" onclick="closeMobile()">Products</a>
+    <a href="./real-estate.html" onclick="closeMobile()">RE Tools</a>
+    <a href="./websites.html" onclick="closeMobile()">Websites</a>
+    <a href="./aigains.html" onclick="closeMobile()">Fitness</a>
+    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./logo.jpg" alt="VCII" style="height:36px;width:36px;border-radius:50%;object-fit:cover;margin-right:0.5rem;vertical-align:middle;" />
+      Vanwayne
+    </a>
+    <ul class="nav-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html" class="active">Products</a></li>
+      <li><a href="./real-estate.html">RE Tools</a></li>
+      <li><a href="./websites.html">Websites</a></li>
+      <li><a href="./aigains.html">Fitness</a></li>
+      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Products + Systems</div>
+
+      <h1 class="hero-name">
+        <div class="first">Vanwayne</div>
+        <div class="last">Chaney Jr.</div>
+      </h1>
+
+      <p class="hero-tag">Nebula · Trackers · AI Tools</p>
+
+      <p class="hero-desc">
+        These are the products and systems you can actually use now, from free tools to paid operator workflows and done-for-you builds.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">See Offers</a>
+        <a href="#contact" class="btn-secondary">Start A Build</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">B.S.</div>
+          <div class="stat-label">Computer Engineering</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">MBA</div>
+          <div class="stat-label">In Progress</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">Systems + Products</div>
+        </div>
+      </div>
+
+      <div class="hero-strip">
+        <div class="hero-strip-item">
+          <div class="hero-strip-icon">🤖</div>
+          <div class="hero-strip-label">AI-Powered Analysis</div>
+        </div>
+        <div class="hero-strip-item">
+          <div class="hero-strip-icon">🏠</div>
+          <div class="hero-strip-label">Real Estate Deals</div>
+        </div>
+        <div class="hero-strip-item">
+          <div class="hero-strip-icon">⚙️</div>
+          <div class="hero-strip-label">Automation Workflows</div>
+        </div>
+        <div class="hero-strip-item">
+          <div class="hero-strip-icon">📈</div>
+          <div class="hero-strip-label">Smarter Operations</div>
+        </div>
+      </div>
+
+      <div class="hero-tagline-bar">Products, Trackers, And AI Systems Built To Save Time</div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="photo-frame" style="width:min(680px,100%);">
+        <div class="hero-visual-card">
+          <img src="./VC2 Banner.png" alt="Vanwayne Chaney Jr. AI for real estate operators banner" />
+        </div>
+        <div class="photo-badge">
+          <div class="badge-dot"></div>
+          <div>
+            <div class="badge-text">VC2 Product Stack</div>
+            <div class="badge-sub">AI Systems · Operator Tools · Execution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAV -->
+  <div style="background:var(--bg-2);border-bottom:1px solid rgba(255,255,255,0.05);overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;">
+    <div style="display:inline-flex;gap:0;min-width:100%;">
+      <a href="./about.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">About</a>
+      <a href="#products"  style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Offers</a>
+      <a href="#trackers"  style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Products</a>
+      <a href="#vcii"      style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">RE Tools</a>
+      <a href="#websites"  style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Websites</a>
+      <a href="./aigains.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#ea580c;text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#f97316';this.style.background='rgba(234,88,12,0.06)'" onmouseout="this.style.color='#ea580c';this.style.background=''">Fitness ↗</a>
+      <a href="#how"       style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">How It Works</a>
+      <a href="#contact"   style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Work With Me →</a>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="products">
+      <div class="products-header reveal">
+        <div class="section-label">// 003 — Offers</div>
+        <h2 class="section-title">VC2 products and services.</h2>
+        <p class="section-sub">This is the offer stack: AI systems, software, websites, and operator tools built to create leverage.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Nebula Free -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-icon">🌌</div>
+          <div>
+            <div class="product-name">Nebula</div>
+            <div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Free · Self-Setup · No Call Needed</div>
+          </div>
+          <p class="product-desc">5 core AI prompts you install yourself in under 10 minutes. Morning brief, task sorting, content draft, decision framework, and end-of-day shutdown. Works with the free Claude account.</p>
+          <div class="product-price">
+            <span class="price-amount">Free</span>
+          </div>
+          <ul class="product-features">
+            <li>5 ready-to-install prompts</li>
+            <li>Morning brief + shutdown routine</li>
+            <li>Eisenhower task sorting</li>
+            <li>Content draft skill</li>
+            <li>10-min setup — README included</li>
+          </ul>
+          <a href="#contact" class="product-cta">Get Nebula Free</a>
+        </div>
+
+        <!-- Nebula Pro -->
+        <div class="product-card featured reveal reveal-delay-2">
+          <div class="featured-badge">Most Popular</div>
+          <div class="product-icon">⚡</div>
+          <div>
+            <div class="product-name">Nebula Pro</div>
+            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Full System · Bi-Weekly Skill Drops</div>
+          </div>
+          <p class="product-desc">The full system. Every skill unlocked, new ones dropped every 2 weeks. Plugged into your calendar, habits, and goals — gets smarter while you run.</p>
+          <div class="product-price">
+            <span class="price-amount">$47</span>
+            <span class="price-period">/ month</span>
+          </div>
+          <ul class="product-features">
+            <li>All 15+ skills unlocked</li>
+            <li>New skills every 2 weeks</li>
+            <li>YouTube ROI analyzer</li>
+            <li>Real estate deal analyzer</li>
+            <li>Google Calendar connected</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="https://buy.stripe.com/3cI6oG49lgNG6ZyfeUbEA00" target="_blank" rel="noopener noreferrer" class="product-cta">Get Nebula Pro — $47/mo</a>
+        </div>
+
+        <!-- Nebula Beta -->
+        <div class="product-card reveal reveal-delay-3" style="border-color:rgba(167,139,250,0.35);background:linear-gradient(135deg,#0d0d1c,#12101f);">
+          <div class="featured-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">Limited — 8 Spots</div>
+          <div class="product-icon">🛸</div>
+          <div>
+            <div class="product-name">Nebula Beta</div>
+            <div style="font-size:0.7rem;color:#a78bfa;letter-spacing:0.04em;margin-top:0.25rem;">Founding Member · Includes Setup Call</div>
+          </div>
+          <p class="product-desc">Founding member access. You get the full system installed with a 1-on-1 setup call. Limited to 8 people — spots close when they're gone.</p>
+          <div class="product-price">
+            <span class="price-amount" style="color:#a78bfa;">Apply</span>
+          </div>
+          <ul class="product-features">
+            <li>Full Nebula Pro system</li>
+            <li>1-on-1 onboarding call</li>
+            <li>Founding member pricing locked in</li>
+            <li>Direct feedback line</li>
+            <li>First access to every new skill</li>
+          </ul>
+          <a href="#contact" class="product-cta" style="border-color:rgba(167,139,250,0.4);color:#a78bfa;">Apply for Beta →</a>
+        </div>
+
+        <!-- Real Estate AI -->
+        <div class="product-card reveal reveal-delay-4">
+          <div class="product-icon">🏠</div>
+          <div>
+            <div class="product-name">Real Estate AI</div>
+            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Done For You</div>
+          </div>
+          <p class="product-desc">Custom AI automation built for your real estate operation. Lead qualification, seller nurturing, deal analysis, and more — installed and running in your stack.</p>
+          <div class="product-price">
+            <span class="price-amount">$1,500</span>
+            <span class="price-period">+ setup</span>
+          </div>
+          <ul class="product-features">
+            <li>Outbound lead qualifier</li>
+            <li>AI seller email nurturing</li>
+            <li>Deal analyzer agent</li>
+            <li>Slack + CRM integration</li>
+            <li>Full AI workflow build + install</li>
+            <li>30-day support</li>
+          </ul>
+          <a href="#contact" class="product-cta">Book a Call</a>
+        </div>
+
+        <!-- Website Design -->
+        <div class="product-card reveal reveal-delay-4">
+          <div class="product-icon">🖥️</div>
+          <div>
+            <div class="product-name">Website Design</div>
+            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Done For You</div>
+          </div>
+          <p class="product-desc">Premium, production-grade websites built fast. Personal brand sites, business landing pages, product pages — designed to convert, not just look good.</p>
+          <div class="product-price">
+            <span class="price-amount">$500</span>
+            <span class="price-period">and up</span>
+          </div>
+          <ul class="product-features">
+            <li>Custom design — no templates</li>
+            <li>Mobile responsive</li>
+            <li>Fast load, SEO-ready</li>
+            <li>CTA + lead capture built in</li>
+            <li>Delivered in 5–7 days</li>
+            <li>1 round of revisions</li>
+          </ul>
+          <a href="#websites" class="product-cta">See the Work →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKERS -->
+  <section id="trackers" style="background:var(--bg-2);border-top:1px solid rgba(255,255,255,0.04);">
+    <div class="products" style="max-width:1200px;margin:0 auto;">
+      <div class="products-header reveal">
+        <div class="section-label">// 004 — Products</div>
+        <h2 class="section-title">Simple tools you can use today.</h2>
+        <p class="section-sub">Buy it, open it, use it. Stripe checkout and delivery email are built in.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Free Productivity Tracker -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-icon">📊</div>
+          <div>
+            <div class="product-name">Productivity Tracker</div>
+            <div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Free · Google Sheets / Excel · No AI Needed</div>
+          </div>
+          <p class="product-desc">Operator productivity system. Track priorities, habits, and progress in a clean Google Sheets workflow built for consistency and execution.</p>
+          <div class="product-price">
+            <span class="price-amount">Free</span>
+          </div>
+          <ul class="product-features">
+            <li>Daily habit tracking</li>
+            <li>Priority management</li>
+            <li>Progress dashboard</li>
+            <li>Google Sheets — no installs</li>
+            <li>Instant access</li>
+          </ul>
+          <a href="https://docs.google.com/spreadsheets/d/1fBIsN028Q4nH28gAyIrxiS9L6sywLRRku2z7bWmGuPw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="product-cta">Get Free Tracker</a>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;line-height:1.4;">Opens in Google Sheets — go to <strong style="color:var(--white);">File → Make a copy</strong> to get your own editable version.</p>
+        </div>
+
+        <!-- VCII Real Estate Tracker -->
+        <div class="product-card featured reveal reveal-delay-2">
+          <div class="featured-badge">Most Popular</div>
+          <div class="product-icon">🏠</div>
+          <div>
+            <div class="product-name">Real Estate Tracker</div>
+            <div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Google Sheets / Excel · No AI Needed</div>
+          </div>
+          <p class="product-desc">Track deals, leads, offers, and follow-up in one clean Google Sheet. Built for investors who want one place to manage the pipeline.</p>
+          <div class="product-price">
+            <span class="price-amount" id="re-price">$11.99</span>
+          </div>
+          <ul class="product-features">
+            <li>Deal pipeline tracker</li>
+            <li>Lead status management</li>
+            <li>Offer tracking + notes</li>
+            <li>Built-in deal analysis</li>
+            <li>Delivery email after checkout</li>
+          </ul>
+          <a href="https://buy.stripe.com/4gMeVc0X9btmdnWfeUbEA01" target="_blank" rel="noopener noreferrer" class="product-cta">Get Real Estate Tracker</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VCII REAL ESTATE TOOLS -->
+  <section id="vcii" style="background:var(--bg);">
+    <div class="products" style="max-width:1200px;margin:0 auto;">
+      <div class="products-header reveal">
+        <div class="section-label">// 006 — VCII Real Estate Tools</div>
+        <h2 class="section-title">Deal tools that save time and reduce bad decisions.</h2>
+        <p class="section-sub">Built for non-technical investors. Enter the numbers, get the answer, and move faster.</p>
+      </div>
+
+      <!-- BUNDLE SPOTLIGHT -->
+      <div class="reveal" style="background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid var(--gold);border-radius:16px;padding:2.5rem;margin-bottom:2.5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:260px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.75rem;">// BEST VALUE — VCII FULL STACK</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:0.75rem;line-height:1.1;">Every RE tool. One price.</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:460px;margin-bottom:1.25rem;">All 4 web apps, all 4 AI agents, all 3 skills, and the full trade estimator pack. Everything to find, analyze, estimate, and close deals.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;">
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Deal Analyzer</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Rehab Estimator</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Cash Flow Tracker</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">3 Trade Estimators</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">4 AI Agents</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">3 AI Tools</span>
+          </div>
+          <a href="https://buy.stripe.com/aFaeVcaxJapiabK1o4bEA0i" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Full Stack — $297 →</a>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);text-decoration:line-through;margin-bottom:4px;">$400+ individually</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:var(--gold);line-height:1;">$297</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);margin-top:4px;">SAVE $100+</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:6px;">ONE-TIME · INSTANT DELIVERY</div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: NO AI NEEDED -->
+      <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:rgba(100,220,130,0.04);border:1px solid rgba(100,220,130,0.14);border-radius:12px;margin-bottom:1.75rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:220px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#6ee7a0;margin-bottom:0.35rem;">// SECTION 1 OF 2 — NO AI NEEDED</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.2rem;">Works in your browser or Google Sheets / Excel.</div>
+          <div style="font-size:0.82rem;color:var(--muted);">Download it, open it, enter your numbers. No accounts, no AI experience, no setup required.</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.4rem 1.1rem;background:rgba(100,220,130,0.07);border:1px solid rgba(100,220,130,0.18);color:#6ee7a0;border-radius:100px;white-space:nowrap;flex-shrink:0;">✓ No account needed</div>
+      </div>
+
+      <!-- Web Apps -->
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">DEAL TOOLS — OPEN IT, ENTER THE NUMBERS, GET THE ANSWER</div>
+      <div class="products-grid" style="margin-bottom:2.5rem;">
+        <div class="product-card reveal reveal-delay-1">
+          <div class="featured-badge">Flagship</div>
+          <div class="product-icon">📊</div>
+          <div><div class="product-name">Deal Analyzer</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · No AI Needed</div></div>
+          <p class="product-desc">Enter the numbers, get cap rate, CoC return, DSCR, NOI, the 1% rule, and 70% rule in seconds. No spreadsheet math, no guessing.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <ul class="product-features">
+            <li>Cap rate, CoC, DSCR, NOI</li>
+            <li>1% rule &amp; 70% rule checker</li>
+            <li>Vacancy &amp; expense buffers</li>
+            <li>Delivery email after checkout</li>
+          </ul>
+          <a href="https://buy.stripe.com/14A8wO7lxapibfOaYEbEA03" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card featured reveal reveal-delay-2">
+          <div class="featured-badge">Most Popular</div>
+          <div class="product-icon">🏗️</div>
+          <div><div class="product-name">Full Rehab Estimator</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · No AI Needed</div></div>
+          <p class="product-desc">Room-by-room rehab calculator. Pick Light / Medium / Full Gut scope and get real Midwest estimates instantly across 8 categories and 50+ line items.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <ul class="product-features">
+            <li>8 categories, 50+ line items</li>
+            <li>Light / Medium / Full Gut presets</li>
+            <li>Contingency calculator</li>
+            <li>Delivery email after checkout</li>
+          </ul>
+          <a href="https://buy.stripe.com/3cIbJ07lx1SM0Ba9UAbEA04" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-icon">💵</div>
+          <div><div class="product-name">Cash Flow Tracker</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · No AI Needed</div></div>
+          <p class="product-desc">Track every rental door in one dashboard. Monthly cash flow, cap rate, CoC — for your full portfolio or property by property. Saved locally, no account needed.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <ul class="product-features">
+            <li>Multi-property portfolio view</li>
+            <li>Per-door NOI, CoC, cap rate</li>
+            <li>Portfolio MRR &amp; annual CF</li>
+            <li>Delivery email after checkout</li>
+          </ul>
+          <a href="https://buy.stripe.com/14A28q21d6926Zy2s8bEA05" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card reveal reveal-delay-4" style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:0.5rem;">TRADE ESTIMATORS — $17 EACH OR $37 FOR ALL 3</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+            <div style="padding:1rem;border:1px solid var(--border);border-radius:8px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:6px;">⚡</div>
+              <div style="font-weight:600;font-size:0.85rem;margin-bottom:4px;">Electrical</div>
+              <div style="color:var(--muted);font-size:0.75rem;margin-bottom:10px;">35+ line items</div>
+              <a href="https://buy.stripe.com/6oU8wObBN692es06IobEA06" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.7rem;padding:0.4rem;">$17</a>
+            </div>
+            <div style="padding:1rem;border:1px solid var(--border);border-radius:8px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:6px;">🔧</div>
+              <div style="font-weight:600;font-size:0.85rem;margin-bottom:4px;">Plumbing</div>
+              <div style="color:var(--muted);font-size:0.75rem;margin-bottom:10px;">40+ line items</div>
+              <a href="https://buy.stripe.com/28E28q35h54Y4Rq0k0bEA07" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.7rem;padding:0.4rem;">$17</a>
+            </div>
+            <div style="padding:1rem;border:1px solid var(--border);border-radius:8px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:6px;">🪵</div>
+              <div style="font-weight:600;font-size:0.85rem;margin-bottom:4px;">Flooring</div>
+              <div style="color:var(--muted);font-size:0.75rem;margin-bottom:10px;">10 material types</div>
+              <a href="https://buy.stripe.com/7sY14m21d1SM3Nm3wcbEA08" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.7rem;padding:0.4rem;">$17</a>
+            </div>
+          </div>
+          <a href="https://buy.stripe.com/eVq6oGeNZcxq3Nm7MsbEA09" target="_blank" rel="noopener noreferrer" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;margin-top:auto;">Get All 3 — $37 (Save $14) →</a>
+        </div>
+      </div>
+
+      <!-- SECTION 2: REQUIRES AI -->
+      <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:12px;margin-bottom:1.75rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:220px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.35rem;">// SECTION 2 OF 2 — AI AGENTS</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.2rem;">These run inside Claude AI.</div>
+          <div style="font-size:0.82rem;color:var(--muted);">You need a free account at claude.ai. Copy the prompt, paste it in, fill in your numbers — done in 60 seconds. <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">Get Claude free →</a></div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.4rem 1.1rem;background:rgba(201,168,76,0.08);border:1px solid var(--border);color:var(--gold);border-radius:100px;white-space:nowrap;flex-shrink:0;">Requires claude.ai (free)</div>
+      </div>
+
+      <!-- AI Agents -->
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">AI-POWERED TOOLS — DESCRIBE THE DEAL, GET THE ANALYSIS</div>
+      <div class="products-grid" style="margin-bottom:2.5rem;">
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-icon">🗺️</div>
+          <div><div class="product-name">Neighborhood Analyzer</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
+          <p class="product-desc">Full market report on any zip code. Rent estimates, sales comps, neighborhood score 1–10, risk profile, and a GO / WATCH / AVOID verdict.</p>
+          <div class="product-price"><span class="price-amount">$37</span></div>
+          <ul class="product-features">
+            <li>Pulls live market data automatically</li>
+            <li>Scores 6 neighborhood factors</li>
+            <li>Best streets + investor verdict</li>
+          </ul>
+          <a href="https://buy.stripe.com/3cI9AS8pB8hagA85EkbEA0a" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $37</a>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-icon">🔄</div>
+          <div><div class="product-name">BRRRR Strategy Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
+          <p class="product-desc">Full 4-phase BRRRR projection. Shows exactly how much cash you pull at refi, post-refi cash flow, and your Deal #2 buying power.</p>
+          <div class="product-price"><span class="price-amount">$47</span></div>
+          <ul class="product-features">
+            <li>Buy → Rehab → Rent → Refi → Repeat</li>
+            <li>Post-refi cash flow analysis</li>
+            <li>Next deal equity capacity</li>
+          </ul>
+          <a href="https://buy.stripe.com/7sY9AS49ldBugA85EkbEA0b" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $47</a>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-icon">📰</div>
+          <div><div class="product-name">RE Market Intel Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
+          <p class="product-desc">Weekly macro brief: oil prices, Fed rates, tariffs, war, jobs — translated into specific investor actions. Know how the world affects your market first.</p>
+          <div class="product-price"><span class="price-amount">$37</span></div>
+          <ul class="product-features">
+            <li>5 macro signals tracked live</li>
+            <li>RE impact per signal</li>
+            <li>Weekly investor action list</li>
+          </ul>
+          <a href="https://buy.stripe.com/bJe6oGbBNbtm4RqaYEbEA0c" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $37</a>
+        </div>
+        <div class="product-card reveal reveal-delay-4">
+          <div class="product-icon">📈</div>
+          <div><div class="product-name">Rental Income Projector</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
+          <p class="product-desc">5-year financial model: rent growth, appreciation, equity paydown, total ROI. See where a property stands in year 5 before you ever close.</p>
+          <div class="product-price"><span class="price-amount">$37</span></div>
+          <ul class="product-features">
+            <li>Year-by-year projection table</li>
+            <li>Total equity + net worth impact</li>
+            <li>Cash-on-cash ROI over time</li>
+          </ul>
+          <a href="https://buy.stripe.com/8x28wO5dp692bfO0k0bEA0d" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $37</a>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">PROMPT-BASED VC2 TOOLS — FAST OUTPUT WITH SIMPLE INPUT</div>
+      <div class="products-grid">
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-icon">✉️</div>
+          <div><div class="product-name">Offer Letter Generator</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
+          <p class="product-desc">Professional investor offer letter in 60 seconds. Give it the address, your numbers, and your terms — it writes the letter, subject line, and follow-up message.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <a href="https://buy.stripe.com/3cI8wO49l8hafw46IobEA0f" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-icon">📬</div>
+          <div><div class="product-name">Wholesaler Outreach Template</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
+          <p class="product-desc">Cold DM or email to any wholesaler. Positions you as a serious cash buyer, includes your buyer profile criteria, and closes with a call invite.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <a href="https://buy.stripe.com/00waEW9tF7d63NmaYEbEA0g" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-icon">🔍</div>
+          <div><div class="product-name">Property Research Report</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
+          <p class="product-desc">Full neighborhood picture on any address before you spend 2 hours on it. Scores neighborhood, estimates rent, pulls comps, flags risks, gives a verdict.</p>
+          <div class="product-price"><span class="price-amount">$27</span></div>
+          <a href="https://buy.stripe.com/8x2aEWbBNbtm6ZyaYEbEA0h" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
+        </div>
+        <div class="product-card reveal reveal-delay-4" style="background:linear-gradient(135deg,#13131C,#1A1508);border-color:var(--gold);">
+          <div class="featured-badge">Bundle</div>
+          <div class="product-icon">🤖</div>
+          <div><div class="product-name">AI Agent Pro Pack</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">All 4 Agents</div></div>
+          <p class="product-desc">All 4 VCII AI agents in one shot: Neighborhood Analyzer, BRRRR Strategy, Market Intel, and Rental Income Projector.</p>
+          <div class="product-price"><span class="price-amount">$97</span><span class="price-period">&nbsp;($158 individually)</span></div>
+          <a href="https://buy.stripe.com/bJefZgaxJdBues0aYEbEA0e" target="_blank" rel="noopener noreferrer" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Get Agent Pack — $97 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEBSITE PORTFOLIO -->
+  <section id="websites" style="background:var(--bg-2);border-top:1px solid rgba(255,255,255,0.04);">
+    <div class="products" style="max-width:1200px;margin:0 auto;">
+      <div class="products-header reveal">
+        <div class="section-label">// 007 — Website Design</div>
+        <h2 class="section-title">Live website demos that already feel real.</h2>
+        <p class="section-sub">These are live Vercel builds, not placeholder files. Click through and see the full experience.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:3rem;">
+
+        <div class="product-card reveal reveal-delay-1" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#0a0a14,#1a0a2e);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:0.05em;">APEX ROOFING</span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(80,210,255,0.12);border:1px solid rgba(80,210,255,0.24);color:#8bddff;">ROOFING</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">Apex Roofing</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">Premium contractor site with a strong hero, clear service sections, trust signals, and a lead-focused layout.</p>
+            <a href="https://demo-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#0a0014,#1a0028);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#ffbb66;letter-spacing:0.08em;">TERRA PRO</span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(255,163,64,0.12);border:1px solid rgba(255,163,64,0.25);color:#ffbb66;">LANDSCAPING</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">Terra Pro Landscaping</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">Luxury landscaping demo with transformation energy, better visuals, and clear booking flow.</p>
+            <a href="https://demo-landscaping.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-3" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#030a0e,#061420);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:'DM Sans',sans-serif;font-size:1.45rem;font-weight:700;color:#5fd4c3;letter-spacing:0.06em;">ALIGNCHIRO</span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(95,212,195,0.1);border:1px solid rgba(95,212,195,0.22);color:#5fd4c3;">HEALTH</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">AlignChiro Clinic</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">Health & wellness demo with appointment booking, clean teal aesthetic, and a trust-first patient experience layout.</p>
+            <a href="https://demo-plumber.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#0c0800,#1c1200);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:900;color:#f5a623;letter-spacing:0.04em;">LUXE<span style="color:#f0ede6;">EXTERIORS</span></span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.25);color:#f5a623;">HOME DESIGN</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">Luxe Exteriors</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">Premium home design demo with bold typography, strong authority positioning, and a clear quote-request flow.</p>
+            <a href="https://demo-luxury-home.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#06080f,#0d1030);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:monospace;font-size:1.7rem;font-weight:700;color:#f4cb6d;letter-spacing:0.08em;">SPARK PRO</span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(244,203,109,0.12);border:1px solid rgba(244,203,109,0.24);color:#f4cb6d;">ELECTRICAL</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">Spark Pro Electric</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">Contractor site with stronger contrast, clearer service cards, and a cleaner lead-capture path.</p>
+            <a href="https://demo-electrician.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-3" style="padding:0;overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#060814,#0d0f28);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;">
+            <span style="font-family:'DM Mono',monospace;font-size:1.4rem;font-weight:700;color:#a78bfa;letter-spacing:0.12em;">NEBULA PRO</span>
+            <span style="position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:3px 8px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.24);color:#a78bfa;">TECH / AI</span>
+          </div>
+          <div style="padding:1.25rem;">
+            <div class="product-name" style="font-size:1.1rem;margin-bottom:0.4rem;">Nebula Pro</div>
+            <p class="product-desc" style="font-size:0.8rem;margin-bottom:1rem;">AI product landing page with strong positioning, a clean dark aesthetic, and voice-first feature layout built to convert.</p>
+            <a href="https://demo-tech-tau.vercel.app" target="_blank" rel="noopener noreferrer" class="product-cta" style="font-size:0.8rem;padding:0.55rem;">View Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="product-card featured reveal reveal-delay-3" style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="featured-badge">Done For You</div>
+          <div class="product-icon">🖥️</div>
+          <div class="product-name" style="margin-bottom:0.5rem;">Want one built for you?</div>
+          <p class="product-desc">Custom design, no templates. Personal brand sites, business pages, product landing pages — delivered in 5–7 days.</p>
+          <div class="product-price" style="margin:0.5rem 0;"><span class="price-amount">$500</span><span class="price-period"> and up</span></div>
+          <ul class="product-features" style="margin-bottom:1.25rem;">
+            <li>Custom design — not a template</li>
+            <li>Mobile responsive + fast load</li>
+            <li>CTA + lead capture built in</li>
+            <li>Delivered in 5–7 days</li>
+            <li>1 round of revisions included</li>
+          </ul>
+          <a href="mailto:vanwaynec01@gmail.com" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Get a Quote →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <div class="how-header reveal">
+        <div class="section-label">// 008 — Process</div>
+        <h2 class="section-title">Simple. Fast. Permanent.</h2>
+        <p class="section-sub">No bloated software subscriptions. No months of onboarding. You're live in days.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <div class="step-title">Discovery Call</div>
+          <p class="step-body">We map your current process, find where hours are being lost, and identify the highest-ROI automation to build first.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <div class="step-title">Build & Test</div>
+          <p class="step-body">I build the system in Claude + custom AI agents, test it against real scenarios, and document exactly how it works.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <div class="step-title">You Execute</div>
+          <p class="step-body">The system runs. You get your time back. If you don't find it valuable, you pay nothing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner reveal">
+      <div class="section-label">// 009 — Let's Build</div>
+      <h2 class="section-title">Ready to stop doing it manually?</h2>
+      <p class="section-sub">Whether you want a stronger professional site, a custom AI workflow, or a productized system that saves time, let’s talk about the highest-ROI thing to build first.</p>
+      <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Book a Free Call</a>
+    </div>
+  </section>
+
+  <section style="padding:2rem 1.5rem 3rem;background:var(--bg);border-top:1px solid rgba(255,255,255,0.05);">
+    <div style="max-width:1100px;margin:0 auto;padding:1.25rem 1.25rem 1.35rem;border:1px solid rgba(201,168,76,0.16);border-radius:16px;background:rgba(255,255,255,0.02);">
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;color:var(--gold);margin-bottom:0.85rem;">// DISCLAIMER</div>
+      <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:0.65rem;">Digital products, templates, spreadsheets, and reports are provided for informational and operational support only. They are not legal, tax, accounting, lending, or investment advice.</p>
+      <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:0.65rem;">Real estate decisions should be independently reviewed with the appropriate licensed professionals. Results vary based on execution, market conditions, underwriting assumptions, and buyer use case.</p>
+      <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin:0;">Done-for-you builds, websites, and automation services may require client inputs, third-party tools, logins, or platform access. Delivery scope, support, and revisions are defined at time of sale.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Vanwayne</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    function toggleMobile() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Trigger hero elements immediately
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+
+    // Stat counter animation
+    function animateCount(el, target, suffix = '') {
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.background = window.scrollY > 50
+        ? 'rgba(9,9,14,0.95)'
+        : 'rgba(9,9,14,0.8)';
+    });
+  </script>
+</body>
+</html>
+
+
+
+
