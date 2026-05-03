@@ -3,181 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Purchase — Vanwayne.AI</title>
+  <title>Check Your Email — Vanwayne</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #09090E; --bg-2: #0F0F17; --bg-card: #13131C;
-      --gold: #C9A84C; --gold-2: #E8C56A; --gold-dim: rgba(201,168,76,0.12);
-      --white: #F0EDE6; --muted: #6B6B7A; --border: rgba(201,168,76,0.15);
-    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 60px 24px; }
-    .check { width: 64px; height: 64px; background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 24px; }
-    .label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 12px; }
-    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; text-align: center; margin-bottom: 12px; }
-    .sub { color: var(--muted); font-size: 1rem; text-align: center; max-width: 480px; line-height: 1.7; margin-bottom: 48px; }
-    .products { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
-    .product-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; transition: border-color 0.2s; }
-    .product-row:hover { border-color: var(--gold); }
-    .row-left { display: flex; align-items: center; gap: 14px; }
-    .row-icon { width: 40px; height: 40px; background: var(--gold-dim); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-    .row-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
-    .row-type { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--muted); }
-    .btn-dl { background: var(--gold); color: #09090E; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 8px 20px; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
-    .btn-dl:hover { background: var(--gold-2); }
-    .btn-soon { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; padding: 8px 20px; border-radius: 6px; cursor: default; white-space: nowrap; }
-    .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 10px; width: 100%; max-width: 760px; padding-left: 4px; }
-    .support { text-align: center; color: var(--muted); font-size: 0.85rem; }
-    .support a { color: var(--gold); text-decoration: none; }
-    .support a:hover { text-decoration: underline; }
-    .divider { width: 100%; max-width: 760px; border: none; border-top: 1px solid rgba(255,255,255,0.05); margin: 8px 0 20px; }
+    body {
+      background: #09090E;
+      color: #F0EDE6;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .icon {
+      width: 72px; height: 72px;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 28px;
+    }
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: #C9A84C;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    p {
+      color: #6B6B7A;
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    p strong { color: #F0EDE6; }
+    .steps {
+      background: #13131C;
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 12px;
+      padding: 24px 32px;
+      margin: 32px 0;
+      max-width: 480px;
+      width: 100%;
+      text-align: left;
+    }
+    .steps p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: #6B6B7A;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+    .steps p:last-child { margin-bottom: 0; }
+    .steps span { color: #C9A84C; margin-right: 8px; }
+    .btn {
+      display: inline-block;
+      background: #C9A84C;
+      color: #09090E;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #E8C56A; }
+    .support {
+      margin-top: 40px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(107,107,122,0.6);
+      letter-spacing: 0.06em;
+    }
+    .support a { color: rgba(201,168,76,0.6); text-decoration: none; }
+    .support a:hover { color: #C9A84C; }
   </style>
 </head>
 <body>
 
-  <div class="check">✓</div>
-  <p class="label">// PURCHASE CONFIRMED</p>
-  <h1>You're all set.<br/>Access your tools below.</h1>
-  <p class="sub">Everything you purchased is linked below. Bookmark this page. Questions? Email <a href="mailto:vanwaynec01@gmail.com" style="color:var(--gold);">vanwaynec01@gmail.com</a></p>
+  <div class="icon">✉️</div>
+  <div class="label">// PURCHASE CONFIRMED</div>
+  <h1>Check Your Email</h1>
+  <p>Your personal access link was sent to the email you used at checkout.</p>
+  <p><strong>Click that link to access your products.</strong></p>
 
-  <!-- WEB APPS -->
-  <p class="section-label">WEB APPS</p>
-  <div class="products">
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">📊</div>
-        <div><div class="row-name">VCII Deal Analyzer</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🏗️</div>
-        <div><div class="row-name">Full Rehab Estimator</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">💵</div>
-        <div><div class="row-name">Cash Flow Tracker</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">⚡</div>
-        <div><div class="row-name">Electrical Estimator</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🔧</div>
-        <div><div class="row-name">Plumbing Estimator</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🪵</div>
-        <div><div class="row-name">Flooring Estimator</div><div class="row-type">WEB APP — download &amp; open in browser</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
+  <div class="steps">
+    <p><span>01</span>Open the email from Vanwayne / VC2</p>
+    <p><span>02</span>Click your unique access link</p>
+    <p><span>03</span>Access your downloads instantly</p>
+    <p><span>04</span>Google Sheets: File → Make a copy → yours forever</p>
   </div>
 
-  <hr class="divider" />
+  <p>Can't find it? Check your spam folder first.</p>
+  <a href="./index.html" class="btn">← Back to Home</a>
 
-  <!-- TRACKERS -->
-  <p class="section-label">GOOGLE SHEETS TRACKERS</p>
-  <div class="products">
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🏠</div>
-        <div><div class="row-name">VCII Real Estate Tracker</div><div class="row-type">GOOGLE SHEETS — click to copy to your Drive</div></div>
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/PLACEHOLDER_RE" target="_blank" rel="noopener noreferrer" class="btn-dl">OPEN SHEET →</a><!-- TODO: add real link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">💪</div>
-        <div><div class="row-name">Fitness Habit Tracker</div><div class="row-type">GOOGLE SHEETS — click to copy to your Drive</div></div>
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/PLACEHOLDER_FITNESS" target="_blank" rel="noopener noreferrer" class="btn-dl">OPEN SHEET →</a><!-- TODO: add real link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">📋</div>
-        <div><div class="row-name">Productivity Tracker</div><div class="row-type">GOOGLE SHEETS — free, copy to your Drive</div></div>
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/1fBIsN028Q4nH28gAyIrxiS9L6sywLRRku2z7bWmGuPw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-dl">OPEN SHEET →</a>
-    </div>
+  <div class="support">
+    Still can't find it? <a href="mailto:vanwaynec01@gmail.com">Contact support →</a>
   </div>
-
-  <hr class="divider" />
-
-  <!-- AI AGENTS & SKILLS -->
-  <p class="section-label">AI AGENTS &amp; CLAUDE SKILLS — paste into Claude Code</p>
-  <div class="products">
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🗺️</div>
-        <div><div class="row-name">Neighborhood Analyzer Agent</div><div class="row-type">CLAUDE CODE AGENT — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🔄</div>
-        <div><div class="row-name">BRRRR Strategy Agent</div><div class="row-type">CLAUDE CODE AGENT — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">📰</div>
-        <div><div class="row-name">RE Market Intel Agent</div><div class="row-type">CLAUDE CODE AGENT — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">📈</div>
-        <div><div class="row-name">Rental Income Projector</div><div class="row-type">CLAUDE CODE AGENT — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">✉️</div>
-        <div><div class="row-name">Offer Letter Generator Skill</div><div class="row-type">CLAUDE CODE SKILL — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">📬</div>
-        <div><div class="row-name">Wholesaler Outreach Skill</div><div class="row-type">CLAUDE CODE SKILL — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-    <div class="product-row">
-      <div class="row-left">
-        <div class="row-icon">🔍</div>
-        <div><div class="row-name">Property Research Skill</div><div class="row-type">CLAUDE CODE SKILL — .md file</div></div>
-      </div>
-      <a href="#" class="btn-dl">DOWNLOAD →</a><!-- TODO: add Google Drive link -->
-    </div>
-  </div>
-
-  <hr class="divider" />
-
-  <p class="support">
-    Questions or missing something? <a href="mailto:vanwaynec01@gmail.com">vanwaynec01@gmail.com</a><br />
-    <span style="font-size:0.75rem;margin-top:6px;display:block;">© 2026 Wayne Van Chaney Jr. · All sales final · One license = one user</span>
-  </p>
 
 </body>
 </html>
