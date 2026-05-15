@@ -511,6 +511,24 @@
       max-height: 680px;
     }
 
+    .about-photo-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-slide {
+      position: absolute;
+      inset: 1rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .about-photo-slide.active {
+      opacity: 1;
+      position: relative;
+      inset: auto;
+    }
+
     .about-photo-caption {
       margin-top: 0.85rem;
       font-size: 0.78rem;
@@ -1437,7 +1455,9 @@
 
       <div class="about-photo-wrap reveal reveal-delay-2">
         <div class="about-photo-card">
-          <img src="./graduation-2023-new.jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide active" src="./graduation-2023-new.jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide" src="./Attachment(1).jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide" src="./Attachment(2).jpg" alt="Vanwayne Chaney Jr. graduation portrait" />
           <div class="about-photo-caption">Graduation portrait</div>
         </div>
       </div>
@@ -2147,9 +2167,20 @@
         ? 'rgba(9,9,14,0.95)'
         : 'rgba(9,9,14,0.8)';
     });
+    // About photo slideshow
+    const aboutSlides = document.querySelectorAll('.about-photo-slide');
+    if (aboutSlides.length > 1) {
+      let aboutSlideIndex = 0;
+      window.setInterval(() => {
+        aboutSlides[aboutSlideIndex].classList.remove('active');
+        aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+        aboutSlides[aboutSlideIndex].classList.add('active');
+      }, 3500);
+    }
   </script>
 </body>
 </html>
+
 
 
 
