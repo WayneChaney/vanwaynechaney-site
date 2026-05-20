@@ -839,6 +839,18 @@
       overflow: hidden;
     }
 
+    .product-screenshot {
+      width: calc(100% + 4rem);
+      margin: -2rem -2rem 0;
+      height: 180px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 16px 16px 0 0;
+      display: block;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+    }
+
     .product-card::before {
       content: '';
       position: absolute;
@@ -1697,6 +1709,7 @@
       <div class="products-grid" style="margin-bottom:2.5rem;">
         <div class="product-card featured reveal reveal-delay-1">
           <div class="featured-badge">Best Seller</div>
+          <img src="images/screenshot-landlord-os.png" class="product-screenshot" alt="Landlord OS preview" onerror="this.style.display='none'">
           <div class="product-icon">🏠</div>
           <div><div class="product-name">Landlord OS</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · Offline · No AI Needed</div></div>
           <p class="product-desc">One file runs your entire rental portfolio. Property cards, cash flow, vacancy, equity — all in one place. No Notion. No spreadsheet that breaks. No subscription.</p>
@@ -1711,6 +1724,7 @@
           <a href="https://buy.stripe.com/aFa28q6htapi3Nm8QwbEA0q" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $99</a>
         </div>
         <div class="product-card reveal reveal-delay-2">
+          <img src="images/screenshot-deal-closer.png" class="product-screenshot" alt="Deal Closer preview" onerror="this.style.display='none'">
           <div class="product-icon">🔄</div>
           <div><div class="product-name">Deal Closer</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · Offline · No AI Needed</div></div>
           <p class="product-desc">Track every deal from first call to contract signed. Never drop a lead again. No spreadsheet that breaks, no Notion that lags — just your pipeline, offline, instant.</p>
@@ -1725,6 +1739,7 @@
           <a href="https://buy.stripe.com/fZu5kC9tF6922JiaYEbEA0r" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $49</a>
         </div>
         <div class="product-card reveal reveal-delay-3">
+          <img src="images/screenshot-4in1-calc.png" class="product-screenshot" alt="4-in-1 Calculator preview" onerror="this.style.display='none'">
           <div class="product-icon">🧰</div>
           <div><div class="product-name">The 4-in-1 Calculator</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · Offline · No AI Needed</div></div>
           <p class="product-desc">Fix &amp; Flip. Wholesale Max Offer. Rental Cash Flow. BRRRR. Four calculators, one file. Stop opening five different tabs to run one deal.</p>
@@ -1740,6 +1755,7 @@
         </div>
         <div class="product-card reveal reveal-delay-4" style="background:linear-gradient(135deg,#13131C,#1A1508);border-color:var(--gold);">
           <div class="featured-badge">Bundle</div>
+          <img src="images/screenshot-4in1-calc.png" class="product-screenshot" alt="Investor Stack preview" onerror="this.style.display='none'">
           <div class="product-icon">📦</div>
           <div><div class="product-name">The Investor Stack</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">All 3 Tools</div></div>
           <p class="product-desc">Landlord OS + Deal Closer + The 4-in-1 Calculator. Everything an active investor needs. Three offline files, one download, no subscription — ever.</p>
@@ -1759,6 +1775,7 @@
       <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">AI TOOLS — COPY. PASTE. CLOSE FASTER.</div>
       <div class="products-grid" style="margin-bottom:2.5rem;">
         <div class="product-card reveal reveal-delay-1">
+          <img src="images/screenshot-re-prompt-vault.png" class="product-screenshot" alt="RE Prompt Vault preview" onerror="this.style.display='none'">
           <div class="product-icon">🤖</div>
           <div><div class="product-name">RE Prompt Vault</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works with Claude · ChatGPT · Any AI</div></div>
           <p class="product-desc">100+ copy-paste prompts built for real estate investors. Analyze deals, write offers, run comps, respond to sellers — stop writing from scratch every time.</p>
