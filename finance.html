@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance — Vanwayne Chaney Jr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#06101D;--bg-2:#0A1728;--bg-card:#0D1B2B;
+      --gold:#C9A84C;--gold-2:#E8C56A;--gold-dim:rgba(201,168,76,0.12);
+      --white:#F0EDE6;--muted:#93A0B3;--border:rgba(201,168,76,0.15);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,16,29,0.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a.active{color:var(--white);}
+    .nav-cta{background:var(--gold);color:#09090E !important;padding:0.55rem 1.4rem;border-radius:6px;font-weight:600 !important;}
+    .nav-cta:hover{background:var(--gold-2) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s;transform-origin:center;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(9,9,14,0.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--white);text-decoration:none;transition:color 0.2s;}
+    .mobile-menu a:hover{color:var(--gold);}
+    .mobile-menu .mobile-cta{background:var(--gold);color:#09090E;padding:0.9rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;}
+
+    section{padding:5rem 4rem;position:relative;z-index:1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem;}
+    .section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.75;margin-bottom:3rem;}
+
+    .hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 40%,rgba(201,168,76,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(40,111,194,0.1) 0%,transparent 60%);pointer-events:none;}
+    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+    .hero-content{position:relative;z-index:1;max-width:800px;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;padding:0.4rem 0.9rem;border:1px solid var(--border);border-radius:100px;background:var(--gold-dim);}
+    .hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .hero-title span{color:var(--gold);}
+    .hero-desc{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem;}
+    .hero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;}
+    .hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:0.35rem 0.85rem;}
+
+    /* PILLARS */
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+    .pillar-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2rem;position:relative;overflow:hidden;transition:transform 0.22s,border-color 0.22s,box-shadow 0.22s;}
+    .pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.3s;}
+    .pillar-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.35);box-shadow:0 16px 42px rgba(0,0,0,0.25);}
+    .pillar-card:hover::before{opacity:1;}
+    .pillar-num{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;color:var(--gold);margin-bottom:0.75rem;}
+    .pillar-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;margin-bottom:0.6rem;}
+    .pillar-copy{font-size:0.88rem;color:var(--muted);line-height:1.75;}
+
+    /* TOOLS GRID */
+    .tools-outer{max-width:1200px;margin:0 auto;}
+    .tools-cat{margin-bottom:3.5rem;}
+    .cat-label{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .cat-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.06);}
+    .tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    .tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:transform 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
+    .tool-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,0.3);}
+    .tool-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.6rem;gap:0.5rem;}
+    .tool-name{font-weight:700;font-size:1rem;}
+    .tool-cost{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+    .cost-free{background:rgba(110,231,160,0.1);color:#6ee7a0;border:1px solid rgba(110,231,160,0.2);}
+    .cost-paid{background:var(--gold-dim);color:var(--gold);border:1px solid var(--border);}
+    .cost-freemium{background:rgba(147,160,179,0.1);color:var(--muted);border:1px solid rgba(255,255,255,0.08);}
+    .tool-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1rem;}
+    .tool-link{display:inline-flex;align-items:center;gap:0.3rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity 0.2s;margin-top:auto;}
+    .tool-link:hover{opacity:0.75;}
+
+    /* PRINCIPLES */
+    .principles-section{background:var(--bg-2);border-top:1px solid rgba(255,255,255,0.04);}
+    .principles-inner{max-width:1000px;margin:0 auto;}
+    .principles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem;}
+    .principle{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;}
+    .principle-num{font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;min-width:2rem;}
+    .principle-title{font-weight:600;margin-bottom:0.35rem;}
+    .principle-copy{font-size:0.88rem;color:var(--muted);line-height:1.65;}
+
+    .cta-section{background:var(--bg);border-top:1px solid rgba(255,255,255,0.04);text-align:center;}
+    .cta-inner{max-width:640px;margin:0 auto;}
+    .cta-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;margin-bottom:1rem;}
+    .cta-sub{color:var(--muted);margin-bottom:2rem;line-height:1.75;}
+    .btn-primary{background:var(--gold);color:#09090E;padding:0.85rem 2rem;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;}
+    .btn-primary:hover{background:var(--gold-2);transform:translateY(-2px);}
+    .btn-secondary{border:1px solid var(--border);color:var(--white);padding:0.85rem 2rem;border-radius:8px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:border-color 0.2s;display:inline-block;margin-left:1rem;}
+    .btn-secondary:hover{border-color:var(--gold);background:var(--gold-dim);}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:2rem 4rem;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;}
+    .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;}
+    .footer-links{display:flex;gap:2rem;list-style:none;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--white);}
+    .footer-copy{font-size:0.8rem;color:var(--muted);}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:0.1s;}
+    .reveal-delay-2{transition-delay:0.2s;}
+    .reveal-delay-3{transition-delay:0.3s;}
+    .reveal-delay-4{transition-delay:0.4s;}
+    .reveal-delay-5{transition-delay:0.5s;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links,.nav-cta{display:none;}
+      .hamburger{display:flex;}
+      section,.hero{padding:3.5rem 1.5rem;}
+      .hero{padding-top:6rem;}
+      .pillars-grid{grid-template-columns:1fr;}
+      .tools-row{grid-template-columns:1fr 1fr;}
+      .principles-grid{grid-template-columns:1fr;}
+      footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem;}
+      .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
+    }
+    @media(max-width:480px){
+      .tools-row{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="./products.html" onclick="closeMobile()">Products</a>
+    <a href="./finance.html" onclick="closeMobile()">Finance</a>
+    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <nav>
+    <a href="./index.html" class="nav-logo">
+      <img src="./logo.jpg" alt="VCII" style="height:36px;width:36px;border-radius:50%;object-fit:cover;" />
+      Vanwayne
+    </a>
+    <ul class="nav-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./real-estate.html">RE Tools</a></li>
+      <li><a href="./finance.html" class="active">Finance</a></li>
+      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Personal Finance</div>
+      <h1 class="hero-title">Build <span>Wealth</span><br>With Clarity</h1>
+      <p class="hero-desc">The tools, apps, and principles that actually move the needle — budgeting, investing, net worth, and credit. No fluff. Just what works.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">Budgeting</span>
+        <span class="hero-pill">Investing</span>
+        <span class="hero-pill">Net Worth</span>
+        <span class="hero-pill">Credit</span>
+        <span class="hero-pill">Savings</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIVE PILLARS -->
+  <section style="background:var(--bg-2);border-top:1px solid rgba(255,255,255,0.04);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label reveal">// Foundation</div>
+      <h2 class="section-title reveal">Five Things That Actually Matter</h2>
+      <p class="section-sub reveal">Most personal finance content is noise. These five pillars, done consistently, will outperform every hack or shortcut you'll read about online.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card reveal">
+          <div class="pillar-num">01 — Cash Flow</div>
+          <div class="pillar-title">Spend Less Than You Make</div>
+          <p class="pillar-copy">The only rule that isn't negotiable. Track every dollar in and out. The gap between income and spending is the only number that creates wealth. Everything else is optimization.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-num">02 — Emergency Fund</div>
+          <div class="pillar-title">3–6 Months. Non-Negotiable.</div>
+          <p class="pillar-copy">Before you invest anything, build a cash cushion that covers 3–6 months of expenses. This keeps you from selling investments or taking on debt every time life happens.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-num">03 — Debt</div>
+          <div class="pillar-title">Kill High-Interest. Keep Low.</div>
+          <p class="pillar-copy">Anything above 7% should be eliminated aggressively. Mortgage-rate debt and 0% cards are tools — use them. Credit card balances at 24% APR will erase any investment gains you make.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-num">04 — Investing</div>
+          <div class="pillar-title">Start Early. Stay Boring.</div>
+          <p class="pillar-copy">Max the Roth IRA first ($7,000/yr). Then 401k match. Then taxable. VOO, QQQ, or a target-date fund beats 90% of active strategies over 20 years. Time in market beats timing the market.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-4">
+          <div class="pillar-num">05 — Net Worth</div>
+          <div class="pillar-title">Track It. Watch It Compound.</div>
+          <p class="pillar-copy">Assets minus liabilities, checked monthly. Watching the number grow is the best motivation to keep the habits going. Tools like Monarch or Personal Capital make this automatic.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-5">
+          <div class="pillar-num">06 — Credit</div>
+          <div class="pillar-title">Protect and Build It.</div>
+          <p class="pillar-copy">Your credit score is a financing access card. Keep utilization under 30%, pay on time, don't close old accounts. A strong score means better rates, more leverage, and more optionality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section>
+    <div class="tools-outer">
+      <div class="section-label reveal">// Tools</div>
+      <h2 class="section-title reveal">The Apps Worth Using</h2>
+      <p class="section-sub reveal">Personal finance software has gotten genuinely good. These are the ones worth your time — by category.</p>
+
+      <!-- Budgeting & Net Worth -->
+      <div class="tools-cat reveal">
+        <div class="cat-label">Budgeting &amp; Net Worth</div>
+        <div class="tools-row">
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Monarch Money</div>
+              <div class="tool-cost cost-paid">$14.99/mo</div>
+            </div>
+            <p class="tool-desc">The best all-in-one personal finance dashboard right now. Syncs all accounts, tracks spending by category, shows net worth over time, and lets you set and monitor goals. Cleaner than Mint ever was.</p>
+            <a href="https://www.monarchmoney.com" target="_blank" rel="noopener noreferrer" class="tool-link">monarchmoney.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">YNAB</div>
+              <div class="tool-cost cost-paid">$14.99/mo</div>
+            </div>
+            <p class="tool-desc">Zero-based budgeting — every dollar gets a job. Forces intentional spending instead of retroactive tracking. Steeper learning curve but best tool if overspending is the actual problem.</p>
+            <a href="https://www.youneedabudget.com" target="_blank" rel="noopener noreferrer" class="tool-link">youneedabudget.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Copilot</div>
+              <div class="tool-cost cost-paid">$9/mo</div>
+            </div>
+            <p class="tool-desc">Mac and iOS only but the cleanest UI in the category. AI-powered auto-categorization, net worth tracking, and spending trends. Good middle ground between Monarch's depth and YNAB's discipline.</p>
+            <a href="https://www.copilot.money" target="_blank" rel="noopener noreferrer" class="tool-link">copilot.money →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Investing -->
+      <div class="tools-cat reveal">
+        <div class="cat-label">Investing &amp; Brokerage</div>
+        <div class="tools-row">
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Fidelity</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Best overall brokerage. No account minimums, no commissions, excellent research tools, and the cleanest Roth IRA experience. If you're picking one brokerage, pick this one.</p>
+            <a href="https://www.fidelity.com" target="_blank" rel="noopener noreferrer" class="tool-link">fidelity.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Webull</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Strong charting tools, fractional shares, and extended hours trading. Better than Robinhood for active stock monitoring. Solid for individual stock positions alongside your index core.</p>
+            <a href="https://www.webull.com" target="_blank" rel="noopener noreferrer" class="tool-link">webull.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">M1 Finance</div>
+              <div class="tool-cost cost-freemium">Free / $3/mo</div>
+            </div>
+            <p class="tool-desc">Automated investing with custom "pies." Set your allocation once, auto-invest on a schedule. Great for building a diversified portfolio on autopilot without picking individual stocks constantly.</p>
+            <a href="https://www.m1.com" target="_blank" rel="noopener noreferrer" class="tool-link">m1.com →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Savings & Emergency Fund -->
+      <div class="tools-cat reveal">
+        <div class="cat-label">Savings &amp; High-Yield</div>
+        <div class="tools-row">
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Marcus by Goldman Sachs</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Consistently high-yield savings account with no fees. Clean interface, easy transfers, and reliable rates. Good home for your emergency fund — accessible but not too accessible to spend casually.</p>
+            <a href="https://www.marcus.com" target="_blank" rel="noopener noreferrer" class="tool-link">marcus.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">SoFi</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">High-yield checking and savings with competitive APY on both. Banking + investing in one app. Good option if you want to consolidate your financial accounts instead of using multiple apps.</p>
+            <a href="https://www.sofi.com" target="_blank" rel="noopener noreferrer" class="tool-link">sofi.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">T-Bills / Treasury Direct</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Buy US Treasury bills directly from the government for short-term cash storage. Often higher yield than HYSA with essentially zero risk. 4, 8, 13, or 26-week terms. Set it and forget it.</p>
+            <a href="https://www.treasurydirect.gov" target="_blank" rel="noopener noreferrer" class="tool-link">treasurydirect.gov →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit -->
+      <div class="tools-cat reveal">
+        <div class="cat-label">Credit Monitoring</div>
+        <div class="tools-row">
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Credit Karma</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Free credit score monitoring from TransUnion and Equifax. Not the most accurate score (VantageScore vs FICO) but good for trend-watching and catching errors before they matter.</p>
+            <a href="https://www.creditkarma.com" target="_blank" rel="noopener noreferrer" class="tool-link">creditkarma.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">Experian</div>
+              <div class="tool-cost cost-freemium">Free / $24.99/mo</div>
+            </div>
+            <p class="tool-desc">Free access to your actual FICO score plus detailed credit report. The free tier is solid for monitoring. Upgrade only if you need full credit lock and dark web monitoring features.</p>
+            <a href="https://www.experian.com" target="_blank" rel="noopener noreferrer" class="tool-link">experian.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-top">
+              <div class="tool-name">AnnualCreditReport.com</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">The official government-authorized site for free annual credit reports from all three bureaus. Pull once a year to review for errors — disputing inaccuracies can meaningfully improve your score.</p>
+            <a href="https://www.annualcreditreport.com" target="_blank" rel="noopener noreferrer" class="tool-link">annualcreditreport.com →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="principles-section">
+    <div class="principles-inner">
+      <div class="section-label reveal">// Rules</div>
+      <h2 class="section-title reveal">The Principles That Hold</h2>
+      <p class="section-sub reveal">These aren't tactics — they're the underlying logic. Get these right and most of the tactical decisions take care of themselves.</p>
+
+      <div class="principles-grid reveal">
+        <div class="principle">
+          <div class="principle-num">01</div>
+          <div>
+            <div class="principle-title">Automate Before You Can Spend It</div>
+            <p class="principle-copy">Set up automatic transfers to savings and investments on payday. What's not in your checking account doesn't get spent. Discipline is unreliable — automation is not.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">02</div>
+          <div>
+            <div class="principle-title">Track Net Worth Monthly, Not Daily</div>
+            <p class="principle-copy">Daily stock checking creates anxiety and bad decisions. Monthly net worth reviews show the actual trajectory. Zoom out — the direction matters more than any single day's number.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">03</div>
+          <div>
+            <div class="principle-title">Lifestyle Inflation is the Wealth Killer</div>
+            <p class="principle-copy">Every raise you upgrade your lifestyle to match is a raise that went nowhere. Keep lifestyle costs relatively stable as income grows. The delta between income and spending is your wealth-building engine.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">04</div>
+          <div>
+            <div class="principle-title">Tax-Advantaged Accounts First</div>
+            <p class="principle-copy">Roth IRA, 401k, and HSA are the most powerful vehicles you have access to. Fill them before taxable brokerage. The tax savings compound over decades into a meaningful advantage.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">05</div>
+          <div>
+            <div class="principle-title">One Income Stream Is Fragile</div>
+            <p class="principle-copy">W-2 income is the foundation but a single point of failure. Build a second stream before you need it — investments, a side business, or real estate. Optionality is the real goal.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">06</div>
+          <div>
+            <div class="principle-title">Good Credit Is Leverage Access</div>
+            <p class="principle-copy">A 760+ credit score doesn't just mean lower rates — it means faster access to capital when an opportunity shows up. Treat your credit score as a tool, not a vanity metric.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="section-label" style="text-align:center;">// Real Estate</div>
+      <h2 class="cta-title">Ready to Add Another Stream?</h2>
+      <p class="cta-sub">Once the financial foundation is solid, real estate is the most reliable vehicle for building the kind of wealth that compounds without your time.</p>
+      <a href="./real-estate.html" class="btn-primary">See RE Tools</a>
+      <a href="./finance-strategies.html" class="btn-secondary">Financing Strategies →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Vanwayne</div>
+    <ul class="footer-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
+  </footer>
+
+  <script>
+    function toggleMobile(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+    function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+    const reveals=document.querySelectorAll('.reveal');
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+    reveals.forEach(el=>obs.observe(el));
+    window.addEventListener('scroll',()=>{document.querySelector('nav').style.background=window.scrollY>50?'rgba(9,9,14,0.95)':'rgba(6,16,29,0.82)';});
+  </script>
+</body>
+</html>

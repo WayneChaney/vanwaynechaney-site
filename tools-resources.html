@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investor Tools &amp; Resources — Vanwayne Chaney Jr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#06101D;--bg-2:#0A1728;--bg-card:#0D1B2B;
+      --gold:#C9A84C;--gold-2:#E8C56A;--gold-dim:rgba(201,168,76,0.12);
+      --white:#F0EDE6;--muted:#93A0B3;--border:rgba(201,168,76,0.15);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,16,29,0.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,0.08);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a.active{color:var(--white);}
+    .nav-cta{background:var(--gold);color:#09090E !important;padding:0.55rem 1.4rem;border-radius:6px;font-weight:600 !important;}
+    .nav-cta:hover{background:var(--gold-2) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s;transform-origin:center;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(9,9,14,0.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--white);text-decoration:none;transition:color 0.2s;}
+    .mobile-menu a:hover{color:var(--gold);}
+    .mobile-menu .mobile-cta{background:var(--gold);color:#09090E;padding:0.9rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;}
+
+    section{padding:5rem 4rem;position:relative;z-index:1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem;}
+    .section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.75;margin-bottom:3rem;}
+
+    .hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 40%,rgba(201,168,76,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(40,111,194,0.1) 0%,transparent 60%);pointer-events:none;}
+    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+    .hero-content{position:relative;z-index:1;max-width:800px;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;padding:0.4rem 0.9rem;border:1px solid var(--border);border-radius:100px;background:var(--gold-dim);}
+    .hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .hero-title span{color:var(--gold);}
+    .hero-desc{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:2.5rem;}
+    .hero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;}
+    .hero-pill{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:0.35rem 0.85rem;}
+
+    /* CATEGORY SECTIONS */
+    .cat-section{margin-bottom:4rem;}
+    .cat-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
+    .cat-icon{font-size:1.5rem;}
+    .cat-title{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;}
+    .cat-count{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-left:auto;}
+
+    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+
+    .tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;display:flex;flex-direction:column;}
+    .tool-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,0.3);box-shadow:0 12px 32px rgba(0,0,0,0.2);}
+    .tool-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.6rem;gap:0.5rem;}
+    .tool-name{font-weight:700;font-size:1rem;color:var(--white);}
+    .tool-cost{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+    .cost-free{background:rgba(110,231,160,0.1);color:#6ee7a0;border:1px solid rgba(110,231,160,0.2);}
+    .cost-paid{background:var(--gold-dim);color:var(--gold);border:1px solid var(--border);}
+    .cost-freemium{background:rgba(147,160,179,0.1);color:var(--muted);border:1px solid rgba(255,255,255,0.08);}
+    .tool-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1rem;}
+    .tool-link{display:inline-flex;align-items:center;gap:0.3rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity 0.2s;margin-top:auto;}
+    .tool-link:hover{opacity:0.75;}
+
+    .cta-section{background:var(--bg-2);border-top:1px solid rgba(255,255,255,0.04);text-align:center;}
+    .cta-inner{max-width:640px;margin:0 auto;}
+    .cta-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;margin-bottom:1rem;}
+    .cta-sub{color:var(--muted);margin-bottom:2rem;line-height:1.75;}
+    .btn-primary{background:var(--gold);color:#09090E;padding:0.85rem 2rem;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;}
+    .btn-primary:hover{background:var(--gold-2);transform:translateY(-2px);}
+    .btn-secondary{border:1px solid var(--border);color:var(--white);padding:0.85rem 2rem;border-radius:8px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:border-color 0.2s;display:inline-block;margin-left:1rem;}
+    .btn-secondary:hover{border-color:var(--gold);background:var(--gold-dim);}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:2rem 4rem;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;}
+    .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;}
+    .footer-links{display:flex;gap:2rem;list-style:none;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--white);}
+    .footer-copy{font-size:0.8rem;color:var(--muted);}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:0.1s;}
+    .reveal-delay-2{transition-delay:0.2s;}
+    .reveal-delay-3{transition-delay:0.3s;}
+    .reveal-delay-4{transition-delay:0.4s;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links,.nav-cta{display:none;}
+      .hamburger{display:flex;}
+      section,.hero{padding:3.5rem 1.5rem;}
+      .hero{padding-top:6rem;}
+      .tools-grid{grid-template-columns:1fr 1fr;}
+      footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem;}
+      .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
+    }
+    @media(max-width:480px){
+      .tools-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="./products.html" onclick="closeMobile()">Products</a>
+    <a href="./real-estate.html" onclick="closeMobile()">RE Tools</a>
+    <a href="./tools-resources.html" onclick="closeMobile()">Resources</a>
+    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <nav>
+    <a href="./index.html" class="nav-logo">
+      <img src="./logo.jpg" alt="VCII" style="height:36px;width:36px;border-radius:50%;object-fit:cover;" />
+      Vanwayne
+    </a>
+    <ul class="nav-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./real-estate.html">RE Tools</a></li>
+      <li><a href="./tools-resources.html" class="active">Resources</a></li>
+      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Investor Toolkit</div>
+      <h1 class="hero-title">The Stack That <span>Moves Deals</span></h1>
+      <p class="hero-desc">Every tool worth knowing as a real estate investor. Sourcing leads, analyzing numbers, managing properties, and building your network — organized by what actually matters.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">Deal Sourcing</span>
+        <span class="hero-pill">Analysis</span>
+        <span class="hero-pill">Management</span>
+        <span class="hero-pill">Networking</span>
+        <span class="hero-pill">Education</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <section>
+    <div style="max-width:1200px;margin:0 auto;">
+
+      <!-- Deal Sourcing -->
+      <div class="cat-section reveal">
+        <div class="cat-header">
+          <div class="cat-icon">🎯</div>
+          <div class="cat-title">Deal Sourcing</div>
+          <div class="cat-count">4 tools</div>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">DealMachine</div>
+              <div class="tool-cost cost-paid">$49–99/mo</div>
+            </div>
+            <p class="tool-desc">Drive for dollars with built-in owner lookup, direct mail automation, and skip tracing. Best starting point for finding off-market leads before you scale to data lists.</p>
+            <a href="https://www.dealmachine.com" target="_blank" rel="noopener noreferrer" class="tool-link">dealmachine.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">PropStream</div>
+              <div class="tool-cost cost-paid">$99/mo</div>
+            </div>
+            <p class="tool-desc">Comprehensive property data and list building. Filter by equity, distress indicators, property type, and ownership length. Stack multiple filters to build a targeted list in minutes.</p>
+            <a href="https://www.propstream.com" target="_blank" rel="noopener noreferrer" class="tool-link">propstream.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">BatchLeads</div>
+              <div class="tool-cost cost-paid">$87–135/mo</div>
+            </div>
+            <p class="tool-desc">Property data + skip tracing + text and ringless voicemail campaigns in one platform. Strong for investors doing active outreach to distressed owner lists.</p>
+            <a href="https://www.batchleads.io" target="_blank" rel="noopener noreferrer" class="tool-link">batchleads.io →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">County Website / Auditor</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Most counties have a free auditor site with property ownership, tax status, assessed value, and deed history. Pull it before paying for any data tool — it might already be there.</p>
+            <span class="tool-link" style="cursor:default;color:var(--muted);">Search "[county] auditor property search"</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis -->
+      <div class="cat-section reveal">
+        <div class="cat-header">
+          <div class="cat-icon">📊</div>
+          <div class="cat-title">Deal Analysis</div>
+          <div class="cat-count">4 tools</div>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">4-in-1 Investor Calculator</div>
+              <div class="tool-cost cost-paid">$49</div>
+            </div>
+            <p class="tool-desc">Fix &amp; Flip, Wholesale, Rental Cash Flow, and BRRRR analysis in a single offline HTML file. Run a deal in under 2 minutes. Instant deal/thin/pass verdict as you type.</p>
+            <a href="./real-estate.html" class="tool-link">Get it →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">BiggerPockets Calculator</div>
+              <div class="tool-cost cost-freemium">Free / Pro</div>
+            </div>
+            <p class="tool-desc">Rental property and flip analysis with shareable PDF reports. Good for showing analysis to partners or lenders. Report format is professional and recognized in the industry.</p>
+            <a href="https://www.biggerpockets.com/deal-analysis" target="_blank" rel="noopener noreferrer" class="tool-link">biggerpockets.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Zillow / Redfin</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Use Zillow Zestimate as a gut-check, Redfin for comp history. Neither replaces a real CMA, but both are fast tools for a first-pass ARV before you spend time running numbers.</p>
+            <a href="https://www.zillow.com" target="_blank" rel="noopener noreferrer" class="tool-link">zillow.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Rentometer</div>
+              <div class="tool-cost cost-freemium">Free / $99/mo</div>
+            </div>
+            <p class="tool-desc">Instantly check market rents for a specific address. Essential before running any rental or BRRRR analysis — your cash flow projection is only as good as your rent estimate.</p>
+            <a href="https://www.rentometer.com" target="_blank" rel="noopener noreferrer" class="tool-link">rentometer.com →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Management -->
+      <div class="cat-section reveal">
+        <div class="cat-header">
+          <div class="cat-icon">🏠</div>
+          <div class="cat-title">Property Management</div>
+          <div class="cat-count">3 tools</div>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Landlord OS</div>
+              <div class="tool-cost cost-paid">$49</div>
+            </div>
+            <p class="tool-desc">Track every door, every number, every tenant — in a single offline file. Dashboard shows portfolio income, occupancy rate, and cash flow in real time. Built for investors managing their own doors.</p>
+            <a href="./real-estate.html" class="tool-link">Get it →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Buildium</div>
+              <div class="tool-cost cost-paid">$52+/mo</div>
+            </div>
+            <p class="tool-desc">Full property management software for landlords and PMs. Tenant screening, rent collection, maintenance requests, accounting, and owner portals. Worth it at 5+ doors under PM.</p>
+            <a href="https://www.buildium.com" target="_blank" rel="noopener noreferrer" class="tool-link">buildium.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">TurboTenant</div>
+              <div class="tool-cost cost-freemium">Free / $149/yr</div>
+            </div>
+            <p class="tool-desc">Free landlord software with tenant screening, online rent collection, and lease management. Good starting point before you need the full feature set of Buildium or AppFolio.</p>
+            <a href="https://www.turbotenant.com" target="_blank" rel="noopener noreferrer" class="tool-link">turbotenant.com →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education & Networking -->
+      <div class="cat-section reveal">
+        <div class="cat-header">
+          <div class="cat-icon">📚</div>
+          <div class="cat-title">Education &amp; Networking</div>
+          <div class="cat-count">4 resources</div>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">BiggerPockets</div>
+              <div class="tool-cost cost-freemium">Free / Pro</div>
+            </div>
+            <p class="tool-desc">The largest real estate investing community online. Forums, podcasts, books, and a deal-finder network. Start here if you're new — the community knowledge base alone is worth the free membership.</p>
+            <a href="https://www.biggerpockets.com" target="_blank" rel="noopener noreferrer" class="tool-link">biggerpockets.com →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Facebook Groups</div>
+              <div class="tool-cost cost-free">Free</div>
+            </div>
+            <p class="tool-desc">Local investor groups, wholesaler networks, and cash buyer lists. Search "[your city] real estate investors" and join the top 3 active groups. Off-market deals and buyer relationships live here.</p>
+            <span class="tool-link" style="cursor:default;color:var(--muted);">Search your city on Facebook</span>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">Local REIA</div>
+              <div class="tool-cost cost-paid">Varies</div>
+            </div>
+            <p class="tool-desc">Real Estate Investor Associations meet monthly in most cities. Best place to find hard money lenders, cash buyers, bird dogs, contractors, and property managers in your local market.</p>
+            <a href="https://www.nationalreia.com/find-a-reia/" target="_blank" rel="noopener noreferrer" class="tool-link">Find your REIA →</a>
+          </div>
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-name">RE Prompt Vault</div>
+              <div class="tool-cost cost-paid">$29</div>
+            </div>
+            <p class="tool-desc">30 AI prompts built specifically for real estate investors. Deal analysis, seller negotiation scripts, rehab scopes, and investor outreach — all copy-paste ready for Claude or ChatGPT.</p>
+            <a href="./real-estate.html" class="tool-link">Get it →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="section-label" style="text-align:center;">// My Tools</div>
+      <h2 class="cta-title">I Built My Own</h2>
+      <p class="cta-sub">The tools I couldn't find elsewhere, I built myself. Offline, private, one-time price — no subscriptions, no cloud, no data sent anywhere.</p>
+      <a href="./real-estate.html" class="btn-primary">See RE Tools</a>
+      <a href="./lenders.html" class="btn-secondary">Compare Lenders →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Vanwayne</div>
+    <ul class="footer-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
+  </footer>
+
+  <script>
+    function toggleMobile(){const m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+    function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+    const reveals=document.querySelectorAll('.reveal');
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+    reveals.forEach(el=>obs.observe(el));
+    window.addEventListener('scroll',()=>{document.querySelector('nav').style.background=window.scrollY>50?'rgba(9,9,14,0.95)':'rgba(6,16,29,0.82)';});
+  </script>
+</body>
+</html>

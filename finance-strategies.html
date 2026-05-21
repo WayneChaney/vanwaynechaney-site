@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financing Strategies — Vanwayne Chaney Jr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #06101D;
+      --bg-2:      #0A1728;
+      --bg-card:   #0D1B2B;
+      --gold:      #C9A84C;
+      --gold-2:    #E8C56A;
+      --gold-dim:  rgba(201,168,76,0.12);
+      --white:     #F0EDE6;
+      --muted:     #93A0B3;
+      --border:    rgba(201,168,76,0.15);
+      --radius:    12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,16,29,0.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.05em; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); }
+    .nav-cta { background: var(--gold); color: #09090E !important; padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--gold-2) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(9,9,14,0.97); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--white); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta { background: var(--gold); color: #09090E; padding: 0.9rem 2.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; }
+
+    /* SECTIONS */
+    section { padding: 5rem 4rem; position: relative; z-index: 1; }
+
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.75; margin-bottom: 3rem; }
+
+    /* HERO */
+    .hero {
+      min-height: 60vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 9rem 4rem 5rem; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 60% at 10% 80%, rgba(40,111,194,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--gold);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem;
+      padding: 0.4rem 0.9rem; border: 1px solid var(--border); border-radius: 100px; background: var(--gold-dim);
+    }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-title span { color: var(--gold); }
+    .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; }
+    .hero-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); border-radius: 100px; padding: 0.35rem 0.85rem; }
+
+    /* STRATEGY CARDS */
+    .strategies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+
+    .strategy-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem;
+      transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s; position: relative; overflow: hidden;
+    }
+    .strategy-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s;
+    }
+    .strategy-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.35); box-shadow: 0 16px 42px rgba(0,0,0,0.25); }
+    .strategy-card:hover::before { opacity: 1; }
+
+    .strategy-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .strategy-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .strategy-name { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .strategy-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; }
+
+    .strategy-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .meta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 0.75rem; }
+    .meta-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .meta-value { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .pros h4, .cons h4 { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .pros h4 { color: #6ee7a0; }
+    .cons h4 { color: #f87171; }
+    .pros ul, .cons ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .pros li, .cons li { font-size: 0.82rem; color: var(--muted); line-height: 1.5; padding-left: 1rem; position: relative; }
+    .pros li::before { content: '+'; position: absolute; left: 0; color: #6ee7a0; font-weight: 700; }
+    .cons li::before { content: '−'; position: absolute; left: 0; color: #f87171; font-weight: 700; }
+
+    /* HOW IT WORKS STEPS */
+    .how-section { background: var(--bg-2); border-top: 1px solid rgba(255,255,255,0.04); }
+    .how-inner { max-width: 1000px; margin: 0 auto; }
+    .steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; margin-top: 3rem; }
+    .steps-row::before { content: ''; position: absolute; top: 1.5rem; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, var(--gold), transparent 50%, var(--gold)); opacity: 0.25; }
+    .step-box { text-align: center; padding: 1.75rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+    .step-num { width: 3rem; height: 3rem; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--gold); font-weight: 700; }
+    .step-title { font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .step-copy { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { background: var(--bg-2); border-top: 1px solid rgba(255,255,255,0.04); text-align: center; }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .cta-sub { color: var(--muted); margin-bottom: 2rem; line-height: 1.75; }
+    .btn-primary { background: var(--gold); color: #09090E; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--gold-2); transform: translateY(-2px); }
+    .btn-secondary { border: 1px solid var(--border); color: var(--white); padding: 0.85rem 2rem; border-radius: 8px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; margin-left: 1rem; }
+    .btn-secondary:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+    /* FOOTER */
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; border-top: 1px solid rgba(255,255,255,0.06); position: relative; z-index: 1; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section, .hero { padding: 3.5rem 1.5rem; }
+      .hero { padding-top: 6rem; }
+      .strategies-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr 1fr; }
+      .steps-row::before { display: none; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .footer-links { justify-content: center; flex-wrap: wrap; gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .steps-row { grid-template-columns: 1fr; }
+      .strategy-meta { grid-template-columns: 1fr; }
+      .pros-cons { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="./products.html" onclick="closeMobile()">Products</a>
+    <a href="./real-estate.html" onclick="closeMobile()">RE Tools</a>
+    <a href="./finance-strategies.html" onclick="closeMobile()">Financing</a>
+    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+  </div>
+
+  <nav>
+    <a href="./index.html" class="nav-logo">
+      <img src="./logo.jpg" alt="VCII" style="height:36px;width:36px;border-radius:50%;object-fit:cover;" />
+      Vanwayne
+    </a>
+    <ul class="nav-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./real-estate.html">RE Tools</a></li>
+      <li><a href="./finance-strategies.html" class="active">Financing</a></li>
+      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Real Estate Financing</div>
+      <h1 class="hero-title">Know Your <span>Capital</span><br>Before You Need It</h1>
+      <p class="hero-desc">Four strategies every serious investor should understand. Use the right one for the right deal — and stop leaving money on the table because you didn't know it existed.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">Hard Money</span>
+        <span class="hero-pill">BRRRR</span>
+        <span class="hero-pill">Seller Finance</span>
+        <span class="hero-pill">0% Business Credit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGIES -->
+  <section>
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label reveal">// Financing Strategies</div>
+      <h2 class="section-title reveal">Four Ways to Fund Deals</h2>
+      <p class="section-sub reveal">Most investors only know one or two of these. Learn all four and you'll have an answer for every deal type.</p>
+
+      <div class="strategies-grid">
+
+        <!-- Hard Money -->
+        <div class="strategy-card reveal">
+          <div class="strategy-icon">⚡</div>
+          <div class="strategy-tag">Short-Term Bridge</div>
+          <div class="strategy-name">Hard Money Loans</div>
+          <p class="strategy-desc">Asset-based lending from private companies. They care about the deal — the ARV and equity — not your W-2. Close fast. Perfect for fix-and-flip and wholesale assignments with quick timelines.</p>
+
+          <div class="strategy-meta">
+            <div class="meta-item">
+              <div class="meta-label">Typical Rate</div>
+              <div class="meta-value">8 – 14%</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Term</div>
+              <div class="meta-value">6 – 18 months</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Down Payment</div>
+              <div class="meta-value">10 – 25%</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Close Speed</div>
+              <div class="meta-value">5 – 14 days</div>
+            </div>
+          </div>
+
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Works When</h4>
+              <ul>
+                <li>Deal has strong equity</li>
+                <li>Speed matters</li>
+                <li>Credit is imperfect</li>
+                <li>You need rehab funds</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4>Watch Out For</h4>
+              <ul>
+                <li>High origination fees</li>
+                <li>Short payback window</li>
+                <li>Need exit strategy ready</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRRRR -->
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-icon">🔄</div>
+          <div class="strategy-tag">Recycled Capital</div>
+          <div class="strategy-name">BRRRR Method</div>
+          <p class="strategy-desc">Buy. Rehab. Rent. Refinance. Repeat. Use hard money to buy and renovate, then refinance into a long-term conventional loan after the property is stabilized. Pull most — or all — of your capital back out.</p>
+
+          <div class="strategy-meta">
+            <div class="meta-item">
+              <div class="meta-label">Phase 1</div>
+              <div class="meta-value">Hard Money</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Phase 2</div>
+              <div class="meta-value">DSCR Refi</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Hold After</div>
+              <div class="meta-value">Long-term</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Goal</div>
+              <div class="meta-value">Infinite Returns</div>
+            </div>
+          </div>
+
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Works When</h4>
+              <ul>
+                <li>Strong rent-to-value ratio</li>
+                <li>Rehab adds real equity</li>
+                <li>ARV supports refi LTV</li>
+                <li>DSCR lender available</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4>Watch Out For</h4>
+              <ul>
+                <li>Over-estimating ARV</li>
+                <li>Rehab budget creep</li>
+                <li>Refi seasoning periods</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seller Finance -->
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-icon">🤝</div>
+          <div class="strategy-tag">Creative Finance</div>
+          <div class="strategy-name">Seller Financing</div>
+          <p class="strategy-desc">The seller acts as the bank. You negotiate terms directly with the owner — no bank qualification required. Best for motivated sellers who own the property free and clear or have significant equity.</p>
+
+          <div class="strategy-meta">
+            <div class="meta-item">
+              <div class="meta-label">Interest Rate</div>
+              <div class="meta-value">0 – 8% (negotiated)</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Down Payment</div>
+              <div class="meta-value">Negotiable</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Term</div>
+              <div class="meta-value">5 – 30 years</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Qualification</div>
+              <div class="meta-value">None required</div>
+            </div>
+          </div>
+
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Works When</h4>
+              <ul>
+                <li>Seller is motivated</li>
+                <li>Low or no mortgage</li>
+                <li>Seller wants passive income</li>
+                <li>You can't bank-qualify</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4>Watch Out For</h4>
+              <ul>
+                <li>Due-on-sale clauses</li>
+                <li>Seller needs lump sum</li>
+                <li>Title complications</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 0% Business Credit -->
+        <div class="strategy-card reveal reveal-delay-3">
+          <div class="strategy-icon">💳</div>
+          <div class="strategy-tag">Unsecured Capital</div>
+          <div class="strategy-name">0% Business Credit</div>
+          <p class="strategy-desc">Stack multiple business credit cards with 0% intro APR offers. With good credit, you can stack $50–150k in unsecured capital in a single funding round. Use it for rehabs, earnest money, or operating expenses.</p>
+
+          <div class="strategy-meta">
+            <div class="meta-item">
+              <div class="meta-label">Interest Rate</div>
+              <div class="meta-value">0% (12 – 21 mo)</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Credit Needed</div>
+              <div class="meta-value">680+ preferred</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Avg Stack</div>
+              <div class="meta-value">$50k – $150k</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Collateral</div>
+              <div class="meta-value">None</div>
+            </div>
+          </div>
+
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Works When</h4>
+              <ul>
+                <li>Credit score is strong</li>
+                <li>Short rehab timeline</li>
+                <li>Need flexible access</li>
+                <li>No collateral available</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4>Watch Out For</h4>
+              <ul>
+                <li>Intro period expires</li>
+                <li>Hurts personal credit</li>
+                <li>Needs payoff plan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO STACK -->
+  <section class="how-section">
+    <div class="how-inner">
+      <div class="section-label reveal">// Strategy Stack</div>
+      <h2 class="section-title reveal">How They Work Together</h2>
+      <p class="section-sub reveal">Most deals use more than one strategy. Here's how a typical BRRRR + 0% credit play looks from start to finish.</p>
+
+      <div class="steps-row">
+        <div class="step-box reveal">
+          <div class="step-num">01</div>
+          <div class="step-title">Find the Deal</div>
+          <p class="step-copy">Source off-market via DealMachine, driving for dollars, or direct mail. Run the 70% ARV rule before you make an offer.</p>
+        </div>
+        <div class="step-box reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <div class="step-title">Stack Your Capital</div>
+          <p class="step-copy">Use hard money for the purchase. Pull 0% business cards for rehab materials and labor to lower your all-in cost.</p>
+        </div>
+        <div class="step-box reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <div class="step-title">Rehab &amp; Rent</div>
+          <p class="step-copy">Execute the renovation, get a tenant in place at market rent. Stabilized cash flow is what your refi lender wants to see.</p>
+        </div>
+        <div class="step-box reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <div class="step-title">Refi &amp; Repeat</div>
+          <p class="step-copy">Cash-out refinance at the new ARV. Pay off hard money and the 0% cards. Redeploy recovered capital into the next deal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="section-label" style="text-align:center;">// Tools</div>
+      <h2 class="cta-title">Run the Numbers First</h2>
+      <p class="cta-sub">Don't pick your strategy until you know your numbers. The 4-in-1 Calculator runs Fix &amp; Flip, Wholesale, Rental, and BRRRR analysis in one place.</p>
+      <a href="./real-estate.html" class="btn-primary">See RE Tools</a>
+      <a href="./lenders.html" class="btn-secondary">Compare Lenders →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Vanwayne</div>
+    <ul class="footer-links">
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
+  </footer>
+
+  <script>
+    function toggleMobile() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(9,9,14,0.95)' : 'rgba(6,16,29,0.82)';
+    });
+  </script>
+</body>
+</html>
