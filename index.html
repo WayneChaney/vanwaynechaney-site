@@ -829,6 +829,51 @@
 
     .follow-link:hover { opacity: 0.85; }
 
+    .social-rail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      transition: border-color 0.22s, transform 0.22s, background 0.22s;
+    }
+
+    .social-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(201,168,76,0.35);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .social-pill .emoji {
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .social-pill .emoji svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
     /* ─── PRODUCTS ─── */
     .products { max-width: 1200px; margin: 0 auto; }
 
@@ -1241,6 +1286,7 @@
       .skills-wrap { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 1rem; }
       .what-grid, .follow-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .social-rail { gap: 0.6rem; }
       .steps::before { display: none; }
 
       /* Product cards — full tap targets */
@@ -1296,6 +1342,7 @@
       .stat-num { font-size: 1.6rem; }
       .hero-strip { grid-template-columns: 1fr; }
       .hero-tagline-bar { border-radius: 18px; font-size: 0.7rem; letter-spacing: 0.16em; padding: 0.9rem 1rem; }
+      .social-pill { width: 100%; justify-content: center; padding: 0.8rem 1rem; }
 
       section { padding: 3rem 1.25rem; }
       .section-title { font-size: 1.6rem; }
@@ -1373,6 +1420,55 @@
       <div class="hero-actions">
         <a href="./about.html" class="btn-primary">About Me</a>
         <a href="./products.html" class="btn-secondary">See Products</a>
+      </div>
+
+      <div class="social-rail">
+        <a class="social-pill" href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">
+          <span class="emoji" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23 12s0-3.13-.4-4.64a3 3 0 0 0-2.11-2.11C18.98 4.85 12 4.85 12 4.85s-6.98 0-8.49.4A3 3 0 0 0 1.4 7.36C1 8.87 1 12 1 12s0 3.13.4 4.64a3 3 0 0 0 2.11 2.11c1.51.4 8.49.4 8.49.4s6.98 0 8.49-.4a3 3 0 0 0 2.11-2.11C23 15.13 23 12 23 12Z" fill="#FF0000"/>
+              <path d="M10 15.5 16 12l-6-3.5v7Z" fill="#fff"/>
+            </svg>
+          </span>
+          <span>YouTube</span>
+        </a>
+        <a class="social-pill" href="https://instagram.com/vanwayne2" target="_blank" rel="noopener noreferrer">
+          <span class="emoji" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#igGradient)" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4" stroke="url(#igGradient)" stroke-width="2"/>
+              <circle cx="17.2" cy="6.8" r="1.2" fill="url(#igGradient)"/>
+              <defs>
+                <linearGradient id="igGradient" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F58529"/>
+                  <stop offset=".35" stop-color="#DD2A7B"/>
+                  <stop offset=".7" stop-color="#8134AF"/>
+                  <stop offset="1" stop-color="#515BD4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span>Instagram</span>
+        </a>
+        <a class="social-pill" href="https://www.tiktok.com/@vanwayne02" target="_blank" rel="noopener noreferrer">
+          <span class="emoji" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.5 3c.5 2.2 1.8 3.9 4 4.8v2.8a8.1 8.1 0 0 1-4-1.2v5.6a5.4 5.4 0 1 1-5.4-5.4c.4 0 .8 0 1.1.1v2.9a2.7 2.7 0 1 0 1.6 2.4V3h2.7Z" fill="#fff"/>
+              <path d="M13 4.5c.5 2.1 1.8 3.7 4 4.6v1.3a7 7 0 0 1-4-1.4v5.8a4.2 4.2 0 1 1-4.2-4.2v1.5a2.7 2.7 0 1 0 1.6 2.4V4.5H13Z" fill="#25F4EE" opacity=".85"/>
+              <path d="M14 3.5c.5 2.1 1.8 3.8 4 4.7v1.1a7.7 7.7 0 0 1-4-1.2v5.7a4.2 4.2 0 1 1-4.2-4.2h.3v1.5h-.3a2.7 2.7 0 1 0 1.5 2.4V3.5H14Z" fill="#FE2C55" opacity=".85"/>
+            </svg>
+          </span>
+          <span>TikTok</span>
+        </a>
+        <a class="social-pill" href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">
+          <span class="emoji" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="3" fill="#0A66C2"/>
+              <path d="M7.2 9.2H4.8V19h2.4V9.2ZM6 5A1.4 1.4 0 1 0 6 7.8 1.4 1.4 0 0 0 6 5Zm4.7 4.2H8.4V19h2.3v-5.1c0-2.8 3.6-3 3.6 0V19h2.3v-5.9c0-4.6-5.2-4.4-5.9-2.2V9.2Z" fill="#fff"/>
+            </svg>
+          </span>
+          <span>LinkedIn</span>
+        </a>
       </div>
 
       <div class="hero-stats">
@@ -1631,8 +1727,7 @@
             <li>Morning brief + end-of-day shutdown</li>
             <li>Eisenhower task sorting</li>
             <li>Content draft skill</li>
-            <li>Google Calendar connected</li>
-            <li>5 core skills included</li>
+            <li>10-min setup — README included</li>
           </ul>
           <a href="#contact" class="product-cta">Get Nebula Free</a>
         </div>
@@ -1643,22 +1738,22 @@
           <div class="product-icon">⚡</div>
           <div>
             <div class="product-name">Nebula Pro</div>
-            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Full System</div>
+            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Full System · Bi-Weekly Skill Drops</div>
           </div>
-          <p class="product-desc">The complete Jarvis. Voice-driven, fully automated, plugged into your calendar, habits, and goals. All 15+ skills. Weekly updates.</p>
+          <p class="product-desc">The full system. Every skill unlocked, new ones dropped every 2 weeks. Plugged into your calendar, habits, and goals — gets smarter while you run.</p>
           <div class="product-price">
             <span class="price-amount">$47</span>
             <span class="price-period">/ month</span>
           </div>
           <ul class="product-features">
             <li>All 15+ skills unlocked</li>
-            <li>Voice interface</li>
+            <li>New skills every 2 weeks</li>
             <li>YouTube ROI analyzer</li>
             <li>Real estate deal analyzer</li>
-            <li>Weekly skill updates</li>
+            <li>Google Calendar connected</li>
             <li>Priority support</li>
           </ul>
-          <a href="https://buy.stripe.com/3cI6oG49lgNG6ZyfeUbEA00" target="_blank" rel="noopener noreferrer" class="product-cta">Get Nebula Pro</a>
+          <a href="https://buy.stripe.com/3cI6oG49lgNG6ZyfeUbEA00" target="_blank" rel="noopener noreferrer" class="product-cta">Get Nebula Pro — $47/mo</a>
         </div>
 
         <!-- Real Estate AI -->
@@ -1691,18 +1786,19 @@
             <div class="product-name">Website Design</div>
             <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Done For You</div>
           </div>
-          <p class="product-desc">Premium, production-grade websites built fast. Personal brand sites, business landing pages, product pages — designed to convert, not just look good.</p>
+          <p class="product-desc">You don't need a big budget to look like a big brand. I build clean, professional websites that make your business look legit, get you found, and turn visitors into leads — fast.</p>
+          <div style="display:inline-block;background:var(--gold);color:#000;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;margin-bottom:10px;">☀ Summer Special</div>
           <div class="product-price">
-            <span class="price-amount">$500</span>
-            <span class="price-period">and up</span>
+            <span class="price-amount" style="color:var(--gold);">$300</span>
+            <span class="price-period" style="text-decoration:line-through;opacity:0.45;margin-left:8px;">$500</span>
           </div>
           <ul class="product-features">
-            <li>Custom design — no templates</li>
-            <li>Mobile responsive</li>
-            <li>Fast load, SEO-ready</li>
-            <li>CTA + lead capture built in</li>
-            <li>Delivered in 5–7 days</li>
-            <li>1 round of revisions</li>
+            <li>Custom design built around your brand</li>
+            <li>Mobile-first — looks great on every phone</li>
+            <li>Clear contact button so people can reach you</li>
+            <li>Fast load — no one waits around</li>
+            <li>Live on a real URL in 5–7 days</li>
+            <li>Updates handled for you — $75/mo after launch</li>
           </ul>
           <a href="#websites" class="product-cta">See the Work →</a>
         </div>
@@ -1727,7 +1823,7 @@
           <div class="product-icon">📊</div>
           <div>
             <div class="product-name">Productivity Tracker</div>
-            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Free — Google Sheets</div>
+            <div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Free · Google Sheets / Excel · No AI Needed</div>
           </div>
           <p class="product-desc">Operator productivity system. Track priorities, habits, and progress in a clean Google Sheets workflow built for consistency and execution.</p>
           <div class="product-price">
@@ -1741,6 +1837,7 @@
             <li>Instant access</li>
           </ul>
           <a href="https://docs.google.com/spreadsheets/d/1fBIsN028Q4nH28gAyIrxiS9L6sywLRRku2z7bWmGuPw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="product-cta">Get Free Tracker</a>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;line-height:1.4;">Opens in Google Sheets — go to <strong style="color:var(--white);">File → Make a copy</strong> to get your own editable version.</p>
         </div>
 
         <!-- VCII Real Estate Tracker -->
@@ -1749,7 +1846,7 @@
           <div class="product-icon">🏠</div>
           <div>
             <div class="product-name">Real Estate Tracker</div>
-            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Google Sheets</div>
+            <div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Google Sheets / Excel · No AI Needed</div>
           </div>
           <p class="product-desc">Track deals, leads, offers, and follow-up in one clean Google Sheet. Built for investors who want one place to manage the pipeline.</p>
           <div class="product-price">
@@ -1783,13 +1880,12 @@
         <div style="flex:1;min-width:260px;">
           <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.75rem;">// BEST VALUE — VCII FULL STACK</div>
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:0.75rem;line-height:1.1;">Every RE tool. One price.</h3>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:460px;margin-bottom:1.25rem;">All 4 web apps, all 4 AI agents, all 3 skills, and the full trade estimator pack. Everything to find, analyze, estimate, and close deals.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;max-width:460px;margin-bottom:1.25rem;">The active VCII stack in one price: browser tools, 3 Claude-based agents, 3 prompt tools, and the full trade estimator pack.</p>
           <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;">
             <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Deal Analyzer</span>
             <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Rehab Estimator</span>
-            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">Cash Flow Tracker</span>
             <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">3 Trade Estimators</span>
-            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">4 AI Agents</span>
+            <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">3 AI Agents</span>
             <span style="font-size:0.7rem;padding:3px 10px;background:rgba(201,168,76,0.1);border:1px solid var(--border);color:var(--gold);border-radius:100px;">3 AI Tools</span>
           </div>
           <a href="https://buy.stripe.com/aFaeVcaxJapiabK1o4bEA0i" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Full Stack — $297 →</a>
@@ -1873,23 +1969,20 @@
       </div>
 
       <!-- AI Agents -->
+      <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:12px;margin-bottom:1.75rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:220px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.35rem;">// AI AGENTS</div>
+          <div style="font-weight:600;color:var(--white);margin-bottom:0.2rem;">These run inside Claude AI.</div>
+          <div style="font-size:0.82rem;color:var(--muted);">You need a free account at claude.ai. Copy the prompt, paste it in, fill in your numbers — done in about a minute.</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.4rem 1.1rem;background:rgba(201,168,76,0.08);border:1px solid var(--border);color:var(--gold);border-radius:100px;white-space:nowrap;flex-shrink:0;">Requires claude.ai (free)</div>
+      </div>
+
       <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">AI-POWERED TOOLS — DESCRIBE THE DEAL, GET THE ANALYSIS</div>
       <div class="products-grid" style="margin-bottom:2.5rem;">
-        <div class="product-card reveal reveal-delay-1">
-          <div class="product-icon">🗺️</div>
-          <div><div class="product-name">Neighborhood Analyzer</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">AI Agent</div></div>
-          <p class="product-desc">Full market report on any zip code. Rent estimates, sales comps, neighborhood score 1–10, risk profile, and a GO / WATCH / AVOID verdict.</p>
-          <div class="product-price"><span class="price-amount">$37</span></div>
-          <ul class="product-features">
-            <li>Pulls live market data automatically</li>
-            <li>Scores 6 neighborhood factors</li>
-            <li>Best streets + investor verdict</li>
-          </ul>
-          <a href="https://buy.stripe.com/3cI9AS8pB8hagA85EkbEA0a" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $37</a>
-        </div>
         <div class="product-card reveal reveal-delay-2">
           <div class="product-icon">🔄</div>
-          <div><div class="product-name">BRRRR Strategy Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">AI Agent</div></div>
+          <div><div class="product-name">BRRRR Strategy Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
           <p class="product-desc">Full 4-phase BRRRR projection. Shows exactly how much cash you pull at refi, post-refi cash flow, and your Deal #2 buying power.</p>
           <div class="product-price"><span class="price-amount">$47</span></div>
           <ul class="product-features">
@@ -1901,7 +1994,7 @@
         </div>
         <div class="product-card reveal reveal-delay-3">
           <div class="product-icon">📰</div>
-          <div><div class="product-name">RE Market Intel Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">AI Agent</div></div>
+          <div><div class="product-name">RE Market Intel Agent</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
           <p class="product-desc">Weekly macro brief: oil prices, Fed rates, tariffs, war, jobs — translated into specific investor actions. Know how the world affects your market first.</p>
           <div class="product-price"><span class="price-amount">$37</span></div>
           <ul class="product-features">
@@ -1913,7 +2006,7 @@
         </div>
         <div class="product-card reveal reveal-delay-4">
           <div class="product-icon">📈</div>
-          <div><div class="product-name">Rental Income Projector</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">AI Agent</div></div>
+          <div><div class="product-name">Rental Income Projector</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Runs in Claude AI · Free Account Required</div></div>
           <p class="product-desc">5-year financial model: rent growth, appreciation, equity paydown, total ROI. See where a property stands in year 5 before you ever close.</p>
           <div class="product-price"><span class="price-amount">$37</span></div>
           <ul class="product-features">
@@ -1930,21 +2023,21 @@
       <div class="products-grid">
         <div class="product-card reveal reveal-delay-1">
           <div class="product-icon">✉️</div>
-          <div><div class="product-name">Offer Letter Generator</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">AI Tool</div></div>
+          <div><div class="product-name">Offer Letter Generator</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
           <p class="product-desc">Professional investor offer letter in 60 seconds. Give it the address, your numbers, and your terms — it writes the letter, subject line, and follow-up message.</p>
           <div class="product-price"><span class="price-amount">$27</span></div>
           <a href="https://buy.stripe.com/3cI8wO49l8hafw46IobEA0f" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
         </div>
         <div class="product-card reveal reveal-delay-2">
           <div class="product-icon">📬</div>
-          <div><div class="product-name">Wholesaler Outreach Template</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Prompt Tool</div></div>
+          <div><div class="product-name">Wholesaler Outreach Template</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
           <p class="product-desc">Cold DM or email to any wholesaler. Positions you as a serious cash buyer, includes your buyer profile criteria, and closes with a call invite.</p>
           <div class="product-price"><span class="price-amount">$27</span></div>
           <a href="https://buy.stripe.com/00waEW9tF7d63NmaYEbEA0g" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
         </div>
         <div class="product-card reveal reveal-delay-3">
           <div class="product-icon">🔍</div>
-          <div><div class="product-name">Property Research Report</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Prompt Tool</div></div>
+          <div><div class="product-name">Property Research Report</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Paste into Claude or ChatGPT · Free Account Required</div></div>
           <p class="product-desc">Full neighborhood picture on any address before you spend 2 hours on it. Scores neighborhood, estimates rent, pulls comps, flags risks, gives a verdict.</p>
           <div class="product-price"><span class="price-amount">$27</span></div>
           <a href="https://buy.stripe.com/8x2aEWbBNbtm6ZyaYEbEA0h" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
@@ -1952,9 +2045,9 @@
         <div class="product-card reveal reveal-delay-4" style="background:linear-gradient(135deg,#13131C,#1A1508);border-color:var(--gold);">
           <div class="featured-badge">Bundle</div>
           <div class="product-icon">🤖</div>
-          <div><div class="product-name">AI Agent Pro Pack</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">All 4 Agents</div></div>
-          <p class="product-desc">All 4 VCII AI agents in one shot: Neighborhood Analyzer, BRRRR Strategy, Market Intel, and Rental Income Projector.</p>
-          <div class="product-price"><span class="price-amount">$97</span><span class="price-period">&nbsp;($158 individually)</span></div>
+          <div><div class="product-name">AI Agent Pro Pack</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">All 3 Agents</div></div>
+          <p class="product-desc">All 3 VCII AI agents in one shot: BRRRR Strategy, Market Intel, and Rental Income Projector.</p>
+          <div class="product-price"><span class="price-amount">$97</span><span class="price-period">&nbsp;($141 individually)</span></div>
           <a href="https://buy.stripe.com/bJefZgaxJdBues0aYEbEA0e" target="_blank" rel="noopener noreferrer" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Get Agent Pack — $97 →</a>
         </div>
       </div>
@@ -2093,10 +2186,29 @@
     </div>
   </section>
 
+  <!-- EMAIL CAPTURE -->
+  <section style="padding:5rem 1.5rem;background:var(--bg);border-top:1px solid rgba(201,168,76,0.1);" id="contact">
+    <div style="max-width:600px;margin:0 auto;text-align:center;">
+      <div style="font-family:’DM Mono’,monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:1rem;">// STAY IN THE LOOP</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;">New tools drop every week.</h2>
+      <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Drop your email and I’ll send you new AI tools, real estate systems, and deal templates before they go public. No spam. Just the useful stuff.</p>
+      <form id="emailForm" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:480px;margin:0 auto;">
+        <input type="email" id="emailInput" placeholder="YOUR EMAIL" required
+          style="flex:1;min-width:220px;padding:0.85rem 1.2rem;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);border-radius:8px;color:var(--white);font-family:’DM Mono’,monospace;font-size:0.88rem;letter-spacing:0.05em;outline:none;" />
+        <button type="submit" id="emailBtn"
+          style="padding:0.85rem 1.8rem;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#09090E;border:none;border-radius:8px;font-family:’DM Mono’,monospace;font-size:0.82rem;font-weight:700;letter-spacing:0.1em;cursor:pointer;white-space:nowrap;">
+          NOTIFY ME →
+        </button>
+      </form>
+      <div id="emailMsg" style="margin-top:1rem;font-family:’DM Mono’,monospace;font-size:0.8rem;letter-spacing:0.08em;display:none;"></div>
+      <p style="color:rgba(201,168,76,0.3);font-family:’DM Mono’,monospace;font-size:0.65rem;letter-spacing:0.1em;margin-top:1rem;">NO SPAM. JUST TOOLS, SYSTEMS, AND DEAL FLOW.</p>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="cta-section" id="contact">
+  <section class="cta-section" style="padding:4rem 1.5rem;" id="work-with-me">
     <div class="cta-inner reveal">
-      <div class="section-label">// 009 — Let's Build</div>
+      <div class="section-label">// 009 — Let’s Build</div>
       <h2 class="section-title">Ready to stop doing it manually?</h2>
       <p class="section-sub">Whether you want a stronger professional site, a custom AI workflow, or a productized system that saves time, let’s talk about the highest-ROI thing to build first.</p>
       <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Book a Free Call</a>
@@ -2110,6 +2222,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://www.instagram.com/vanwayne2" target="_blank" rel="noopener noreferrer">Instagram</a></li>
       <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
     </ul>
     <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
@@ -2129,6 +2242,34 @@
       document.getElementById('hamburger').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // Email capture
+    document.getElementById('emailForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      const btn   = document.getElementById('emailBtn');
+      const msg   = document.getElementById('emailMsg');
+      btn.textContent = 'SENDING...';
+      btn.disabled = true;
+      try {
+        const r = await fetch('https://formspree.io/f/xredkppl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email, source: 'homepage' })
+        });
+        if (r.ok) {
+          msg.textContent = "✓ You're in. First to know when new tools drop.";
+          msg.style.color = 'var(--gold)';
+          document.getElementById('emailForm').style.display = 'none';
+        } else { throw new Error('failed'); }
+      } catch {
+        msg.textContent = 'Something went wrong — try again.';
+        msg.style.color = '#ff4d6d';
+        btn.textContent = 'NOTIFY ME →';
+        btn.disabled = false;
+      }
+      msg.style.display = 'block';
+    });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
@@ -2167,6 +2308,7 @@
         ? 'rgba(9,9,14,0.95)'
         : 'rgba(9,9,14,0.8)';
     });
+
     // About photo slideshow
     const aboutSlides = document.querySelectorAll('.about-photo-slide');
     if (aboutSlides.length > 1) {
@@ -2180,8 +2322,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

@@ -2060,11 +2060,30 @@
     </div>
   </section>
 
+  <!-- EMAIL CAPTURE -->
+  <section style="padding:5rem 1.5rem;background:var(--bg);border-top:1px solid rgba(201,168,76,0.1);" id="contact">
+    <div style="max-width:600px;margin:0 auto;text-align:center;">
+      <div style="font-family:’DM Mono’,monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:1rem;">// STAY IN THE LOOP</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;">New tools drop every week.</h2>
+      <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Drop your email and I’ll send you new AI tools, real estate systems, and deal templates before they go public. No spam. Just the useful stuff.</p>
+      <form id="emailForm" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:480px;margin:0 auto;">
+        <input type="email" id="emailInput" placeholder="YOUR EMAIL" required
+          style="flex:1;min-width:220px;padding:0.85rem 1.2rem;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);border-radius:8px;color:var(--white);font-family:’DM Mono’,monospace;font-size:0.88rem;letter-spacing:0.05em;outline:none;" />
+        <button type="submit" id="emailBtn"
+          style="padding:0.85rem 1.8rem;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#09090E;border:none;border-radius:8px;font-family:’DM Mono’,monospace;font-size:0.82rem;font-weight:700;letter-spacing:0.1em;cursor:pointer;white-space:nowrap;">
+          NOTIFY ME →
+        </button>
+      </form>
+      <div id="emailMsg" style="margin-top:1rem;font-family:’DM Mono’,monospace;font-size:0.8rem;letter-spacing:0.08em;display:none;"></div>
+      <p style="color:rgba(201,168,76,0.3);font-family:’DM Mono’,monospace;font-size:0.65rem;letter-spacing:0.1em;margin-top:1rem;">NO SPAM. JUST TOOLS, SYSTEMS, AND DEAL FLOW.</p>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="cta-section" id="contact">
+  <section class="cta-section" style="padding:4rem 1.5rem;" id="work-with-me">
     <div class="cta-inner reveal">
-      <div class="section-label">// 009 — Let's Build</div>
-      <h2 class="section-title">Need this cleaned up for your business?</h2>
+      <div class="section-label">// 009 — Let’s Build</div>
+      <h2 class="section-title">Need this built for your business?</h2>
       <p class="section-sub">If your website looks weak, your follow-up is sloppy, or your systems are a mess, I can simplify it, clean it up, and build the fix.</p>
       <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Let’s Simplify It</a>
     </div>
@@ -2105,6 +2124,36 @@
       document.getElementById('hamburger').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // Email capture
+    document.getElementById('emailForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      const btn   = document.getElementById('emailBtn');
+      const msg   = document.getElementById('emailMsg');
+      btn.textContent = 'SENDING...';
+      btn.disabled = true;
+      try {
+        const r = await fetch('https://formspree.io/f/xredkppl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email, source: 'products-page' })
+        });
+        if (r.ok) {
+          msg.textContent = "✓ You're in. First to know when new tools drop.";
+          msg.style.color = 'var(--gold)';
+          document.getElementById('emailForm').style.display = 'none';
+        } else {
+          throw new Error('failed');
+        }
+      } catch {
+        msg.textContent = 'Something went wrong — try again.';
+        msg.style.color = '#ff4d6d';
+        btn.textContent = 'NOTIFY ME →';
+        btn.disabled = false;
+      }
+      msg.style.display = 'block';
+    });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
