@@ -826,6 +826,46 @@
       gap: 1.25rem;
     }
 
+    .mini-products-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+      margin: 0 0 2.25rem;
+    }
+
+    .mini-filter-pill {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: 0.65rem 0.95rem;
+      text-transform: uppercase;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .mini-filter-pill:hover {
+      border-color: rgba(201,168,76,0.35);
+      color: var(--white);
+    }
+
+    .mini-filter-pill.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #09090E;
+    }
+
+    #mini-products .product-card.is-hidden,
+    #vcii .product-card.is-hidden {
+      display: none;
+    }
+
     .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -1646,10 +1686,18 @@
         <p class="section-sub">Download once, use forever. Fitness trackers, dev tools, and AI prompt packs — built to save time without the monthly fee.</p>
       </div>
 
+      <div class="mini-products-filters reveal" id="miniProductFilters">
+        <button class="mini-filter-pill active" type="button" data-filter="all">All</button>
+        <button class="mini-filter-pill" type="button" data-filter="fitness">Fitness</button>
+        <button class="mini-filter-pill" type="button" data-filter="dev">Dev &amp; AI</button>
+        <button class="mini-filter-pill" type="button" data-filter="re">Real Estate</button>
+        <button class="mini-filter-pill" type="button" data-filter="free">Free</button>
+      </div>
+
       <!-- FITNESS TOOLS -->
       <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">FITNESS TOOLS — BUY ONCE, OWN FOREVER</div>
       <div class="products-grid" style="margin-bottom:2.5rem;">
-        <div class="product-card reveal reveal-delay-1">
+        <div class="product-card reveal reveal-delay-1" data-category="fitness" data-free="true">
           <img src="images/screenshot-gym-tracker.png" class="product-screenshot" alt="Gym Tracker preview" onerror="this.style.display='none'">
           <div class="product-icon">🏋️</div>
           <div><div class="product-name">Gym Tracker</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1663,7 +1711,7 @@
           </ul>
           <a href="/dl-gym-7p2x.html" target="_blank" rel="noopener noreferrer" class="product-cta">Get Free Tracker</a>
         </div>
-        <div class="product-card reveal reveal-delay-1">
+        <div class="product-card reveal reveal-delay-1" data-category="fitness">
           <img src="images/screenshot-calorie-cut-planner.png" class="product-screenshot" alt="Calorie Cut Planner preview" onerror="this.style.display='none'">
           <div class="product-icon">💪</div>
           <div><div class="product-name">Calorie Cut Planner</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1677,7 +1725,7 @@
           </ul>
           <a href="https://buy.stripe.com/28E7sK5dp9le6Zyc2IbEA0y" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $17</a>
         </div>
-        <div class="product-card reveal reveal-delay-2">
+        <div class="product-card reveal reveal-delay-2" data-category="fitness">
           <img src="images/screenshot-home-workout-program.png" class="product-screenshot" alt="Home Workout Program preview" onerror="this.style.display='none'">
           <div class="product-icon">🏋️</div>
           <div><div class="product-name">Home Workout Program</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1691,7 +1739,7 @@
           </ul>
           <a href="https://buy.stripe.com/9B6bJ08pBdBucjS4AgbEA0z" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
         </div>
-        <div class="product-card reveal reveal-delay-3">
+        <div class="product-card reveal reveal-delay-3" data-category="fitness">
           <img src="images/screenshot-fitness-prompt-vault.png" class="product-screenshot" alt="Fitness Prompt Vault preview" onerror="this.style.display='none'">
           <div class="product-icon">🤖</div>
           <div><div class="product-name">Fitness Prompt Vault</div><div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.04em;margin-top:0.25rem;">Works with Claude · ChatGPT · Any AI</div></div>
@@ -1710,7 +1758,7 @@
       <!-- DEV & AI TOOLS -->
       <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">DEVELOPER & AI TOOLS — BUILT FOR BUILDERS</div>
       <div class="products-grid" style="margin-bottom:2rem;">
-        <div class="product-card reveal reveal-delay-1">
+        <div class="product-card reveal reveal-delay-1" data-category="dev">
           <img src="images/screenshot-dev-fitness-tracker.png" class="product-screenshot" alt="Dev Fitness Tracker preview" onerror="this.style.display='none'">
           <div class="product-icon">💪</div>
           <div><div class="product-name">Dev Fitness Tracker</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1724,7 +1772,7 @@
           </ul>
           <a href="https://buy.stripe.com/dRm28q5dp8ha3Nm5EkbEA0B" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $17</a>
         </div>
-        <div class="product-card reveal reveal-delay-2">
+        <div class="product-card reveal reveal-delay-2" data-category="dev">
           <img src="images/screenshot-dev-health-bundle.png" class="product-screenshot" alt="Dev Health Bundle preview" onerror="this.style.display='none'">
           <div class="product-icon">🧬</div>
           <div><div class="product-name">Dev Health Bundle</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1738,7 +1786,7 @@
           </ul>
           <a href="https://buy.stripe.com/dRmdR8bBNfJC3Nm7MsbEA0A" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
         </div>
-        <div class="product-card reveal reveal-delay-3">
+        <div class="product-card reveal reveal-delay-3" data-category="dev">
           <img src="images/screenshot-dev-productivity-tracker.png" class="product-screenshot" alt="Dev Productivity Tracker preview" onerror="this.style.display='none'">
           <div class="product-icon">⏱️</div>
           <div><div class="product-name">Dev Productivity Tracker</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">HTML File · Works in Browser · No Login</div></div>
@@ -1752,7 +1800,7 @@
           </ul>
           <a href="https://buy.stripe.com/eVq4gy0X90OI4Rq5EkbEA0v" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $17</a>
         </div>
-        <div class="product-card featured reveal reveal-delay-4">
+        <div class="product-card featured reveal reveal-delay-4" data-category="dev">
           <div class="featured-badge">For AI Builders</div>
           <img src="images/screenshot-codex-briefs.png" class="product-screenshot" alt="Codex Briefs preview" onerror="this.style.display='none'">
           <div class="product-icon">🤖</div>
@@ -1839,7 +1887,7 @@
       <!-- Portfolio Trackers -->
       <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);">PORTFOLIO TRACKERS — BUY ONCE, OWN FOREVER. NO LOGIN, NO SPREADSHEET.</div>
       <div class="products-grid" style="margin-bottom:2.5rem;">
-        <div class="product-card">
+        <div class="product-card" data-category="re">
           <img src="images/screenshot-re-prompt-vault.png" class="product-screenshot" alt="RE Prompt Vault preview" onerror="this.style.display='none'">
           <div class="product-icon">🤖</div>
           <div><div class="product-name">RE Prompt Vault</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works with Claude · ChatGPT · Any AI</div></div>
@@ -1854,7 +1902,7 @@
           </ul>
           <a href="https://buy.stripe.com/7sY7sK6htgNGfw44AgbEA0t" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $27</a>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-category="re">
           <img src="images/screenshot-deal-closer.png" class="product-screenshot" alt="Deal Closer preview" onerror="this.style.display='none'">
           <div class="product-icon">🔄</div>
           <div><div class="product-name">Deal Closer</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · Offline · No AI Needed</div></div>
@@ -1869,7 +1917,7 @@
           </ul>
           <a href="https://buy.stripe.com/fZu5kC9tF6922JiaYEbEA0r" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $49</a>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-category="re">
           <img src="images/screenshot-4in1-calc.png" class="product-screenshot" alt="4-in-1 Calculator preview" onerror="this.style.display='none'">
           <div class="product-icon">🧰</div>
           <div><div class="product-name">The 4-in-1 Calculator</div><div style="font-size:0.7rem;color:#6ee7a0;letter-spacing:0.04em;margin-top:0.25rem;">Works in Browser · Offline · No AI Needed</div></div>
@@ -1884,7 +1932,7 @@
           </ul>
           <a href="https://buy.stripe.com/dRm3cu7lx8ha6ZyeaQbEA0s" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $49</a>
         </div>
-        <div class="product-card featured">
+        <div class="product-card featured" data-category="re">
           <div class="featured-badge">Best Seller</div>
           <img src="images/screenshot-landlord-os.png" class="product-screenshot" alt="Landlord OS preview" onerror="this.style.display='none'">
           <div class="product-icon">🏠</div>
@@ -1900,7 +1948,7 @@
           </ul>
           <a href="https://buy.stripe.com/aFa28q6htapi3Nm8QwbEA0q" target="_blank" rel="noopener noreferrer" class="product-cta">Buy Now — $99</a>
         </div>
-        <div class="product-card" style="background:linear-gradient(135deg,#0D1B2B,#1A1508);border-color:var(--gold);">
+        <div class="product-card" data-category="re" style="background:linear-gradient(135deg,#0D1B2B,#1A1508);border-color:var(--gold);">
           <div class="featured-badge">Best Value</div>
           <img src="images/screenshot-4in1-calc.png" class="product-screenshot" alt="Investor Stack preview" onerror="this.style.display='none'">
           <div class="product-icon">📦</div>
@@ -2326,7 +2374,32 @@
         ? 'rgba(9,9,14,0.95)'
         : 'rgba(9,9,14,0.8)';
     });
+
+    // Mini product filters
+    (function () {
+      const filterBar = document.getElementById('miniProductFilters');
+      if (!filterBar) return;
+
+      const pills = Array.from(filterBar.querySelectorAll('.mini-filter-pill'));
+      const cards = Array.from(document.querySelectorAll('#mini-products .product-card, #vcii .product-card'));
+
+      function applyMiniProductFilter(filter) {
+        cards.forEach((card) => {
+          const category = card.dataset.category;
+          const isFree = card.dataset.free === 'true';
+          const show = filter === 'all' || (filter === 'free' ? isFree : category === filter);
+          card.classList.toggle('is-hidden', !show);
+        });
+      }
+
+      filterBar.addEventListener('click', (event) => {
+        const pill = event.target.closest('.mini-filter-pill');
+        if (!pill) return;
+
+        pills.forEach((item) => item.classList.toggle('active', item === pill));
+        applyMiniProductFilter(pill.dataset.filter || 'all');
+      });
+    })();
   </script>
 </body>
 </html>
-
