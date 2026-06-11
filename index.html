@@ -417,6 +417,58 @@
       text-align: center;
     }
 
+    .quick-nav {
+      background: var(--bg-2);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
+    .quick-nav-inner {
+      display: inline-flex;
+      gap: 0;
+      min-width: 100%;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .quick-nav-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .quick-nav-link.accent-fitness {
+      color: #ea580c;
+    }
+
+    .quick-nav-link.accent-fitness:hover {
+      color: #f97316;
+      background: rgba(234,88,12,0.06);
+    }
+
+    .quick-nav-link.accent-gold {
+      color: var(--gold);
+      border-right: 0;
+    }
+
+    .quick-nav-link.accent-gold:hover {
+      opacity: 0.8;
+      background: transparent;
+    }
+
     .badge-dot {
       width: 8px; height: 8px;
       background: #4ADE80;
@@ -1268,7 +1320,7 @@
         text-align: left;
         gap: 1.5rem;
       }
-      .hero-photo { order: -1; }
+      .hero-photo { order: 2; }
       .photo-frame { width: 100%; }
       .hero-actions { justify-content: flex-start; flex-direction: column; }
       .hero-actions a, .hero-actions button { width: 100%; text-align: center; }
@@ -1314,12 +1366,13 @@
       /* Hero eyebrow pill */
       .hero-eyebrow { justify-content: flex-start; }
       .hero-tagline-bar { margin-left: 0; margin-right: 0; }
+      .quick-nav { display: none; }
 
       .hero-visual-card {
         width: 100%;
-        aspect-ratio: 16 / 12;
+        aspect-ratio: 16 / 10;
       }
-      .hero-visual-card img { object-fit: cover; object-position: 30% 30%; transform: scale(1.08); }
+      .hero-visual-card img { object-fit: cover; object-position: 42% 26%; transform: scale(1.03); }
       .photo-badge { left: 0.75rem; bottom: 0.75rem; }
 
       footer {
@@ -1347,6 +1400,7 @@
       section { padding: 3rem 1.25rem; }
       .section-title { font-size: 1.6rem; }
 
+      .products-grid { grid-template-columns: 1fr; }
       .product-card { padding: 1.25rem; }
       .product-name { font-size: 1.25rem; }
       .price-amount { font-size: 2rem; }
@@ -1361,8 +1415,8 @@
       .cta-section .btn-primary { width: 100%; text-align: center; padding: 1rem; }
 
       .photo-frame { width: 100%; }
-      .hero-visual-card { aspect-ratio: 16 / 13; }
-      .hero-visual-card img { object-fit: cover; object-position: 31% 30%; transform: scale(1.12); }
+      .hero-visual-card { aspect-ratio: 16 / 10.5; }
+      .hero-visual-card img { object-fit: cover; object-position: 43% 25%; transform: scale(1.04); }
       .photo-badge { display: none; }
     }
   </style>
@@ -1374,9 +1428,9 @@
     <a href="./index.html" onclick="closeMobile()">Home</a>
     <a href="./about.html" onclick="closeMobile()">About</a>
     <a href="./products.html" onclick="closeMobile()">Products</a>
-    <a href="./real-estate.html" onclick="closeMobile()">RE Tools</a>
-    <a href="./websites.html" onclick="closeMobile()">Websites</a>
-    <a href="./aigains.html" onclick="closeMobile()">Fitness</a>
+    <a href="./re-tools.html#vcii" onclick="closeMobile()">RE Tools</a>
+    <a href="./dev-tools.html#dev-tools" onclick="closeMobile()">Dev</a>
+    <a href="./fitness-tools.html#fitness-tools" onclick="closeMobile()">Fitness</a>
     <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
   </div>
 
@@ -1389,9 +1443,9 @@
     <ul class="nav-links">
       <li><a href="./about.html">About</a></li>
       <li><a href="./products.html">Products</a></li>
-      <li><a href="./real-estate.html">RE Tools</a></li>
-      <li><a href="./websites.html">Websites</a></li>
-      <li><a href="./aigains.html">Fitness</a></li>
+      <li><a href="./re-tools.html#vcii">RE Tools</a></li>
+      <li><a href="./dev-tools.html#dev-tools">Dev</a></li>
+      <li><a href="./fitness-tools.html#fitness-tools">Fitness</a></li>
       <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
@@ -1525,14 +1579,14 @@
   </section>
 
   <!-- QUICK NAV -->
-  <div style="background:var(--bg-2);border-bottom:1px solid rgba(255,255,255,0.05);overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;">
-    <div style="display:inline-flex;gap:0;min-width:100%;">
-      <a href="./about.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">About</a>
-      <a href="./products.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Products</a>
-      <a href="./real-estate.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">RE Tools</a>
-      <a href="./websites.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Websites</a>
-      <a href="./aigains.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#ea580c;text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#f97316';this.style.background='rgba(234,88,12,0.06)'" onmouseout="this.style.color='#ea580c';this.style.background=''">Fitness ↗</a>
-      <a href="./products.html#contact" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Work With Me →</a>
+  <div class="quick-nav">
+    <div class="quick-nav-inner">
+      <a href="./about.html" class="quick-nav-link">About</a>
+      <a href="./products.html" class="quick-nav-link">Products</a>
+      <a href="./re-tools.html#vcii" class="quick-nav-link">RE Tools</a>
+      <a href="./dev-tools.html#dev-tools" class="quick-nav-link">Dev</a>
+      <a href="./fitness-tools.html#fitness-tools" class="quick-nav-link accent-fitness">Fitness</a>
+      <a href="./products.html#contact" class="quick-nav-link accent-gold">Work With Me →</a>
     </div>
   </div>
 
@@ -1756,27 +1810,27 @@
           <a href="https://buy.stripe.com/3cI6oG49lgNG6ZyfeUbEA00" target="_blank" rel="noopener noreferrer" class="product-cta">Get Nebula Pro — $47/mo</a>
         </div>
 
-        <!-- Real Estate AI -->
+        <!-- AI Workflow Setup Session -->
         <div class="product-card reveal reveal-delay-3">
-          <div class="product-icon">🏠</div>
+          <div class="product-icon">🧠</div>
           <div>
-            <div class="product-name">Real Estate AI</div>
-            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Done For You</div>
+            <div class="product-name">AI Workflow Clarity Session</div>
+            <div style="font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.25rem;">Live 1:1 Setup</div>
           </div>
-          <p class="product-desc">Custom AI automation built for your real estate operation. Lead qualification, seller nurturing, deal analysis, and more — installed and running in your stack.</p>
+          <p class="product-desc">A 90-minute working session to break down one real business task, clean up the process, and turn it into a practical AI-assisted workflow you can actually use.</p>
           <div class="product-price">
-            <span class="price-amount">$1,500</span>
-            <span class="price-period">+ setup</span>
+            <span class="price-amount">$99</span>
+            <span class="price-period">/ 90 min</span>
           </div>
           <ul class="product-features">
-            <li>Outbound lead qualifier</li>
-            <li>AI seller email nurturing</li>
-            <li>Deal analyzer agent</li>
-            <li>Slack + CRM integration</li>
-            <li>Full AI workflow build + install</li>
-            <li>30-day support</li>
+            <li>Map one workflow step by step</li>
+            <li>Build one working prompt or repeatable process</li>
+            <li>Organize docs, notes, and task context</li>
+            <li>Follow-up notes with next steps</li>
+            <li>No custom app builds or deep integrations</li>
+            <li>Best for owners who want clarity first</li>
           </ul>
-          <a href="#contact" class="product-cta">Book a Call</a>
+          <a href="#contact" class="product-cta">Book the $99 Setup</a>
         </div>
 
         <!-- Website Design -->
@@ -2343,9 +2397,9 @@
   <section class="cta-section" style="padding:4rem 1.5rem;" id="work-with-me">
     <div class="cta-inner reveal">
       <div class="section-label">// 009 — Let’s Build</div>
-      <h2 class="section-title">Ready to stop doing it manually?</h2>
-      <p class="section-sub">Whether you want a stronger professional site, a custom AI workflow, or a productized system that saves time, let’s talk about the highest-ROI thing to build first.</p>
-      <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Book a Free Call</a>
+      <h2 class="section-title">Start with one real workflow.</h2>
+      <p class="section-sub">The first offer is simple: one 90-minute AI workflow clarity session. We focus on one task, one process, and one immediate win. If deeper automation makes sense after that, we scope it separately.</p>
+      <a href="mailto:vanwaynec01@gmail.com?subject=AI%20Workflow%20Setup%20Session" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Book Your $99 Setup</a>
     </div>
   </section>
 

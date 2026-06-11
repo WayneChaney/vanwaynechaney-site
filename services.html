@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanwayne Chaney Jr. — Services</title>
+  <link rel="icon" type="image/jpeg" href="./logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #06101d;
+      --bg-2: #0a1728;
+      --bg-card: #0d1b2b;
+      --gold: #c9a84c;
+      --gold-2: #e8c56a;
+      --white: #f0ede6;
+      --muted: #95a2b4;
+      --border: rgba(201, 168, 76, 0.16);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: rgba(6, 16, 29, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    }
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .nav-logo img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.92rem; }
+    .nav-links a.active,
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta,
+    .hero-cta,
+    .offer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 1.1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      background: var(--gold);
+      color: #08111a;
+      transition: 0.2s ease;
+    }
+    .nav-cta:hover,
+    .hero-cta:hover,
+    .offer-cta:hover { background: var(--gold-2); transform: translateY(-1px); }
+    section { padding: 4rem 1.5rem; }
+    .shell { max-width: 1180px; margin: 0 auto; }
+    .eyebrow,
+    .section-label {
+      color: var(--gold);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .eyebrow { margin-bottom: 1rem; }
+    .section-label { margin-bottom: 0.9rem; }
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .hero {
+      padding-top: 5rem;
+      background:
+        radial-gradient(circle at top right, rgba(201, 168, 76, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(10, 23, 40, 0.95), rgba(6, 16, 29, 1));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-title { font-size: clamp(3rem, 7vw, 5rem); margin-bottom: 1rem; }
+    .hero-title span { color: var(--gold); }
+    .hero-copy {
+      max-width: 660px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .hero-panel {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(13, 27, 43, 0.96), rgba(8, 18, 32, 0.96));
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .hero-panel p { color: var(--muted); line-height: 1.75; }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .hero-actions .secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .hero-actions .secondary:hover {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, 0.08);
+    }
+    .service-grid,
+    .proof-grid,
+    .process-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .process-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .service-card,
+    .proof-card,
+    .process-card,
+    .cta-panel {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(13, 27, 43, 0.96), rgba(8, 18, 32, 0.96));
+      padding: 1.5rem;
+    }
+    .service-card h3,
+    .proof-card h3,
+    .process-card h3,
+    .cta-panel h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .service-card p,
+    .proof-card p,
+    .process-card p,
+    .cta-panel p,
+    .section-copy { color: var(--muted); line-height: 1.8; }
+    .section-copy { max-width: 720px; margin-bottom: 1.8rem; }
+    .price {
+      margin: 1rem 0;
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+    .meta {
+      color: var(--gold);
+      font-family: "DM Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .service-card ul,
+    .cta-panel ul {
+      list-style: none;
+      margin: 1rem 0 1.2rem;
+      display: grid;
+      gap: 0.65rem;
+    }
+    .service-card li,
+    .cta-panel li {
+      padding-left: 1rem;
+      position: relative;
+      color: var(--white);
+      font-size: 0.92rem;
+    }
+    .service-card li::before,
+    .cta-panel li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .service-card.featured {
+      border-color: rgba(201, 168, 76, 0.42);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+    }
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+    }
+    footer {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .footer-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 1rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a,
+    .footer-copy { color: var(--muted); font-size: 0.88rem; }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .service-grid,
+      .proof-grid,
+      .process-grid,
+      .cta-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-links {
+        width: 100%;
+        gap: 0.85rem;
+        justify-content: space-between;
+      }
+      .nav-links a { font-size: 0.8rem; }
+      .nav-cta {
+        width: 100%;
+        margin-top: 0.2rem;
+      }
+      section { padding: 3.2rem 1.25rem; }
+      .hero { padding-top: 4.2rem; }
+      .hero-title { font-size: 2.8rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a,
+      .offer-cta { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="./index.html" class="nav-logo">
+      <img src="./logo.jpg" alt="VCII" />
+      <span>Vanwayne</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./re-tools.html#vcii">Real Estate</a></li>
+      <li><a href="./services.html" class="active">Services</a></li>
+      <li><a href="./about.html">About</a></li>
+    </ul>
+    <a href="#consult" class="nav-cta">Work With Me</a>
+  </nav>
+
+  <section class="hero" id="consult">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow">Services</div>
+        <h1 class="hero-title">Custom work for businesses that need <span>better systems</span>, not more chaos.</h1>
+        <p class="hero-copy">
+          This page is for high-ticket work only. If you need done-for-you AI workflow help, a stronger website, or a cleaner operating system for a real business, start here.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:vanwaynec01@gmail.com?subject=AI%20Workflow%20Clarity%20Session" class="hero-cta">Book A Session</a>
+          <a href="./products.html" class="hero-cta secondary">See Products Instead</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="section-label">// Positioning</div>
+        <p>Low-ticket products are for instant use. Services are for custom problems, revenue bottlenecks, broken workflows, and websites that need to sell better.</p>
+        <p>This separation is intentional. Premium work should feel premium, not like another card in a random storefront.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="clarity">
+    <div class="shell">
+      <div class="section-label">// Service Stack</div>
+      <h2 class="section-title">Start with the clearest offer first.</h2>
+      <p class="section-copy">Most people should not jump straight into a full custom build. The right move is usually one clear workflow session first, then a bigger build only if it actually makes sense.</p>
+      <div class="service-grid">
+        <article class="service-card featured">
+          <div class="meta">Best Entry Offer</div>
+          <h3>AI Workflow Clarity Session</h3>
+          <p>A 90-minute working session to identify one messy workflow, simplify it, and turn it into a practical AI-assisted process you can use immediately.</p>
+          <div class="price">$99</div>
+          <ul>
+            <li>Map one workflow end to end</li>
+            <li>Build one usable prompt or process</li>
+            <li>Leave with notes and next steps</li>
+          </ul>
+          <a href="mailto:vanwaynec01@gmail.com?subject=AI%20Workflow%20Clarity%20Session" class="offer-cta">Book The $99 Session</a>
+        </article>
+        <article class="service-card">
+          <div class="meta">Done For You</div>
+          <h3>Custom Website Build</h3>
+          <p>Professional site rebuilds for people whose current site looks weak, converts badly, or makes their business feel smaller than it is.</p>
+          <div class="price">$500+</div>
+          <ul>
+            <li>Mobile-first sales structure</li>
+            <li>Clear CTA and offer hierarchy</li>
+            <li>Faster, cleaner, more credible layout</li>
+          </ul>
+          <a href="mailto:vanwaynec01@gmail.com?subject=Custom%20Website%20Build" class="offer-cta">Ask About Website Builds</a>
+        </article>
+        <article class="service-card">
+          <div class="meta">Custom Systems</div>
+          <h3>AI Workflow Build</h3>
+          <p>For businesses that already know the problem and want the actual workflow, system, or automation built around their operation.</p>
+          <div class="price">$1,500+</div>
+          <ul>
+            <li>Lead flow and follow-up systems</li>
+            <li>Operator workflows and process cleanup</li>
+            <li>Custom scoping based on actual ROI</li>
+          </ul>
+          <a href="mailto:vanwaynec01@gmail.com?subject=Custom%20AI%20Workflow%20Build" class="offer-cta">Ask About AI Workflow Builds</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-2); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="shell">
+      <div class="section-label">// Why This Sells Better</div>
+      <h2 class="section-title">The offer has to sound like ROI, not random tech work.</h2>
+      <div class="proof-grid">
+        <article class="proof-card">
+          <h3>Less manual work</h3>
+          <p>The real promise is fewer repetitive steps, less confusion, and less time wasted on sloppy processes.</p>
+        </article>
+        <article class="proof-card">
+          <h3>Stronger lead conversion</h3>
+          <p>For websites and follow-up systems, the point is not “a nice site.” The point is more calls, more replies, and better buyer movement.</p>
+        </article>
+        <article class="proof-card">
+          <h3>Clearer execution</h3>
+          <p>Most buyers do not need ten options. They need the right next move. This service stack is built around that.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="section-label">// Process</div>
+      <h2 class="section-title">Simple process. No fake complexity.</h2>
+      <div class="process-grid">
+        <article class="process-card">
+          <h3>1. Find the bottleneck</h3>
+          <p>We figure out the real issue first instead of pretending every business needs a giant build.</p>
+        </article>
+        <article class="process-card">
+          <h3>2. Scope the right fix</h3>
+          <p>If a session solves it, good. If it needs a build, scope the exact work instead of wandering into random add-ons.</p>
+        </article>
+        <article class="process-card">
+          <h3>3. Build around ROI</h3>
+          <p>The output should save time, clean up sales flow, or improve business execution. Otherwise it is noise.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell cta-row">
+      <article class="cta-panel">
+        <div class="section-label">// Best Fit</div>
+        <h3>This is for founders, operators, and businesses with actual workflow problems.</h3>
+        <ul>
+          <li>You have repetitive work that should be cleaner</li>
+          <li>Your site does not sell clearly on mobile</li>
+          <li>Your lead follow-up or process flow is sloppy</li>
+          <li>You want a business outcome, not vague “AI consulting”</li>
+        </ul>
+      </article>
+      <article class="cta-panel">
+        <div class="section-label">// Next Step</div>
+        <h3>Start with the clarity session.</h3>
+        <p>It is the cleanest entry point, the lowest friction, and the best way to avoid paying for the wrong build.</p>
+        <a href="mailto:vanwaynec01@gmail.com?subject=AI%20Workflow%20Clarity%20Session" class="offer-cta">Book The $99 Session</a>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-shell">
+      <ul class="footer-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./products.html">Products</a></li>
+        <li><a href="./re-tools.html#vcii">Real Estate</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
+    </div>
+  </footer>
+</body>
+</html>
