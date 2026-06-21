@@ -71,7 +71,7 @@ Search: https://www.pexels.com/search/videos/missed+call+phone/
 
 ## SCENE 2 — Credibility
 **[ON CAMERA — Wayne]**
-> "Every missed call is a job your competitor just booked. I'm Wayne, software engineer. I build AI systems that answer calls, follow up on leads, and book appointments — without you touching a thing."
+> "Every missed lead is a job your competitor just booked. I'm Wayne, software engineer. I build AI systems that answer calls, follow up on leads, and book appointments — without you touching a thing."
 
 _Editor adds captions._
 
