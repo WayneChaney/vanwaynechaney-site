@@ -71,7 +71,7 @@ Search: https://www.pexels.com/search/videos/missed+call+phone/
 
 ## SCENE 2 — Credibility
 **[ON CAMERA — Wayne]**
-> "AI is taking over the game — and you don't want your business missing out. I'm Wayne, software engineer. I build AI systems that answer calls, follow up on leads, and book appointments. Without you touching a thing."
+> "Every missed call is a job your competitor just booked. I'm Wayne, software engineer. I build AI systems that answer calls, follow up on leads, and book appointments — without you touching a thing."
 
 _Editor adds captions._
 
