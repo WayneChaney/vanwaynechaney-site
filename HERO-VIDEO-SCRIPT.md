@@ -124,53 +124,52 @@ Book a Strategy Call
 
 ## FIVERR BRIEF (COPY/PASTE TO EDITOR)
 
-"I need a 45–60 second professional commercial edited for my website vanwaynechaney.com.
+"I need a 45–60 second professional commercial for my website vanwaynechaney.com. I am an AI consultant who builds systems for trade businesses (HVAC, plumbers, electricians, roofers).
 
 I will provide:
-- Raw camera footage of me speaking Scenes 2, 3, and 5 (same mic, one session — pick best takes)
-- Screen recording of a Google Sheets dashboard with leads, SMS, missed calls, and bookings tabs populating
-- 3-4 stock video clips from Pexels (contractors missing calls — roofing, plumbing, driving)
-- 1 AI-generated clip of a customer texting 'Ok nevermind' (Higgsfield)
+- Raw camera footage of me speaking on camera (Scenes 2, 3, 5) — pick the best takes
+- Audio voiceover of me talking over the demo (Scene 4)
 
-What I need you to build:
-- Scene 1 (8-10 sec): Cut the Pexels contractor clips + Higgsfield customer clip together into a fast dramatic sequence. Add phone ringing sound effects and missed call notification overlay graphics. End with on-screen text: 'That's $2,000 walking out the door.'
-- Scene 4: Cut between my screen recording tabs as I talk over them. Have each entry pop on screen one at a time as I speak.
-- CAPTIONS on every single scene — this is required, not optional
-- Lower thirds on Scene 4 (text provided in script)
-- Dramatic background music for Scene 1, clean background music for Scenes 2-5
-- Button CTA at the end: 'Book a Strategy Call'
-- Style: clean, professional, CEO energy. Real commercial — not a tutorial.
+YOU source and build everything else. I want a finished commercial. Specifically:
 
-Full script attached."
+Scene 1 (8-10 sec, no dialogue): Dramatic hook showing contractors missing calls because they're slammed on the job — on a roof, under a sink, driving a work truck. Intercut with a customer texting 'Ok nevermind' after nobody answers. End with text on screen: 'That's $2,000 walking out the door.' Source your own stock footage. Add phone ringing sound effects and missed call notification overlays.
+
+Scene 2: Me on camera talking. Cut in cleanly after Scene 1.
+
+Scene 3: Me on camera, short bridge line.
+
+Scene 4: You will receive my audio voiceover. Play it over a screen recording of a dashboard (leads populating, SMS firing, missed calls logged, bookings confirmed). Cut between tabs as I speak. Add lower thirds:
+- 'Every lead captured, qualified & logged'
+- 'AI follows up in seconds — not hours'
+- 'Never miss a call again'
+- 'Appointments booked automatically'
+
+Scene 5: Me on camera, closing line.
+
+Requirements:
+- CAPTIONS on every single scene — not optional, this is required
+- Dramatic music for Scene 1, clean professional music for Scenes 2-5
+- Button CTA animates in at the end: 'Book a Strategy Call'
+- Style: clean, professional, CEO energy. Real commercial — not a tutorial, not a promo reel.
+
+Full scene-by-scene script attached."
 
 ---
 
-## SHOOT ORDER (FOR WAYNE)
+## SHOOT ORDER (FOR WAYNE — That's It)
 
-### Step 1 — Download Pexels clips (5 min)
-- Roofing contractor: https://www.pexels.com/search/videos/roofing+contractor/
-- Plumbing: https://www.pexels.com/search/videos/plumbing/
-- Work truck: https://www.pexels.com/search/videos/contractor+truck/
-- Missed call phone: https://www.pexels.com/search/videos/missed+call+phone/
-Download 1-2 clips per search. Pick whichever looks most real.
+### Step 1 — Record yourself on camera (30-45 min)
+Scenes 2, 3, and 5. Multiple takes. Same mic throughout. Don't overthink it.
 
-### Step 2 — Generate Higgsfield clip (10 min)
-Use the Shot D prompt above. Generate 1-2 versions, pick the best.
+### Step 2 — Record Scene 4 voiceover (10 min)
+Audio only. Read the Scene 4 lines while looking at the dashboard. Editor syncs it.
 
-### Step 3 — Record yourself (30-45 min)
-Record Scenes 2, 3, and 5 on camera. Multiple takes. Same mic throughout.
-Then record Scene 4 voiceover as audio only (talking over a blank screen — editor will sync it to the dashboard recording).
+### Step 3 — Send to Fiverr
+- Your camera footage
+- Your Scene 4 audio
+- This script
 
-### Step 4 — Record Google Sheets screen recording (10 min)
-Open the dashboard. Hit record. Slowly click through each tab — Leads, SMS, Missed Calls, Bookings — letting data populate visibly.
-
-### Step 5 — Hand everything to Fiverr editor
-- Camera footage (Scenes 2, 3, 5)
-- Scene 4 voiceover (audio file)
-- Google Sheets screen recording
-- Pexels clips (3-4 files)
-- Higgsfield "customer texting" clip
-- This script (paste the full Fiverr brief above)
+**That's it. Fiverr sources everything else.**
 
 ---
 
