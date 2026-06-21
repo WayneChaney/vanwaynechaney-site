@@ -156,6 +156,26 @@ Full scene-by-scene script attached."
 
 ---
 
+## DELIVERY GUIDE (HOW TO RECORD)
+
+### Scenes 2, 3, 5 — On Camera
+Just talk. Natural pace, ~10% slower than normal conversation. Don't build in pauses — the editor controls that. Music plays under you the whole time. Say your lines with energy, editor breathes it out in post.
+
+### Scene 4 — Voiceover Only (different — pause deliberately)
+Each line needs a 2-second pause so editor can sync to the dashboard tab animations.
+
+> "Every lead that calls — captured. Qualified. Logged. No one falls through the cracks."
+> *(pause 2 seconds)*
+> "AI texts them back in seconds. Not hours. Seconds."
+> *(pause 2 seconds)*
+> "Missed call? AI picks it up, responds, keeps them warm."
+> *(pause 2 seconds)*
+> "And it books the appointment. No back and forth. No phone tag."
+
+Tell the Fiverr editor: "Scene 4 voiceover has 2-second pauses between each line — sync each line to the next tab animating in."
+
+---
+
 ## SHOOT ORDER (FOR WAYNE — That's It)
 
 ### Step 1 — Record yourself on camera (30-45 min)
