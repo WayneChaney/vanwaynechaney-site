@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vanwayne Chaney II — About</title>
+  <link rel="icon" type="image/png" href="./vc2_v_logo_transparent_tight.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -20,7 +21,84 @@
       --border:    rgba(201,168,76,0.15);
       --radius:    12px;
       --blue-glow: rgba(63, 157, 255, 0.18);
+      --bar-h: 60px;
     }
+
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--bar-h);
+      background: rgba(6,16,29,0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      padding-bottom: env(safe-area-inset-bottom);
+      height: calc(var(--bar-h) + env(safe-area-inset-bottom));
+    }
+
+    .bar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      padding: 8px 10px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+    }
+
+    .bar-item:hover, .bar-item.active { color: var(--gold); }
+
+    .bar-item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bar-consult {
+      background: var(--gold);
+      color: #000 !important;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .bar-consult svg { stroke: #000; }
+
+    body { padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
+    }
+
+    /* ── PRELOADER ── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+    #preloader video { width: 100%; max-width: 480px; max-height: 70vh; object-fit: contain; border-radius: 12px; }
+    #preloader.fade-out { opacity: 0; pointer-events: none; }
+
+    .page { opacity: 0; transition: opacity 0.6s ease 0.3s; }
+    .page.visible { opacity: 1; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -439,6 +517,7 @@
     section {
       padding: 7rem 4rem;
       position: relative;
+      scroll-margin-top: 88px;
     }
 
     .section-label {
@@ -506,8 +585,26 @@
       width: 100%;
       display: block;
       border-radius: 14px;
-      object-fit: cover;
+      object-fit: contain;
       max-height: 680px;
+    }
+
+    .about-photo-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-slide {
+      position: absolute;
+      inset: 1rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .about-photo-slide.active {
+      opacity: 1;
+      position: relative;
+      inset: auto;
     }
 
     .about-photo-caption {
@@ -1193,6 +1290,8 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
+      .nav-logo { font-size: 1rem; }
+      .nav-logo img { height: 32px !important; width: 32px !important; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .hamburger { display: flex; }
@@ -1200,20 +1299,34 @@
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: 5.25rem 1rem 2rem;
+        padding: 5.5rem 1.25rem 2.25rem;
         text-align: left;
-        gap: 1.5rem;
+        gap: 1.25rem;
       }
-      .hero-photo { order: -1; }
+      .hero-photo { order: 2; }
+      .hero-content { order: 1; }
       .photo-frame { width: 100%; }
       .hero-actions { justify-content: flex-start; flex-direction: column; }
       .hero-actions a, .hero-actions button { width: 100%; text-align: center; }
-      .hero-stats { justify-content: flex-start; gap: 1.1rem; flex-wrap: wrap; margin-top: 1.75rem; padding-top: 1.25rem; }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+      }
+      .stat-item {
+        padding: 0.8rem 0.7rem;
+        border: 1px solid rgba(201,168,76,0.12);
+        border-radius: 14px;
+        background: rgba(8,18,32,0.82);
+      }
+      .stat-label { font-size: 0.68rem; line-height: 1.35; }
       .hero-strip { grid-template-columns: repeat(2, 1fr); max-width: none; margin-top: 1.5rem; }
-      .hero-desc { margin: 0 0 1.5rem; max-width: none; }
+      .hero-desc { margin: 0 0 1.25rem; max-width: none; font-size: 0.98rem; line-height: 1.7; }
       .btn-primary, .btn-secondary { padding: 1rem 1.5rem; font-size: 0.88rem; }
 
-      section { padding: 3.5rem 1.5rem; }
+      section { padding: 3.25rem 1.25rem; }
 
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .story-grid { grid-template-columns: 1fr; }
@@ -1222,6 +1335,25 @@
       .skills-wrap { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 1rem; }
       .what-grid, .follow-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .story-panel,
+      .education-panel,
+      .what-card,
+      .follow-card,
+      .experience-card,
+      .skills-card,
+      .about-photo-card {
+        padding: 1.25rem;
+        border-radius: 16px;
+      }
+      .section-sub,
+      .about-body,
+      .story-panel p,
+      .experience-copy,
+      .what-copy,
+      .follow-copy {
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
       .steps::before { display: none; }
 
       /* Product cards — full tap targets */
@@ -1252,10 +1384,12 @@
 
       .hero-visual-card {
         width: 100%;
-        aspect-ratio: 16 / 12;
+        aspect-ratio: 16 / 11.5;
       }
-      .hero-visual-card img { object-fit: cover; object-position: 30% 30%; transform: scale(1.08); }
+      .hero-visual-card img { object-fit: contain; object-position: center center; transform: none; }
       .photo-badge { left: 0.75rem; bottom: 0.75rem; }
+      .mobile-menu a { font-size: 1.65rem; }
+      .mobile-menu .mobile-cta { width: calc(100% - 3rem); text-align: center; }
 
       footer {
         flex-direction: column;
@@ -1268,18 +1402,66 @@
 
     @media (max-width: 480px) {
       nav { padding: 0.875rem 1.25rem; }
+      .nav-logo { font-size: 0.95rem; }
+      .nav-logo img { height: 28px !important; width: 28px !important; margin-right: 0.4rem !important; }
 
-      .hero { padding: 5rem 1.25rem 2.5rem; }
-      .hero-name { font-size: 2.8rem; }
-      .hero-tag { font-size: 1rem; }
-      .hero-desc { font-size: 0.95rem; }
-      .hero-stats { gap: 1.25rem; }
-      .stat-num { font-size: 1.6rem; }
-      .hero-strip { grid-template-columns: 1fr; }
-      .hero-tagline-bar { border-radius: 18px; font-size: 0.7rem; letter-spacing: 0.16em; padding: 0.9rem 1rem; }
+      .hero { padding: 5rem 1rem 2rem; }
+      .hero-eyebrow {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+        padding: 0.35rem 0.7rem;
+        margin-bottom: 1rem;
+      }
+      .hero-name { font-size: 2.35rem; line-height: 0.94; }
+      .hero-tag { font-size: 0.95rem; margin-bottom: 1rem; }
+      .hero-desc { font-size: 0.92rem; line-height: 1.65; }
+      .hero-stats { gap: 0.6rem; }
+      .stat-num { font-size: 1.35rem; }
+      .hero-strip { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+      .hero-strip-item { padding: 0.85rem 0.65rem; border-radius: 14px; }
+      .hero-strip-icon { font-size: 1.2rem; margin-bottom: 0.45rem; }
+      .hero-strip-label { font-size: 0.64rem; letter-spacing: 0.06em; }
+      .hero-tagline-bar {
+        border-radius: 16px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        line-height: 1.5;
+        padding: 0.8rem 0.85rem;
+      }
 
-      section { padding: 3rem 1.25rem; }
-      .section-title { font-size: 1.6rem; }
+      section { padding: 2.75rem 1rem; scroll-margin-top: 76px; }
+      .section-title { font-size: 1.75rem; line-height: 1.08; }
+      .section-label { font-size: 0.62rem; margin-bottom: 0.7rem; }
+      .section-sub { font-size: 0.92rem; line-height: 1.7; }
+      .about-grid { gap: 1.5rem; }
+      .story-grid,
+      .experience-grid,
+      .skills-wrap,
+      .what-grid,
+      .follow-grid { gap: 0.9rem; margin-top: 1.75rem; }
+      .products-header { margin-bottom: 2rem; }
+      .story-panel,
+      .education-panel,
+      .what-card,
+      .follow-card,
+      .experience-card,
+      .skills-card,
+      .about-photo-card { padding: 1rem; }
+      .about-body,
+      .story-panel p,
+      .experience-copy,
+      .what-copy,
+      .follow-copy,
+      .education-copy,
+      .skills-list li {
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+      .experience-role,
+      .education-title,
+      .what-title,
+      .follow-title { font-size: 1.15rem; }
+      .skills-list span { font-size: 0.77rem; }
 
       .product-card { padding: 1.25rem; }
       .product-name { font-size: 1.25rem; }
@@ -1295,23 +1477,32 @@
       .cta-section .btn-primary { width: 100%; text-align: center; padding: 1rem; }
 
       .photo-frame { width: 100%; }
-      .hero-visual-card { aspect-ratio: 16 / 13; }
-      .hero-visual-card img { object-fit: cover; object-position: 31% 30%; transform: scale(1.12); }
+      .hero-visual-card { aspect-ratio: 16 / 12.5; border-radius: 18px; }
+      .hero-visual-card img { object-fit: contain; object-position: center center; transform: none; }
       .photo-badge { display: none; }
+      .about-photo-card img { max-height: 420px; }
+      .footer-links a { font-size: 0.76rem; }
     }
+  
   </style>
 </head>
 <body class="page-about">
 
+  <div id="preloader">
+    <video muted playsinline autoplay>
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="page" id="page">
+
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./index.html" data-page-transition onclick="closeMobile()">Home</a>
+    <a href="./services.html" onclick="closeMobile()">Services</a>
     <a href="./about.html" onclick="closeMobile()">About</a>
-    <a href="./products.html" onclick="closeMobile()">Products</a>
-    <a href="./re-tools.html#vcii" onclick="closeMobile()">RE Tools</a>
-    <a href="./dev-tools.html#dev-tools" onclick="closeMobile()">Dev</a>
-    <a href="./fitness-tools.html#fitness-tools" onclick="closeMobile()">Fitness</a>
-    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+    <a href="./websites.html" onclick="closeMobile()">Live Demos</a>
+    <a href="./intake.html" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
   </div>
 
   <!-- NAV -->
@@ -1321,12 +1512,10 @@
       Vanwayne
     </a>
     <ul class="nav-links">
+      <li><a href="./services.html" data-page-transition>Services</a></li>
       <li><a href="./about.html" class="active">About</a></li>
-      <li><a href="./products.html">Products</a></li>
-      <li><a href="./re-tools.html#vcii">RE Tools</a></li>
-      <li><a href="./dev-tools.html#dev-tools">Dev</a></li>
-      <li><a href="./fitness-tools.html#fitness-tools">Fitness</a></li>
-      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+      <li><a href="./websites.html" data-page-transition>Live Demos</a></li>
+      <li><a href="./intake.html" class="nav-cta">Work With Me</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1338,22 +1527,27 @@
     <div class="hero-bg"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">About VC2</div>
+      <div class="hero-eyebrow">About Wayne</div>
 
       <h1 class="hero-name">
         <div class="first">Vanwayne</div>
         <div class="last">Chaney II</div>
       </h1>
 
-      <p class="hero-tag">Computer Engineer · AI Certified · MBA In Progress</p>
+      <p class="hero-tag">Computer Engineer · AI Systems Builder · Operator Mindset</p>
 
       <p class="hero-desc">
-        This page is the background behind the build: education, experience, technical stack, and the credentials that support the work.
+        I was born and raised in Cleveland. I grew up around hard work, local hustle, and seeing what it looks like when someone really knows how to build with their hands. From computer engineering to AI systems, that is still the lane I’m in now.
       </p>
 
       <div class="hero-actions">
         <a href="#story" class="btn-primary">See My Background</a>
-        <a href="./products.html#contact" class="btn-secondary">Work With Me</a>
+        <a href="./intake.html" class="btn-secondary">Work With Me</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:480px;margin-top:1rem;">
+        <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">Buy Now</a>
+        <a href="./intake.html" class="btn-primary" style="text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
       </div>
 
       <div class="hero-stats">
@@ -1377,8 +1571,8 @@
           <div class="hero-strip-label">AI-Powered Analysis</div>
         </div>
         <div class="hero-strip-item">
-          <div class="hero-strip-icon">🏠</div>
-          <div class="hero-strip-label">Real Estate Deals</div>
+          <div class="hero-strip-icon">📞</div>
+          <div class="hero-strip-label">AI Phone Receptionists</div>
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">⚙️</div>
@@ -1390,13 +1584,13 @@
         </div>
       </div>
 
-      <div class="hero-tagline-bar">Education, Experience, Skills, And Execution</div>
+      <div class="hero-tagline-bar">From Computer Engineering To AI Systems And Operator Tools</div>
     </div>
 
     <div class="hero-photo">
       <div class="photo-frame" style="width:min(680px,100%);">
         <div class="hero-visual-card">
-          <img src="./VC2 Banner.png" alt="Vanwayne Chaney Jr. AI for real estate operators banner" />
+          <img src="./vcii-banner.png" alt="Vanwayne Chaney Jr. AI for operators banner" />
         </div>
         <div class="photo-badge">
           <div class="badge-dot"></div>
@@ -1409,35 +1603,24 @@
     </div>
   </section>
 
-  <!-- QUICK NAV -->
-  <div style="background:var(--bg-2);border-bottom:1px solid rgba(255,255,255,0.05);overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;">
-    <div style="display:inline-flex;gap:0;min-width:100%;">
-      <a href="#about"    style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">About</a>
-      <a href="#story"     style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Background</a>
-      <a href="./products.html" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Products</a>
-      <a href="./re-tools.html#vcii" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">RE Tools</a>
-      <a href="./dev-tools.html#dev-tools" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.color='';this.style.background=''">Dev</a>
-      <a href="./fitness-tools.html#fitness-tools" style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#ea580c;text-decoration:none;border-right:1px solid rgba(255,255,255,0.05);transition:color 0.2s,background 0.2s;white-space:nowrap;" onmouseover="this.style.color='#f97316';this.style.background='rgba(234,88,12,0.06)'" onmouseout="this.style.color='#ea580c';this.style.background=''">Fitness</a>
-      <a href="#contact"   style="display:inline-block;padding:0.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Work With Me →</a>
-    </div>
-  </div>
-
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-grid">
       <div class="reveal">
-        <div class="section-label">// 001 — About</div>
-        <h2 class="section-title">The VC2 profile.</h2>
+        <div class="section-label">01</div>
+        <h2 class="section-title">Who is Vanwayne Chaney Jr.?</h2>
         <div class="about-body">
-          <p><strong>VC2</strong> is my professional profile: software engineering, AI systems, and operator-grade execution.</p>
-          <p>My edge is combining engineering discipline with product thinking so the work is not just smart, but usable.</p>
-          <p>This page is the clean version of the signal: education, credentials, experience, and technical range.</p>
+          <p><strong>I’m Wayne.</strong> I’m a software engineer, AI builder, and systems-minded operator from Cleveland, Ohio. I build AI workflows, digital tools, and business systems, but the real point of this page is simpler than that. It is to show you who I am, what shaped me, and why I work the way I do.</p>
+          <p>I care about building real relationships with real people, especially business owners and operators who are trying to tighten up their systems, save time, and stop losing money to sloppy follow-up or messy operations.</p>
+          <p>Through <strong>VC2</strong>, I focus on practical AI and operator tools that actually help. This is the background behind that: Cleveland roots, engineering discipline, a real interest in systems, and a builder mindset that comes from both work and life.</p>
         </div>
       </div>
 
       <div class="about-photo-wrap reveal reveal-delay-2">
         <div class="about-photo-card">
-          <img src="./graduation-2023-new.jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide active" src="./graduation-2023-new.jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide" src="./Attachment(1).jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide" src="./Attachment(2).jpg" alt="Vanwayne Chaney Jr. graduation portrait" />
           <div class="about-photo-caption">Graduation portrait</div>
         </div>
       </div>
@@ -1447,65 +1630,65 @@
   <section class="what-section" id="story">
     <div class="what-inner">
       <div class="products-header reveal" style="text-align:left;margin-bottom:2.5rem;">
-        <div class="section-label">// 002 — My Story</div>
-        <h2 class="section-title">Engineer first. Operator mindset.</h2>
-        <p class="section-sub" style="margin:0;">From computer engineering to AI systems, the through-line is leverage: build useful tools, sharpen decisions, and execute cleanly.</p>
+        <div class="section-label">02</div>
+        <h2 class="section-title">Mission: build useful systems for people doing real work.</h2>
+        <p class="section-sub" style="margin:0;">I want the work to feel personal, practical, and local. Good systems should help good people move faster, follow up better, and run cleaner businesses.</p>
       </div>
 
       <div class="story-grid">
         <div class="story-panel reveal reveal-delay-1">
-          <p>I earned my <strong>Computer Engineering degree from Miami University</strong>, which gave me the technical base to think in systems, not just tasks.</p>
-          <p>From there, I moved deeper into software engineering, automation, and AI. That path pushed me toward a different kind of work: not just coding features, but designing tools, workflows, and digital products that make execution easier.</p>
-          <p>Now I’m combining engineering, product thinking, and business. I’m also completing my <strong>MBA at Cleveland State</strong> while building AI-first products, real estate tools, and my own operating systems.</p>
-          <p>I’m actively investing in the next layer too: <strong>cloud, AI, and technical certifications</strong>. The point is not to collect credentials. The point is to turn knowledge into things that ship.</p>
+          <p>I was born and raised in Cleveland, and I grew up around people who worked hard and had to figure things out without making a big show out of it. That shaped me more than anything else.</p>
+          <p>My father worked hard and did all the trades: electrical, plumbing, roofing, whatever needed to get done. Helping around that world taught me early that real work matters, details matter, and if you want a better future you have to build it.</p>
+          <p>I also grew up around my father's small real estate business, which meant I met a lot of local contractors and saw how much work happens behind the scenes. That stayed with me. It is a big reason I care about helping local businesses now.</p>
+          <p>Cleveland is home. My family is from here. I grew up on Browns games even when we lost, and I still remember how crazy it felt seeing the Cavs win in 2016 and the whole city come alive. So when I say I want to start local, I mean that for real.</p>
         </div>
 
         <div class="education-panel reveal reveal-delay-2">
           <div class="education-item">
-            <div class="education-kicker">Education</div>
-            <div class="education-title">Miami University</div>
-            <div class="education-copy">Bachelor's degree in Computer Engineering. Strong technical foundation in systems, logic, and problem solving.</div>
+            <div class="education-kicker">03</div>
+            <div class="education-title">From Cleveland roots to Miami University engineering</div>
+            <div class="education-copy">Miami University gave me the technical foundation, but the base layer started earlier in Cleveland: work ethic, responsibility, and the habit of taking real problems seriously.</div>
           </div>
           <div class="education-item">
-            <div class="education-kicker">Business</div>
-            <div class="education-title">Cleveland State University</div>
-            <div class="education-copy">MBA in progress. Expanding from engineering execution into strategy, operations, and long-term asset building.</div>
+            <div class="education-kicker">04</div>
+            <div class="education-title">Discovering AI and using it every day</div>
+            <div class="education-copy">AI clicked for me in school during a final project where we were automating computer vision for a police station and seeing how it could help real people. That was the moment it stopped feeling abstract and started feeling meaningful.</div>
           </div>
           <div class="education-item">
-            <div class="education-kicker">Certification</div>
-            <div class="education-title">AWS Certified Cloud Practitioner</div>
-            <div class="education-copy">Issued June 2024. Foundational AWS cloud certification covering cloud concepts, core services, pricing, security, architecture, and support.</div>
+            <div class="education-kicker">05</div>
+            <div class="education-title">Engineering plus business thinking</div>
+            <div class="education-copy">My MBA at Cleveland State adds the operator layer: strategy, priorities, operations, and how to turn systems into assets instead of random one-off projects.</div>
           </div>
           <div class="education-item">
-            <div class="education-kicker">Technical Courses</div>
-            <div class="education-title">Python For Machine Learning</div>
-            <div class="education-copy">Hands-on exposure to machine learning fundamentals, AI-adjacent workflows, and technical problem solving beyond the classroom.</div>
+            <div class="education-kicker">06</div>
+            <div class="education-title">Certifications</div>
+            <div class="education-copy">Microsoft AI-900 (Azure AI Fundamentals). Anthropic Academy: AI Fluency Framework &amp; Foundations, Claude 101, Introduction to Agent Skills, Introduction to Subagents, Introduction to Model Context Protocol, MCP Advanced Topics, AI Capabilities and Limitations, Teaching AI Fluency, Introduction to Claude Cowork. I use certifications to reinforce real shipped work, not replace it.</div>
           </div>
         </div>
       </div>
 
       <div class="what-grid">
         <div class="what-card reveal reveal-delay-1">
-          <div class="what-kicker">What I do</div>
-          <div class="what-title">Software Engineering</div>
-          <p class="what-copy">I come from real engineering work. That means I care about reliability, systems thinking, and building things that can actually hold up.</p>
+          <div class="what-kicker">What I Build</div>
+          <div class="what-title">Websites, tools, and AI systems</div>
+          <p class="what-copy">I build websites, internal tools, workflows, automations, and AI systems that solve actual business problems, especially for local operators who need more follow-through and less friction.</p>
         </div>
         <div class="what-card reveal reveal-delay-2">
-          <div class="what-kicker">What I build</div>
-          <div class="what-title">AI Systems</div>
-          <p class="what-copy">I build AI workflows, assistants, and tools that reduce manual work, improve follow-through, and make execution easier for operators.</p>
+          <div class="what-kicker">Content & Education</div>
+          <div class="what-title">Teaching through real builds</div>
+          <p class="what-copy">I publish content around AI workflows, system design, and practical usage so people can get to know how I think and see these tools in real day-to-day execution.</p>
         </div>
         <div class="what-card reveal reveal-delay-3">
-          <div class="what-kicker">What it becomes</div>
-          <div class="what-title">Products + Assets</div>
-          <p class="what-copy">Some of the work becomes digital products. Some becomes internal leverage. Some becomes the foundation for bigger businesses later.</p>
+          <div class="what-kicker">How I Think</div>
+          <div class="what-title">Leverage over noise</div>
+          <p class="what-copy">I like systems that create compounding value: faster follow-up, cleaner operations, better decisions, and assets that keep paying back long after the build is done.</p>
         </div>
       </div>
 
       <div class="products-header reveal" style="text-align:left;margin:4rem 0 0;">
-        <div class="section-label">// 002B — Experience</div>
-        <h2 class="section-title">Built in real environments.</h2>
-        <p class="section-sub" style="margin:0;">The strongest signal is not theory. It’s shipping, supporting, and improving systems in live environments.</p>
+        <div class="section-label">07</div>
+        <h2 class="section-title">Experience, content, and authority.</h2>
+        <p class="section-sub" style="margin:0;">The signal is a mix of real engineering work, Cleveland roots, public education, active certifications, and constant build output across AI systems and operator tools.</p>
       </div>
 
       <div class="experience-grid">
@@ -1513,73 +1696,103 @@
           <div class="experience-meta">2023 — Present</div>
           <div class="experience-role">IT Applications Programmer</div>
           <div class="experience-org">Progressive Insurance · Remote · Mayfield Heights, Ohio</div>
-          <p class="experience-copy">Building and maintaining business-driven software solutions, supporting live systems, documenting development work, and contributing production code across application upgrades and ongoing maintenance.</p>
+          <p class="experience-copy">Production software work, live-system support, business-facing application development, and the day-to-day discipline of building things that have to hold up.</p>
         </div>
         <div class="experience-card reveal reveal-delay-2">
           <div class="experience-meta">2022</div>
           <div class="experience-role">Software Engineer Intern</div>
           <div class="experience-org">Rockwell Automation · Milwaukee, Wisconsin</div>
-          <p class="experience-copy">Worked on interface improvements, customer feedback workflows, and recurring SQL-backed reporting. Supported real engineering work in a manufacturing technology environment using tools like C# and ASP.NET.</p>
+          <p class="experience-copy">Hands-on engineering work inside a real industrial technology environment, with interface improvements, recurring reporting, and business-driven software tasks.</p>
         </div>
         <div class="experience-card reveal reveal-delay-3">
           <div class="experience-meta">2021 — 2023</div>
-          <div class="experience-role">Engineer Tutor</div>
+          <div class="experience-role">Engineer Tutor + Technical Communicator</div>
           <div class="experience-org">Miami University · Oxford, Ohio</div>
-          <p class="experience-copy">Tutored students in math, computer science, and electrical and computer engineering. Helped break down difficult technical problems and communicate solutions clearly.</p>
+          <p class="experience-copy">Tutored math, computer science, and engineering topics. Good practice for breaking technical ideas down clearly, which still shows up in how I teach AI and systems today.</p>
         </div>
         <div class="experience-card reveal reveal-delay-4">
-          <div class="experience-meta">2019 — 2023</div>
-          <div class="experience-role">Information Technology Intern</div>
-          <div class="experience-org">City of Cleveland · City Hall</div>
-          <p class="experience-copy">Supported employees with hardware and technology issues, maintained systems, and handled hands-on troubleshooting in an operating municipal environment.</p>
+          <div class="experience-meta">Now</div>
+          <div class="experience-role">VC2, YouTube, and Operator Builds</div>
+          <div class="experience-org">Independent build work</div>
+          <p class="experience-copy">Websites, AI workflows, internal tools, real estate calculators, educational content, and system experiments that turn into products, assets, and client-side leverage for ambitious people trying to build a better future.</p>
         </div>
       </div>
 
       <div class="products-header reveal" style="text-align:left;margin:4rem 0 0;">
-        <div class="section-label">// 002C — Skills</div>
-        <h2 class="section-title">Technical stack and working strengths.</h2>
-        <p class="section-sub" style="margin:0;">The skills below come from actual school, internship, and production experience, not filler.</p>
+        <div class="section-label">08</div>
+        <h2 class="section-title">How I help and why people work with me.</h2>
+        <p class="section-sub" style="margin:0;">The mix is simple: engineering discipline, active AI implementation, public teaching, certifications, and a personal approach rooted in real connection.</p>
       </div>
 
       <div class="skills-wrap">
         <div class="skills-card reveal reveal-delay-1">
-          <div class="skills-card-title">Programming</div>
+          <div class="skills-card-title">Background</div>
           <ul class="skills-list">
-            <li>Python <span>Machine learning coursework and AI workflow building</span></li>
-            <li>Java <span>LinkedIn skill assessment passed</span></li>
-            <li>C# <span>Used across Progressive and internship work</span></li>
-            <li>Visual Basic .NET <span>Used in production-facing application work</span></li>
+            <li>Computer Engineering Degree <span>Strong technical foundation from Miami University</span></li>
+            <li>MBA In Progress <span>Business, operations, and strategy layered on top of the engineering base</span></li>
+            <li>AWS Cloud Practitioner <span>Cloud fundamentals and infrastructure context</span></li>
+            <li>AI Certifications In Progress <span>Continuing to deepen the AI and cloud side with formal validation</span></li>
           </ul>
         </div>
 
         <div class="skills-card reveal reveal-delay-2">
-          <div class="skills-card-title">Frameworks & Tools</div>
+          <div class="skills-card-title">Content</div>
           <ul class="skills-list">
-            <li>ASP.NET <span>Applied during Rockwell Automation internship</span></li>
-            <li>Azure DevOps <span>Exposure to engineering workflow and delivery tooling</span></li>
-            <li>Visual Studio <span>Used in software engineering internship work</span></li>
-            <li>AWS Cloud <span>Backed by Cloud Practitioner certification</span></li>
+            <li>YouTube Tutorials <span>Practical content on AI use, systems, workflows, and real execution</span></li>
+            <li>Public Build Mode <span>Teaching from experiments, shipped systems, and hands-on use instead of theory dumps</span></li>
+            <li>Daily AI Usage <span>AI is part of my actual workflow, not just something I talk about online</span></li>
+            <li>VC2 Brand <span>The professional lane for AI systems, tools, and operator education with a local-first relationship mindset</span></li>
           </ul>
         </div>
 
         <div class="skills-card reveal reveal-delay-3">
-          <div class="skills-card-title">Analysis & Engineering</div>
+          <div class="skills-card-title">What I Help With</div>
           <ul class="skills-list">
-            <li>Data Analysis <span>Applied in technical and IT support environments</span></li>
-            <li>Analytics <span>Operational and technical problem solving</span></li>
-            <li>Engineering <span>Computer engineering background from Miami University</span></li>
-            <li>Computer Technology <span>Hands-on troubleshooting and support experience</span></li>
+            <li>AI Workflows & Prompt Systems <span>Assistants, operator tools, and reusable execution flows</span></li>
+            <li>Websites & Landing Pages <span>Clean pages built to convert, explain, and capture action</span></li>
+            <li>Internal Tools & Automations <span>Systems that remove manual work and tighten execution</span></li>
+            <li>Digital Products <span>Templates, calculators, and tools that turn knowledge into assets</span></li>
           </ul>
         </div>
 
         <div class="skills-card reveal reveal-delay-4">
-          <div class="skills-card-title">Interpersonal</div>
+          <div class="skills-card-title">Work Style</div>
           <ul class="skills-list">
-            <li>Communication <span>Teaching, tutoring, and cross-team collaboration</span></li>
-            <li>Critical Thinking <span>Developed through tutoring and engineering work</span></li>
-            <li>Problem Solving <span>Repeated theme across school, internships, and production roles</span></li>
-            <li>Teamwork & Coordination <span>Experience in tutoring, retail, and engineering teams</span></li>
+            <li>Small Number Of Serious Clients <span>I prefer focused work with people who have ambition, want to push themselves, and are serious about building a better future</span></li>
+            <li>ROI First <span>The best build is the one that saves time, captures revenue, or reduces bad decisions fast</span></li>
+            <li>Operator Mindset <span>Clear scope, clean execution, and useful outputs over hype and noise</span></li>
+            <li>Local Connection <span>I want people to feel like they know who they are working with, not like they are hiring some faceless internet AI guy</span></li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="follow" id="faq">
+    <div class="follow-inner">
+      <div class="products-header reveal" style="text-align:left;margin-bottom:2.5rem;">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">A few quick questions.</h2>
+        <p class="section-sub" style="margin:0;">The short version of who I am, where I come from, and what kind of work I care about.</p>
+      </div>
+
+      <div class="follow-grid">
+        <div class="follow-card reveal reveal-delay-1">
+          <div class="follow-kicker">Question</div>
+          <div class="follow-title">Who is Wayne, really?</div>
+          <p class="follow-copy">A Cleveland-born builder shaped by hard work, family, engineering, and local business. Someone who cares about systems because he has seen what happens when real work depends on them.</p>
+        </div>
+
+        <div class="follow-card reveal reveal-delay-2">
+          <div class="follow-kicker">Question</div>
+          <div class="follow-title">When did AI become part of the story?</div>
+          <p class="follow-copy">AI clicked in school during a final project using computer vision to help a police station. That was the moment it felt less like a class topic and more like something that could genuinely improve people's lives.</p>
+        </div>
+
+        <div class="follow-card reveal reveal-delay-3">
+          <div class="follow-kicker">Question</div>
+          <div class="follow-title">What kinds of projects do I help with?</div>
+          <p class="follow-copy">Websites, AI workflows, internal tools, operator systems, and digital products where the goal is better execution, faster follow-up, cleaner operations, and real usable leverage for ambitious people trying to grow.</p>
         </div>
       </div>
     </div>
@@ -1587,26 +1800,45 @@
   <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="cta-inner reveal">
-      <div class="section-label">// 009 — Let's Build</div>
-      <h2 class="section-title">Ready to stop doing it manually?</h2>
-      <p class="section-sub">Whether you want a stronger professional site, a custom AI workflow, or a productized system that saves time, let’s talk about the highest-ROI thing to build first.</p>
-      <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Book a Free Call</a>
+      <div class="section-label">Work Together</div>
+      <h2 class="section-title">If you want to work with someone local, practical, and systems-minded, let’s talk.</h2>
+      <p class="section-sub">I work with a small number of serious clients on websites, AI workflows, operator tools, and scoped system builds. If there is a real bottleneck to fix, we start there and build the highest-ROI move first.</p>
+      <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Start the Conversation</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer style="margin-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom))">
     <div class="footer-brand">Vanwayne</div>
     <ul class="footer-links">
+      <li><a href="./services.html" data-page-transition>Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="https://www.youtube.com/@itsVC2" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-      <li><a href="https://www.linkedin.com/in/waynechaney-jr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="./websites.html" data-page-transition>Live Demos</a></li>
     </ul>
     <div class="footer-copy">© 2026 Vanwayne Chaney Jr.</div>
   </footer>
 
+  </div><!-- /page -->
+
   <script>
+    // Preloader
+    (function() {
+      const preloader = document.getElementById('preloader');
+      const page = document.getElementById('page');
+      const vid = preloader ? preloader.querySelector('video') : null;
+      function showPage() {
+        if (!preloader) return;
+        preloader.classList.add('fade-out');
+        setTimeout(() => { preloader.style.display = 'none'; }, 800);
+        page.classList.add('visible');
+      }
+      if (vid) {
+        vid.addEventListener('ended', showPage);
+        vid.addEventListener('error', showPage);
+      }
+      setTimeout(showPage, 1500);
+    })();
+
     // Mobile menu
     function toggleMobile() {
       const menu = document.getElementById('mobileMenu');
@@ -1658,11 +1890,70 @@
         ? 'rgba(9,9,14,0.95)'
         : 'rgba(9,9,14,0.8)';
     });
+  
+    document.querySelectorAll('a[data-page-transition]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('#')) return;
+        event.preventDefault();
+        const overlay = document.getElementById('navTransition');
+        const video = document.getElementById('navTransitionVideo');
+        if (!overlay || !video) {
+          window.location.href = href;
+          return;
+        }
+        overlay.style.display = 'flex';
+        video.currentTime = 0;
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
+        setTimeout(() => { window.location.href = href; }, 1100);
+      });
+    });
+
+    const aboutSlides = document.querySelectorAll('.about-photo-slide');
+    if (aboutSlides.length > 1) {
+      let aboutSlideIndex = 0;
+      window.setInterval(() => {
+        aboutSlides[aboutSlideIndex].classList.remove('active');
+        aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+        aboutSlides[aboutSlideIndex].classList.add('active');
+      }, 3500);
+    }
   </script>
+  <div id="navTransition" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;">
+    <video id="navTransitionVideo" muted playsinline style="width:100%;max-width:480px;max-height:70vh;object-fit:contain;border-radius:12px;">
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <nav class="sticky-bar">
+    <a href="./index.html" data-page-transition class="bar-item">
+      <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;" />
+      Home
+    </a>
+    <a href="./services.html" data-page-transition class="bar-item">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Services
+    </a>
+    <a href="./about.html" data-page-transition class="bar-item active">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+      About
+    </a>
+    <a href="./websites.html" data-page-transition class="bar-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor"/></svg>
+      Live Demos
+    </a>
+    <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="bar-item bar-consult">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Buy
+    </a>
+  </nav>
 </body>
 </html>
 
 
 
 
-
+
+
+
