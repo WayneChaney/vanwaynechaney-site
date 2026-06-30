@@ -37,7 +37,7 @@
 
     /* ─── NOISE OVERLAY ─── */
     body::before {
-      content: '';
+      content: ';
       position: fixed;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
@@ -126,7 +126,7 @@
 
     /* subtle grid */
     .hero-bg::after {
-      content: '';
+      content: ';
       position: absolute;
       inset: 0;
       background-image:
@@ -155,7 +155,7 @@
     }
 
     .hero-eyebrow::before {
-      content: '';
+      content: ';
       width: 6px; height: 6px;
       background: var(--gold);
       border-radius: 50%;
@@ -324,7 +324,7 @@
     }
 
     .hero-visual-card::after {
-      content: '';
+      content: ';
       position: absolute;
       inset: 0;
       background:
@@ -342,7 +342,7 @@
     }
 
     .photo-frame::before {
-      content: '';
+      content: ';
       position: absolute;
       inset: -2px;
       background: linear-gradient(135deg, var(--gold), transparent 60%, var(--gold));
@@ -751,7 +751,7 @@
 
     .what-card::before,
     .follow-card::before {
-      content: '';
+      content: ';
       position: absolute;
       top: 0;
       left: 0;
@@ -822,7 +822,7 @@
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.25rem;
     }
 
@@ -891,7 +891,7 @@
     }
 
     .product-card::before {
-      content: '';
+      content: ';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
@@ -1035,7 +1035,7 @@
     }
 
     .steps::before {
-      content: '';
+      content: ';
       position: absolute;
       top: 2rem;
       left: calc(16.666% + 1rem);
@@ -1090,7 +1090,7 @@
     }
 
     .cta-section::before {
-      content: '';
+      content: ';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
@@ -1267,7 +1267,7 @@
 
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .story-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .products-grid { grid-template-columns: 1fr; gap: 1rem; }
       .experience-grid { grid-template-columns: 1fr; }
       .skills-wrap { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 1rem; }
@@ -1302,9 +1302,9 @@
 
       .hero-visual-card {
         width: 100%;
-        aspect-ratio: 16 / 12;
+        aspect-ratio: 16 / 13;
       }
-      .hero-visual-card img { object-fit: cover; object-position: 30% 30%; transform: scale(1.08); }
+      .hero-visual-card img { object-fit: contain; object-position: center center; transform: none; background: #081321; }
       .photo-badge { left: 0.75rem; bottom: 0.75rem; }
 
       footer {
@@ -1345,23 +1345,24 @@
       .cta-section .btn-primary { width: 100%; text-align: center; padding: 1rem; }
 
       .photo-frame { width: 100%; }
-      .hero-visual-card { aspect-ratio: 16 / 13; }
-      .hero-visual-card img { object-fit: cover; object-position: 31% 30%; transform: scale(1.12); }
+      .hero-visual-card { aspect-ratio: 16 / 14; }
+      .hero-visual-card img { object-fit: contain; object-position: center center; transform: none; background: #081321; }
       .photo-badge { display: none; }
     }
+  
   </style>
 </head>
 <body class="page-products">
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./index-new.html" data-page-transition onclick="closeMobile()">Home</a>
     <a href="./about.html" onclick="closeMobile()">About</a>
     <a href="./products.html" onclick="closeMobile()">Products</a>
     <a href="./re-tools.html#vcii" onclick="closeMobile()">RE Tools</a>
     <a href="./dev-tools.html#dev-tools" onclick="closeMobile()">Dev</a>
     <a href="./fitness-tools.html#fitness-tools" onclick="closeMobile()">Fitness</a>
-    <a href="./products.html#contact" onclick="closeMobile()" class="mobile-cta">Work With Me</a>
+    <a href="./intake.html" onclick="closeMobile()" class="mobile-cta">Talk First</a>
   </div>
 
   <!-- NAV -->
@@ -1371,12 +1372,12 @@
       Vanwayne
     </a>
     <ul class="nav-links">
-      <li><a href="./about.html">About</a></li>
+      <li><a href="./about.html" data-page-transition>About</a></li>
       <li><a href="./products.html" class="active">Products</a></li>
       <li><a href="./re-tools.html#vcii">RE Tools</a></li>
       <li><a href="./dev-tools.html#dev-tools">Dev</a></li>
       <li><a href="./fitness-tools.html#fitness-tools">Fitness</a></li>
-      <li><a href="./products.html#contact" class="nav-cta">Work With Me</a></li>
+      <li><a href="./intake.html" class="nav-cta">Talk First</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1388,22 +1389,22 @@
     <div class="hero-bg"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">Products + Systems</div>
+      <div class="hero-eyebrow">AI Workflow Offers</div>
 
       <h1 class="hero-name">
         <div class="first">Vanwayne</div>
         <div class="last">Chaney Jr.</div>
       </h1>
 
-      <p class="hero-tag">Websites · Free Tools · Simple Systems</p>
+      <p class="hero-tag">Three Offers · AI First · Websites Second</p>
 
       <p class="hero-desc">
-        Start with the free stuff and see how I build. If you need a website, a tracker, or a simple system that saves time, this page lets you try the easy wins first.
+        This page is the business in plain English. Three offers only: a 30-minute AI workflow audit, a custom AI system build, and website design as the secondary lane.
       </p>
 
       <div class="hero-actions">
-        <a href="#product-hub" class="btn-primary">Start Here</a>
-        <a href="#websites" class="btn-secondary">See Website Examples</a>
+        <a href="./intake.html" class="btn-primary">Talk First</a>
+        <a href="#product-hub" class="btn-secondary">See Offers</a>
       </div>
 
       <div class="hero-stats">
@@ -1424,29 +1425,29 @@
       <div class="hero-strip">
         <div class="hero-strip-item">
           <div class="hero-strip-icon">🖥️</div>
-          <div class="hero-strip-label">Websites That Look Legit</div>
+          <div class="hero-strip-label">Talk First</div>
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">📋</div>
-          <div class="hero-strip-label">Free Trackers</div>
+          <div class="hero-strip-label">30-Minute Audit</div>
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">⚙️</div>
-          <div class="hero-strip-label">Time-Saving Systems</div>
+          <div class="hero-strip-label">Custom AI Build</div>
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">🏠</div>
-          <div class="hero-strip-label">Real Estate Tools</div>
+          <div class="hero-strip-label">Website Design</div>
         </div>
       </div>
 
-      <div class="hero-tagline-bar">Trust First. Free Stuff Up Front. Paid Help When You Want More.</div>
+      <div class="hero-tagline-bar">Three Offers. AI Workflows First. Websites Second.</div>
     </div>
 
     <div class="hero-photo">
       <div class="photo-frame" style="width:min(680px,100%);">
         <div class="hero-visual-card">
-          <img src="./VC2 Banner.png" alt="Vanwayne Chaney Jr. AI for real estate operators banner" />
+          <img src="./vcii-banner.png" alt="Vanwayne Chaney Jr. AI for operators banner" />
         </div>
         <div class="photo-badge">
           <div class="badge-dot"></div>
@@ -1463,65 +1464,54 @@
   <section id="product-hub" style="background:var(--bg);border-top:1px solid rgba(255,255,255,0.04);">
     <div class="products" style="max-width:1200px;margin:0 auto;">
       <div class="products-header reveal">
-        <div class="section-label">// 003 — Tool Organization</div>
-        <h2 class="section-title">Everything organized by lane.</h2>
-        <p class="section-sub">No mixed offers. No random stacks. Pick the lane you want and go straight to the right tools.</p>
+        <div class="section-label">// 003 — Offer Stack</div>
+        <h2 class="section-title">Three offers. That is it.</h2>
+        <p class="section-sub">If you need help, start with the intake form. If you want strategy first, book the audit. If you need the work done, move into the custom build. Website design stays as the secondary offer.</p>
       </div>
 
-      <div class="products-grid" style="grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div class="products-grid" style="gap:1.5rem;">
         <div class="product-card featured reveal reveal-delay-1">
           <div class="featured-badge">Start Here</div>
           <div class="product-icon">🧠</div>
-          <div class="product-name">AI WORKFLOW CLARITY SESSION</div>
-          <p class="product-desc">A 90-minute live session to break down one repetitive task in your business, clean up the process, and turn it into a practical AI-assisted workflow you can actually use.</p>
+          <div class="product-name">30-MINUTE AI WORKFLOW AUDIT</div>
+          <p class="product-desc">A short focused call to find the real bottleneck, map the workflow, and tell you the cleanest next move.</p>
           <ul class="product-features">
-            <li>Map one real business workflow step by step</li>
-            <li>Build one working prompt or repeatable process</li>
-            <li>Identify what should be automated later</li>
-            <li>Follow-up notes + next steps</li>
-            <li>No custom app builds or deep integrations</li>
+            <li>Review one real bottleneck in the business</li>
+            <li>Map the workflow and spot the leak</li>
+            <li>Get clear next steps after the call</li>
+            <li>Use this before paying for a bigger build</li>
+            <li>Simple, fast, and easy to say yes to</li>
           </ul>
-          <a href="mailto:vanwaynec01@gmail.com?subject=AI%20Workflow%20Setup%20Session" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Book the $99 Setup →</a>
+          <a href="./intake.html" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Book The Audit →</a>
         </div>
 
         <div class="product-card featured reveal reveal-delay-2">
-          <div class="featured-badge">5 Products</div>
+          <div class="featured-badge">Main Offer</div>
+          <div class="product-icon">⚙️</div>
+          <div class="product-name">CUSTOM AI SYSTEM BUILD</div>
+          <p class="product-desc">For businesses that want the actual build: lead follow-up, intake, scheduling, AI receptionist flows, website cleanup, or workflow automation.</p>
+          <ul class="product-features">
+            <li>Custom scope based on your real workflow</li>
+            <li>Best for trades, service businesses, and operators</li>
+            <li>Includes strategy, setup direction, and implementation lane</li>
+            <li>Use after the audit or if you already know the problem</li>
+          </ul>
+          <a href="./intake.html" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Talk First About A Build →</a>
+        </div>
+
+        <div class="product-card reveal reveal-delay-3">
+          <div class="featured-badge">Optional Lane</div>
           <div class="product-icon">🏠</div>
-          <div class="product-name">REAL ESTATE TOOLS</div>
-          <p class="product-desc">Deal analysis, pipeline tracking &amp; prompt packs.</p>
+          <div class="product-name">WEBSITE DESIGN</div>
+          <p class="product-desc">A secondary offer for businesses that need a cleaner, more credible site to support the AI workflow and convert better.</p>
           <ul class="product-features">
-            <li>Prompt vault + deal workflow</li>
-            <li>4-in-1 calculator + Landlord OS</li>
-            <li>Investor Stack bundle</li>
+            <li>Best for businesses that look weak online right now</li>
+            <li>Pairs well with lead follow-up and intake automation</li>
+            <li>Use this as the side offer, not the main pitch</li>
           </ul>
-          <a href="./re-tools.html#vcii" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Open Real Estate Tools →</a>
+          <a href="./websites.html" class="product-cta">See Website Examples →</a>
         </div>
 
-        <div class="product-card featured reveal reveal-delay-3">
-          <div class="featured-badge">4 Products</div>
-          <div class="product-icon">🤖</div>
-          <div class="product-name">DEV TOOLS</div>
-          <p class="product-desc">Developer tools, AI builder products, and website offers.</p>
-          <ul class="product-features">
-            <li>Dev Fitness + Health tools</li>
-            <li>Deep work and productivity tracking</li>
-            <li>Codex Briefs + website offer</li>
-          </ul>
-          <a href="./dev-tools.html#dev-tools" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Open Dev &amp; AI Tools →</a>
-        </div>
-
-        <div class="product-card featured reveal reveal-delay-4">
-          <div class="featured-badge">4 Products</div>
-          <div class="product-icon">🏋️</div>
-          <div class="product-name">FITNESS TOOLS</div>
-          <p class="product-desc">Trackers, programs &amp; AI prompts for your training.</p>
-          <ul class="product-features">
-            <li>Gym Tracker + Calorie Cut Planner</li>
-            <li>Home Workout Program</li>
-            <li>Fitness Prompt Vault</li>
-          </ul>
-          <a href="./fitness-tools.html#fitness-tools" class="product-cta" style="background:var(--gold);color:#09090E;border-color:transparent;">Open Fitness Tools →</a>
-        </div>
       </div>
     </div>
   </section>
@@ -1529,8 +1519,8 @@
   <section style="padding:5rem 1.5rem;background:var(--bg);border-top:1px solid rgba(201,168,76,0.1);" id="contact">
     <div style="max-width:600px;margin:0 auto;text-align:center;">
       <div style="font-family:’DM Mono’,monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:1rem;">// STAY IN THE LOOP</div>
-      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;">New tools drop every week.</h2>
-      <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Drop your email and I’ll send you new AI tools, real estate systems, and deal templates before they go public. No spam. Just the useful stuff.</p>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;">Get new AI tools before they drop.</h2>
+      <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Drop your email and I’ll send useful AI tools, systems, and updates before they go public.</p>
       <form id="emailForm" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:480px;margin:0 auto;">
         <input type="email" id="emailInput" placeholder="YOUR EMAIL" required
           style="flex:1;min-width:220px;padding:0.85rem 1.2rem;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);border-radius:8px;color:var(--white);font-family:’DM Mono’,monospace;font-size:0.88rem;letter-spacing:0.05em;outline:none;" />
@@ -1540,7 +1530,7 @@
         </button>
       </form>
       <div id="emailMsg" style="margin-top:1rem;font-family:’DM Mono’,monospace;font-size:0.8rem;letter-spacing:0.08em;display:none;"></div>
-      <p style="color:rgba(201,168,76,0.3);font-family:’DM Mono’,monospace;font-size:0.65rem;letter-spacing:0.1em;margin-top:1rem;">NO SPAM. JUST TOOLS, SYSTEMS, AND DEAL FLOW.</p>
+      <p style="color:rgba(201,168,76,0.3);font-family:’DM Mono’,monospace;font-size:0.65rem;letter-spacing:0.1em;margin-top:1rem;">NO SPAM. JUST USEFUL TOOLS.</p>
     </div>
   </section>
 
@@ -1548,9 +1538,9 @@
   <section class="cta-section" style="padding:4rem 1.5rem;" id="work-with-me">
     <div class="cta-inner reveal">
       <div class="section-label">// 009 — Let’s Build</div>
-      <h2 class="section-title">Need this built for your business?</h2>
-      <p class="section-sub">If your website looks weak, your follow-up is sloppy, or your systems are a mess, I can simplify it, clean it up, and build the fix.</p>
-      <a href="mailto:vanwaynec01@gmail.com" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Let’s Simplify It</a>
+      <h2 class="section-title">Need a system built for your business?</h2>
+      <p class="section-sub">If your follow-up is sloppy, your intake is manual, or your website is weak, start with the intake and I’ll help figure out the right build path.</p>
+      <a href="./intake.html" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Talk First</a>
     </div>
   </section>
 
@@ -1582,12 +1572,12 @@
       const btn  = document.getElementById('hamburger');
       menu.classList.toggle('open');
       btn.classList.toggle('open');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ';
     }
     function closeMobile() {
       document.getElementById('mobileMenu').classList.remove('open');
       document.getElementById('hamburger').classList.remove('open');
-      document.body.style.overflow = '';
+      document.body.style.overflow = ';
     }
 
     // Email capture
@@ -1637,7 +1627,7 @@
     document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
 
     // Stat counter animation
-    function animateCount(el, target, suffix = '') {
+    function animateCount(el, target, suffix = ') {
       let start = 0;
       const duration = 1800;
       const step = (timestamp) => {
@@ -1683,7 +1673,34 @@
         applyMiniProductFilter(pill.dataset.filter || 'all');
       });
     })();
+  
+    document.querySelectorAll('a[data-page-transition]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('#')) return;
+        event.preventDefault();
+        const overlay = document.getElementById('navTransition');
+        const video = document.getElementById('navTransitionVideo');
+        if (!overlay || !video) {
+          window.location.href = href;
+          return;
+        }
+        overlay.style.display = 'flex';
+        video.currentTime = 0;
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
+        setTimeout(() => { window.location.href = href; }, 1100);
+      });
+    });
+    });
   </script>
+  <div id="navTransition" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;">
+    <video id="navTransitionVideo" muted playsinline style="width:100%;max-width:480px;max-height:70vh;object-fit:contain;border-radius:12px;">
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
 </body>
 </html>
-
+
+
+

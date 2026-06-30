@@ -294,12 +294,22 @@
       border-radius: 8px;
     }
 
+    /* ── BUTTON ROW ── */
+    .btn-row {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      max-width: 480px; margin: 0 auto;
+      justify-content: center;
+    }
+    .btn-row .btn-primary { flex: 1 1 200px; }
+
     /* ── MOBILE ── */
     @media (max-width: 480px) {
       .hero { padding: 52px 20px 64px; }
       .section { padding: 56px 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column; }
+      .btn-row .btn-primary { min-width: unset; width: 100%; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -334,7 +344,7 @@
       <h1 class="hero-title"><span>Never Miss a Deal.</span></h1>
       <p class="hero-sub">AI systems that respond to leads, follow up automatically, and book jobs while you're on the job. Built for trades. Scoped to your business.</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:480px;margin:0 auto;">
+      <div class="btn-row">
         <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">Buy Now</a>
         <a href="./intake.html" class="btn-primary" style="text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
       </div>
@@ -432,7 +442,7 @@
         <h2 class="section-title">Tell me about your business.</h2>
         <p class="section-sub" style="margin: 0 auto 28px;">No pitch. No price until we've mapped your workflow. Just a conversation about where you're losing time and jobs.</p>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:480px;margin:0 auto;">
+        <div class="btn-row">
           <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">Buy Now</a>
           <a href="./intake.html" class="btn-primary" style="text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
         </div>

@@ -1289,6 +1289,8 @@
       .hero-strip { grid-template-columns: repeat(2, 1fr); max-width: none; margin-top: 1.5rem; }
       .hero-desc { margin: 0 0 1.5rem; max-width: none; }
       .btn-primary, .btn-secondary { padding: 1rem 1.5rem; font-size: 0.88rem; }
+      .hero-cta-pair { flex-direction: column !important; max-width: 100% !important; }
+      .hero-cta-pair a { width: 100%; }
 
       section { padding: 3.5rem 1.5rem; }
 
@@ -1438,9 +1440,9 @@
         <a href="./intake.html" class="btn-secondary">Get A Site Built</a>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:480px;margin-top:1rem;">
-        <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">Buy Now</a>
-        <a href="./intake.html" class="btn-primary" style="text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
+      <div class="hero-cta-pair" style="display:flex;gap:1rem;max-width:480px;margin-top:1rem;">
+        <a href="https://buy.stripe.com/00wdR85dp69297G6IobEA0C" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;flex:1;">Buy Now</a>
+        <a href="./intake.html" class="btn-primary" style="text-align:center;flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
       </div>
     </div>
 
@@ -1468,15 +1470,44 @@
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:0.75rem;">Call a real AI receptionist, live, right now.</h3>
         <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">This is a working AI phone agent running for an actual business. Call it, ask it something, see how it handles a real conversation.</p>
 
-        <form action="https://clever-nature-production-7709.up.railway.app/callback-request" method="POST" style="max-width:340px;margin:0 auto 1rem;display:flex;flex-direction:column;gap:0.6rem;">
-          <input type="hidden" name="call_now" value="yes" />
-          <input type="text" name="name" placeholder="Your name" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
-          <input type="tel" name="phone" placeholder="Your phone number" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
-          <button type="submit" class="btn-primary" style="font-size:1.05rem;padding:0.9rem 2rem;">Submit →</button>
+        <form id="callback-form" style="max-width:340px;margin:0 auto 1rem;display:flex;flex-direction:column;gap:0.6rem;">
+          <input type="text" name="name" id="cb-name" placeholder="Your name" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
+          <input type="tel" name="phone" id="cb-phone" placeholder="Your phone number" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
+          <button type="submit" id="cb-btn" class="btn-primary" style="font-size:1.05rem;padding:0.9rem 2rem;">Submit →</button>
         </form>
+        <div id="cb-msg" style="display:none;margin:0 auto 1rem;max-width:340px;padding:0.85rem 1rem;border-radius:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:#fff;font-size:0.9rem;"></div>
 
-        <a href="tel:+12162083163" style="display:inline-block;font-size:0.85rem;padding:0;color:var(--gold);text-decoration:underline;">📞 Or call (216) 208-3163 →</a>
-        <p style="color:var(--muted);font-size:0.75rem;margin-top:0.85rem;opacity:0.7;">By submitting or calling, you may be added to our follow-up list so we can reach back out.</p>
+        <script>
+          document.getElementById('callback-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('cb-btn');
+            const msg = document.getElementById('cb-msg');
+            const name = document.getElementById('cb-name').value.trim();
+            const phone = document.getElementById('cb-phone').value.trim();
+            btn.disabled = true;
+            btn.textContent = 'Connecting...';
+            try {
+              const res = await fetch('https://clever-nature-production-7709.up.railway.app/callback-request', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name, phone})
+              });
+              const data = await res.json();
+              this.style.display = 'none';
+              msg.style.display = 'block';
+              msg.textContent = res.ok
+                ? "Riley is calling you now. Pick up!"
+                : "Something went wrong — just call directly below.";
+            } catch {
+              this.style.display = 'none';
+              msg.style.display = 'block';
+              msg.textContent = "Couldn't connect — call the number below instead.";
+            }
+          });
+        </script>
+
+        <a href="tel:+12166161364" style="display:inline-block;font-size:0.85rem;padding:0;color:var(--gold);text-decoration:underline;">📞 Or call (216) 616-1364 →</a>
+        <p style="color:var(--muted);font-size:0.75rem;margin-top:0.85rem;opacity:0.7;">By submitting, Riley will call you in seconds.</p>
       </div>
 
       <div class="products-header reveal">
