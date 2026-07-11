@@ -1,6 +1,14 @@
 # VanWayne / VC2 AI — Master Status
-_Single source of truth. Updated: 2026-06-26_
+_Single source of truth. Updated: 2026-07-11_
 _Site: vanwaynechaney.com — professional consulting + VC2 AI product_
+
+---
+
+## LIVE vs ARCHIVED — check this before editing any page
+
+**`index.html` is the ONE live homepage** — Cloudflare serves this at `/`. Confirmed 2026-07-11.
+
+Any file ending in `-archive.html` (`index-archive.html`, `index-new-archive.html`) is **dead weight kept for reference only — not served, not linked, never edit these.** If a redesign is ever wanted, build it in a new file, verify it's actually wired up as live before treating it as canonical.
 
 ---
 
