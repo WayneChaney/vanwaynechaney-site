@@ -658,26 +658,7 @@
         submitBtn.textContent = 'Submit Intake →';
       }
     });
-  
-    document.querySelectorAll('a[data-page-transition]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('#')) return;
-        event.preventDefault();
-        const overlay = document.getElementById('navTransition');
-        const video = document.getElementById('navTransitionVideo');
-        if (!overlay || !video) {
-          window.location.href = href;
-          return;
-        }
-        overlay.style.display = 'flex';
-        video.currentTime = 0;
-        const playAttempt = video.play();
-        if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
-        setTimeout(() => { window.location.href = href; }, 1100);
-      });
-    });
-    });
+
     function toggleMobile() {
       document.getElementById('mobileMenu').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
@@ -689,11 +670,6 @@
       document.body.style.overflow = '';
     }
   </script>
-  <div id="navTransition" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;">
-    <video id="navTransitionVideo" muted playsinline style="width:100%;max-width:480px;max-height:70vh;object-fit:contain;border-radius:12px;">
-      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
-    </video>
-  </div>
 </body>
 </html>
 

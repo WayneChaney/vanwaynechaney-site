@@ -2098,25 +2098,6 @@
         : 'rgba(9,9,14,0.8)';
     });
   
-    document.querySelectorAll('a[data-page-transition]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('#')) return;
-        event.preventDefault();
-        const overlay = document.getElementById('navTransition');
-        const video = document.getElementById('navTransitionVideo');
-        if (!overlay || !video) {
-          window.location.href = href;
-          return;
-        }
-        overlay.style.display = 'flex';
-        video.currentTime = 0;
-        const playAttempt = video.play();
-        if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
-        setTimeout(() => { window.location.href = href; }, 1100);
-      });
-    });
-
     const aboutSlides = document.querySelectorAll('.about-photo-slide');
     if (aboutSlides.length > 1) {
       let aboutSlideIndex = 0;
@@ -2127,12 +2108,6 @@
       }, 3500);
     }
   </script>
-  <div id="navTransition" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;">
-    <video id="navTransitionVideo" muted playsinline style="width:100%;max-width:480px;max-height:70vh;object-fit:contain;border-radius:12px;">
-      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
-    </video>
-  </div>
-
   <nav class="sticky-bar">
     <a href="./index.html" data-page-transition class="bar-item">
       <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;" />
