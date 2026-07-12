@@ -1452,46 +1452,10 @@
       <div class="reveal" style="background:linear-gradient(180deg,rgba(201,168,76,0.1),rgba(201,168,76,0.02));border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:2.5rem;text-align:center;">
         <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Live Proof First</div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:0.75rem;">Call the AI receptionist live and hear how it handles a real prospect.</h3>
-        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">This is the fastest way to understand the offer. Put in your number and the receptionist calls you back in seconds, or call directly and test how the system answers, qualifies, and responds.</p>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">This is the fastest way to understand the offer — call now and test how the system answers, qualifies, and responds in real time.</p>
 
-        <form id="callback-form" style="max-width:340px;margin:0 auto 1rem;display:flex;flex-direction:column;gap:0.6rem;">
-          <input type="text" name="name" id="cb-name" placeholder="Your name" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
-          <input type="tel" name="phone" id="cb-phone" placeholder="Your phone number" required style="padding:0.7rem 1rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#fff;" />
-          <button type="submit" id="cb-btn" class="btn-primary" style="font-size:1.05rem;padding:0.9rem 2rem;">Request Callback →</button>
-        </form>
-        <div id="cb-msg" style="display:none;margin:0 auto 1rem;max-width:340px;padding:0.85rem 1rem;border-radius:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:#fff;font-size:0.9rem;"></div>
-
-        <script>
-          document.getElementById('callback-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('cb-btn');
-            const msg = document.getElementById('cb-msg');
-            const name = document.getElementById('cb-name').value.trim();
-            const phone = document.getElementById('cb-phone').value.trim();
-            btn.disabled = true;
-            btn.textContent = 'Connecting...';
-            try {
-              const res = await fetch('https://clever-nature-production-7709.up.railway.app/callback-request', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({name, phone})
-              });
-              const data = await res.json();
-              this.style.display = 'none';
-              msg.style.display = 'block';
-              msg.textContent = res.ok
-                ? "Your receptionist is calling you now. Pick up!"
-                : "Something went wrong — just call directly below.";
-            } catch {
-              this.style.display = 'none';
-              msg.style.display = 'block';
-              msg.textContent = "Couldn't connect — call the number below instead.";
-            }
-          });
-        </script>
-
-        <a href="tel:+12166161364" style="display:inline-block;font-size:0.85rem;padding:0;color:var(--gold);text-decoration:underline;">📞 Or call (216) 616-1364 →</a>
-        <p style="color:var(--muted);font-size:0.75rem;margin-top:0.85rem;opacity:0.7;">Use this to test the experience first. If it feels strong, then book the audit.</p>
+        <a href="tel:+12166161364" class="btn-primary" style="display:inline-block;font-size:1.05rem;padding:0.9rem 2rem;">📞 Call Receptionist Now</a>
+        <p style="color:var(--muted);font-size:0.75rem;margin-top:0.85rem;opacity:0.7;">Real live call. No forms, no sales reps, no credit card.</p>
       </div>
 
       <div class="products-header reveal">
@@ -1694,9 +1658,9 @@
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor"/></svg>
       Live Demos
     </a>
-    <a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="bar-item bar-consult">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Buy
+    <a href="tel:+12166161364" class="bar-item bar-consult">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call
     </a>
   </nav>
 </body>
