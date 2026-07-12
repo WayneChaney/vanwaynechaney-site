@@ -53,23 +53,11 @@
     .bar-consult { background: var(--gold); color: #000 !important; border-radius: 8px; padding: 8px 16px; font-weight: 700; font-size: 0.7rem; }
     .bar-consult svg { stroke: #000; }
 
-    /* ── PRELOADER ── */
-    #preloader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: #000;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.8s ease;
-    }
-    #preloader video { width: 100%; max-width: 480px; max-height: 70vh; object-fit: contain; border-radius: 12px; }
-    #preloader.fade-out { opacity: 0; pointer-events: none; }
-
     /* ── PAGE ── */
     .page {
       padding-top: calc(var(--bar-h) + env(safe-area-inset-top));
       padding-bottom: 0;
-      opacity: 0; transition: opacity 0.6s ease 0.3s;
     }
-    .page.visible { opacity: 1; }
 
     /* ── HERO ── */
     .hero {
@@ -321,13 +309,6 @@
 </head>
 <body>
 
-  <!-- PRELOADER -->
-  <div id="preloader">
-    <video id="intro-video" autoplay muted playsinline>
-      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
-    </video>
-  </div>
-
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="./index.html" data-page-transition onclick="closeMobile()">Home</a>
@@ -557,17 +538,6 @@
   </nav>
 
   <script>
-    const video = document.getElementById('intro-video');
-    const preloader = document.getElementById('preloader');
-    const page = document.getElementById('page');
-    function showPage() {
-      preloader.classList.add('fade-out');
-      setTimeout(() => { preloader.style.display = 'none'; page.classList.add('visible'); }, 800);
-    }
-    video.addEventListener('ended', showPage);
-    video.addEventListener('error', showPage);
-    setTimeout(showPage, 1500);
-
     function toggleMobile() {
       document.getElementById('mobileMenu').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');

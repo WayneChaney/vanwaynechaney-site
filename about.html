@@ -87,19 +87,6 @@
     body { padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
     }
 
-    /* ── PRELOADER ── */
-    #preloader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: #000;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.8s ease;
-    }
-    #preloader video { width: 100%; max-width: 480px; max-height: 70vh; object-fit: contain; border-radius: 12px; }
-    #preloader.fade-out { opacity: 0; pointer-events: none; }
-
-    .page { opacity: 0; transition: opacity 0.6s ease 0.3s; }
-    .page.visible { opacity: 1; }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
@@ -1488,12 +1475,6 @@
 </head>
 <body class="page-about">
 
-  <div id="preloader">
-    <video muted playsinline autoplay>
-      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
-    </video>
-  </div>
-
   <div class="page" id="page">
 
   <!-- MOBILE MENU -->
@@ -2028,24 +2009,6 @@
   </div><!-- /page -->
 
   <script>
-    // Preloader
-    (function() {
-      const preloader = document.getElementById('preloader');
-      const page = document.getElementById('page');
-      const vid = preloader ? preloader.querySelector('video') : null;
-      function showPage() {
-        if (!preloader) return;
-        preloader.classList.add('fade-out');
-        setTimeout(() => { preloader.style.display = 'none'; }, 800);
-        page.classList.add('visible');
-      }
-      if (vid) {
-        vid.addEventListener('ended', showPage);
-        vid.addEventListener('error', showPage);
-      }
-      setTimeout(showPage, 1500);
-    })();
-
     // Mobile menu
     function toggleMobile() {
       const menu = document.getElementById('mobileMenu');

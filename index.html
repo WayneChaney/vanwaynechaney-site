@@ -30,31 +30,6 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* ── PRELOADER ── */
-    #preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s ease;
-    }
-
-    #preloader video {
-      width: 100%;
-      max-width: 480px;
-      max-height: 70vh;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    #preloader.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -120,11 +95,7 @@
     .page {
       padding-top: var(--nav-h);
       padding-bottom: var(--bar-h);
-      opacity: 0;
-      transition: opacity 0.6s ease 0.3s;
     }
-
-    .page.visible { opacity: 1; }
 
     /* ── HERO ── */
     .hero {
@@ -753,13 +724,6 @@
 </head>
 <body>
 
-  <!-- PRELOADER -->
-  <div id="preloader">
-    <video id="intro-video" autoplay muted playsinline>
-      <source src="./intro-preloader.mp4" type="video/mp4" />
-    </video>
-  </div>
-
   <!-- NAV -->
   <nav>
     <a href="./index.html" class="nav-logo">Vanwayne</a>
@@ -904,25 +868,6 @@
     </a>
   </nav>
 
-  <script>
-    const video = document.getElementById('intro-video');
-    const preloader = document.getElementById('preloader');
-    const page = document.getElementById('page');
-
-    function showPage() {
-      preloader.classList.add('fade-out');
-      setTimeout(() => {
-        preloader.style.display = 'none';
-        page.classList.add('visible');
-      }, 800);
-    }
-
-    video.addEventListener('ended', showPage);
-    video.addEventListener('error', showPage);
-
-    // Let video play fully — fallback after 15s
-    setTimeout(showPage, 15000);
-  </script>
 
 </body>
 </html>
