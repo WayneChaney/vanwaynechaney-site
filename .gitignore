@@ -6,3 +6,10 @@ node_modules/
 _vercel_backup/
 download_deployment.py
 take-screenshots.js
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
