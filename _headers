@@ -20,3 +20,8 @@
 /tools/missed-call/sw.js
   Cache-Control: public, max-age=0, must-revalidate
   Service-Worker-Allowed: /tools/missed-call/
+
+# Archived pages. Kept on disk for reference, kept out of search and out of
+# what AI assistants read when deciding what this business does.
+/archive/*
+  X-Robots-Tag: noindex, nofollow

@@ -1,0 +1,33 @@
+# Retired pages, archived 2026-09-09. Files preserved in /archive/.
+# 301 to home rather than 404: some of these URLs were handed out, and a
+# redirect consolidates their search authority onto / instead of dropping it.
+
+/real-estate          /  301
+/finance              /  301
+/finance-strategies   /  301
+/lenders              /  301
+/tools-resources      /  301
+/aigains              /  301
+/demo                 /  301
+/pick                 /  301
+/index-archive        /  301
+/index-new-archive    /  301
+
+# Retired fitness and productivity miniproducts. The six real estate tools
+# stay live and unlisted as the REIA lead magnet - do not add those here.
+/dl-ccp-3n8m          /  301
+/dl-dft-5n3k          /  301
+/dl-dhb-8m4p          /  301
+/dl-dpt-3x7m          /  301
+/dl-fpv-6k9n          /  301
+/dl-gym-7p2x          /  301
+/dl-hwp-6x4k          /  301
+
+# Pre-rebuild backups. Nobody has these links; redirected so a crawler that
+# remembers them lands somewhere real.
+/about.pre-vc2-rebuild-2026-08-26       /  301
+/call.pre-vc2-rebuild-2026-08-26        /  301
+/intake.pre-vc2-rebuild-2026-08-26      /  301
+/live-demos.pre-vc2-rebuild-2026-08-26  /  301
+/services.pre-vc2-rebuild-2026-08-26    /  301
+/index.pre-vc2-home-rebuild-2026-08-26  /  301
