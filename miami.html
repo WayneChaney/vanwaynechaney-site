@@ -113,8 +113,38 @@
     }
     .callline a:hover{border-color:var(--gold)}
 
+    .promptbox{
+      background:var(--bg-card); border:1px solid rgba(201,168,76,.45);
+      border-radius:var(--radius); padding:1.15rem 1.25rem; margin-bottom:.9rem;
+    }
+    .promptbox .card-title{margin-bottom:.3rem}
+    .promptbox .card-note{margin-bottom:.9rem}
+    .promptbox pre{
+      font-family:'DM Mono',monospace; font-size:.72rem; line-height:1.55;
+      color:var(--muted); white-space:pre-wrap; word-break:break-word;
+      background:var(--bg); border:1px solid var(--border); border-radius:8px;
+      padding:.85rem .9rem; max-height:230px; overflow-y:auto;
+    }
+    .copybtn{
+      display:block; width:100%; margin-top:.85rem;
+      font-family:'DM Mono',monospace; font-size:.72rem;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--bg); background:var(--gold); border:none;
+      border-radius:8px; padding:.75rem; cursor:pointer;
+      transition:background .18s ease;
+    }
+    .copybtn:hover,.copybtn:focus-visible{background:var(--gold-2); outline:none}
+    .copybtn.done{background:var(--gold-2)}
+    .warn{
+      color:var(--muted); font-size:.78rem; line-height:1.6;
+      margin-top:.85rem; padding-left:.7rem;
+      border-left:2px solid rgba(201,168,76,.45);
+    }
+    .warn strong{color:var(--white); font-weight:500}
+
     @media (max-width:380px){
       .portrait{width:130px;height:130px}
+      .promptbox pre{font-size:.68rem; max-height:200px}
     }
   </style>
 </head>
@@ -131,6 +161,62 @@
       <strong>Vanwayne Chaney</strong> &middot; Computer Engineering &rsquo;23<br />
       I build AI systems for Ohio businesses and city governments.
     </p>
+
+    <div class="promptbox">
+      <span class="tag">The prompt from tonight</span>
+      <div class="card-title">Build your career fair game plan</div>
+      <div class="card-note">Paste this into ChatGPT, Claude, or Gemini. The free version is fine.</div>
+
+      <pre id="prompt">You are helping me prepare for an engineering career fair. I want to walk up to the right tables with something specific to say, instead of wandering and saying "so what do you guys do?"
+
+HERE IS ME:
+[Paste your resume here. If you don't have one yet, just list: your major, your year, the classes and projects you've actually done, any tools you can use — MATLAB, SolidWorks, C#, Python, AutoCAD, Excel, whatever — and any jobs, internships, co-ops, research, or clubs.]
+
+WHAT I WANT:
+- Work setup: [remote / hybrid / in person — pick one]
+- Where: [city, state, or "anywhere"]
+- Type of role: [internship / co-op / full time]
+- Industries I'd actually be interested in: [list them, or write "not sure"]
+
+HERE ARE THE COMPANIES COMING TO MY CAREER FAIR:
+[Paste the employer list from your school's career fair page. If you don't have one, write "suggest companies that fit" and skip this.]
+
+NOW DO THIS:
+
+1. Pick the 8 companies from that list that best fit what I want and what I can actually do. Rank them. Tell me plainly why each one made the list.
+
+2. For each of those 8, give me:
+   - What they actually build or do, in one sentence a normal person understands
+   - Their stated core values, quoted from their own site if you can find them
+   - The specific tools, languages, or systems their engineers use
+   - Which of MY skills line up with that, named specifically
+   - One thing they did recently that I could mention out loud
+
+3. Then write me a 15-second opener for each company. It has to sound like a college student talking, not a press release. Structure it as: I saw you're looking for X, I've done X, here's the thing I built with it.
+
+4. Give me 5 questions THEY are likely to ask me, based on my background, and for each one tell me what a weak answer sounds like and what a strong answer sounds like.
+
+5. Give me 3 questions I should ask THEM that don't sound generic. No "what's the culture like."
+
+6. Last: look at my background and tell me the honest weak spot a recruiter will notice, and the one sentence I should have ready when they poke it.
+
+TWO RULES:
+
+Do not guess at facts about a company. If you cannot actually look something up — their core values, their tech stack, recent news — write "VERIFY" next to it instead of filling it in. I would rather have five blanks I can go check than one confident sentence that turns out to be wrong when I say it to a recruiter.
+
+If that is too much to write at once, do the top 5 companies fully and ask me if I want the rest.
+
+FORMAT: one section per company, scannable, no giant paragraphs. I'm reading this on my phone in line.</pre>
+
+      <button class="copybtn" id="copybtn" type="button">Copy the prompt</button>
+
+      <p class="warn">
+        <strong>Check it before you say it out loud.</strong> This will confidently
+        invent a core value or a news story that sounds exactly right. Ten seconds on
+        the company&rsquo;s real site. Quoting something they never said is worse than
+        saying nothing.
+      </p>
+    </div>
 
     <a class="card primary" href="https://www.linkedin.com/in/vanwaynechaney/" target="_blank" rel="noopener">
       <div class="card-top">
@@ -173,5 +259,56 @@
     </footer>
 
   </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('copybtn');
+      var pre = document.getElementById('prompt');
+      if (!btn || !pre) return;
+
+      function fallback(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      function selectPrompt() {
+        try {
+          var range = document.createRange();
+          range.selectNodeContents(pre);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } catch (e) { /* selection is a nicety, not a requirement */ }
+      }
+
+      btn.addEventListener('click', function () {
+        var text = pre.textContent;
+        var done = function (ok) {
+          if (!ok) selectPrompt();
+          btn.textContent = ok ? 'Copied — go paste it' : 'Selected — hit Copy';
+          btn.classList.add('done');
+          setTimeout(function () {
+            btn.textContent = 'Copy the prompt';
+            btn.classList.remove('done');
+          }, 2600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); },
+                                                   function () { done(fallback(text)); });
+        } else {
+          done(fallback(text));
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
