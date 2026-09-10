@@ -1,3 +1,11 @@
+## Post-Brief Motion Requirement — Locked 2026-09-06
+
+- `intro-preloader.mp4` is the site-entry preloader. It plays once on the initial Vanwayne site load before the homepage becomes interactive.
+- `vc2-ai-intro.mp4` is the full-screen internal page-transition overlay. It plays on every internal navigation between Vanwayne pages.
+- Keep the source clips intact. Their blue-and-gold V logo is an intentional anchor for the Vanwayne visual system.
+- Skip motion for `prefers-reduced-motion` users. Do not intercept external, calendar, telephone, or email links with the transition.
+
+---
 # VC2 Site Rebuild — Codex Build Brief
 
 _Written by Claude for Codex to execute. Nothing in this brief has been built yet — no live files have been touched. Wayne reviews this doc, then hands it to Codex._

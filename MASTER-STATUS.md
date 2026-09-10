@@ -1,3 +1,33 @@
+# Current Direction — 2026-09-06
+
+## Identity and Visual Decisions
+
+- **Public name is locked: Vanwayne Chaney Jr.** Use `Jr.` consistently across the homepage, About page, titles, metadata, image alt text, and calls to action. Do not use `II` on the professional site.
+- **Vanwayne visual identity is intentionally separate from Zulvan.** Use a restrained blue-and-gold system: deep navy `#0B1F3A`, civic blue `#2F6E9E`, light blue canvas `#EAF4FB`, gold `#C9A24A`, and white `#FCFCFA`. Use gold as a selective proof/action accent, not as a full-page fill. No gradients.
+- **Zulvan retains its separate industrial identity** from research #453: Forged Iron `#1E2922`, Machine Paper `#F4F4F0`, Safety Oxide `#D95D39`, Galvanized Gray `#647067`. Do not blend Zulvan's orange or slate-green palette into Vanwayne.
+- **Real portrait first.** The Vanwayne homepage hero uses an optimized real founder portrait. The Remotion promo and all embedded product/demo videos stay below the first viewport.
+- **Motion system is locked.** `intro-preloader.mp4` is the 5.06-second site-entry preloader and plays once on the initial Vanwayne site load before the homepage becomes interactive. `vc2-ai-intro.mp4` is the 4.06-second VC2 logo transition and plays as a full-screen overlay on every internal Vanwayne page transition. Both use the blue-and-gold V mark and support the new visual identity.
+- When implemented, preload both clips, never place either as a hero video, skip the motion for users who prefer reduced motion, and do not play the page-transition clip for external links, calendar links, phone links, or mailto links.
+## Brand and Funnel Decisions
+
+- **VanwayneChaney.com is the personal trust hub.** It sells Vanwayne as the credible builder for the job: computer engineer, Miami University graduate, and operator across civic, legal, small-business, real-estate, and trade contexts.
+- **Primary homepage CTA:** `Book a System Audit`. It can live on VanwayneChaney.com but must route to the active Zulvan booking flow: `https://zulvan.com/#book` or `https://cal.com/vanwaynechaney/zulvan`.
+- **Zulvan is live.** It is the broader systems-and-automation consulting business, with a live demo and an active 30-minute teardown booking flow. The older rebuild brief statement that Zulvan is empty is obsolete.
+- **Website builds are a supporting capability, not the main homepage funnel.** They belong on Services and inside a scoped system-audit solution when lead capture or conversion is the bottleneck.
+- **Solthane remains a focused trade-business branch for now.** Keep it below the primary personal-brand CTA as a clear optional route. Its final scope is still under review, so do not elevate it into the homepage hero or rewrite its offer without a separate decision.
+
+## Current Build State
+
+- A 30-second kinetic automation-optimization promo has been built and rendered at `commercial/automation-optimization-promo/remotion/out/automation-optimization-promo.mp4`.
+- The promo uses animated Lead Generation, Follow-Up, and Operations scenes with on-camera slots for Vanwayne. It is ready for four short talking-head clips and final assembly in Premiere Pro.
+- **No live Vanwayne homepage, About, or Services file has been changed in this work session.** The current work was strategy, production assets, and status correction.
+
+## Before Editing The Homepage
+
+- Resolve the canonical source conflict: `_MAP.md` identifies `index-new.html` as the real homepage, while this older status file identifies `index.html`. Verify the active deployment route before making homepage changes.
+- The next page to redesign is `about.html`: make it a trust and conversion page with clear positioning, proof, a practical capability section, and a System Audit CTA.
+
+---
 # VanWayne / VC2 AI — Master Status
 _Single source of truth. Updated: 2026-07-11_
 _Site: vanwaynechaney.com — professional consulting + VC2 AI product_
