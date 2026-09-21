@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Miami CEC — Vanwayne Chaney</title>
-  <meta name="description" content="Connect with Vanwayne Chaney after the Miami University College of Engineering and Computing AI talk. Free resume review Tuesday before the career fair." />
+  <meta name="description" content="Vanwayne Chaney's AI talk at Miami University's College of Engineering and Computing, September 14, 2026. The career fair prompt, the photos, and where to connect." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vanwaynechaney.com/miami" />
   <meta property="og:title" content="Miami CEC — Vanwayne Chaney" />
-  <meta property="og:description" content="Connect, book a free resume review, and hear the AI answer the recruiters are looking for." />
-  <meta property="og:image" content="https://vanwaynechaney.com/wayne-teaching-group.jpg" />
+  <meta property="og:description" content="The prompt from the talk, the photos, and where to connect." />
+  <meta property="og:image" content="https://vanwaynechaney.com/images/miami/og-miami.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="robots" content="noindex" />
   <link rel="canonical" href="https://vanwaynechaney.com/miami" />
   <link rel="icon" type="image/png" href="./vc2_v_logo_transparent_tight.png" />
@@ -44,11 +46,12 @@
       text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem; text-align:center;
     }
 
-    .portrait{
-      width:150px; height:150px;
-      margin:0 auto 1.5rem; display:block;
-      border-radius:var(--radius); object-fit:cover; object-position:center 15%;
-      border:1px solid var(--border);
+    .photo{
+      margin:0 0 1.5rem; border-radius:var(--radius); overflow:hidden;
+      border:1px solid var(--border); aspect-ratio:4/3; background:var(--bg-card);
+    }
+    .photo img{
+      width:100%; height:100%; object-fit:cover; object-position:50% 38%; display:block;
     }
 
     h1{
@@ -143,7 +146,7 @@
     .warn strong{color:var(--white); font-weight:500}
 
     @media (max-width:380px){
-      .portrait{width:130px;height:130px}
+      .photo{aspect-ratio:1/1}
       .promptbox pre{font-size:.68rem; max-height:200px}
     }
   </style>
@@ -151,19 +154,19 @@
 <body>
   <main class="wrap">
 
-    <p class="eyebrow">Miami University &middot; CEC &middot; Sept 14</p>
-
-    <img class="portrait" src="./vanwayne-miami-portrait.jpg"
-         alt="Vanwayne Chaney, founder of VC2 AI." />
-
-    <h1>Good to meet you.</h1>
+    <p class="eyebrow">Miami University &middot; CEC &middot; Sept 14, 2026</p>
+    <figure class="photo">
+      <img src="./images/miami/miami-cec-talk-800.jpg" width="800" height="1200"
+           alt="Vanwayne Chaney teaching AI to engineering students at Miami University, September 14, 2026." />
+    </figure>
+    <h1>Thanks for coming out.</h1>
     <p class="sub">
       <strong>Vanwayne Chaney</strong> &middot; Computer Engineering &rsquo;23<br />
       I build AI systems for Ohio businesses and city governments.
     </p>
 
     <div class="promptbox">
-      <span class="tag">The prompt from tonight</span>
+      <span class="tag">The prompt from the talk</span>
       <div class="card-title">Build your career fair game plan</div>
       <div class="card-note">Paste this into ChatGPT, Claude, or Gemini. The free version is fine.</div>
 
@@ -229,26 +232,15 @@ FORMAT: one section per company, scannable, no giant paragraphs. I'm reading thi
       </div>
     </a>
 
-    <a class="card" href="https://cal.com/vanwaynechaney/free-career-consult" target="_blank" rel="noopener">
-      <div class="card-top">
-        <div>
-          <span class="tag">Tuesday only</span>
-          <div class="card-title">Free resume review before the fair</div>
-          <div class="card-note">15 minutes on Tuesday. I&rsquo;ll tell you what a recruiter actually sees.</div>
-        </div>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </div>
-    </a>
-
     <p class="callline">
-      Want to hear the AI from tonight again?
+      Want to hear the AI from the talk again?
       <a href="tel:+12166161364">Call 216-616-1364</a> and try to stump it.
     </p>
 
     <div class="rule"></div>
 
     <p class="note">
-      One thing, and then go get ready for Wednesday.<br />
+      One thing, for the next fair and every interview after it.<br />
       <strong>Every recruiter is going to ask what you know about AI.</strong>
       Most people answer with something that sounds good. Tell them what you
       built, what broke, and what you did about it. That&rsquo;s the answer that lands.

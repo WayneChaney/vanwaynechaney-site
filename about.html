@@ -754,6 +754,26 @@
       line-height: 1.75;
     }
 
+    .experience-card-featured {
+      grid-column: 1 / -1;
+    }
+
+    .experience-card-featured img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% 30%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    @media (max-width: 720px) {
+      .experience-card-featured { grid-template-columns: 1fr; }
+      .experience-card-featured img { aspect-ratio: 16 / 10; object-position: 50% 35%; }
+    }
+
     .skills-wrap {
       max-width: 1200px;
       margin: 3rem auto 0;
@@ -1602,6 +1622,10 @@
           <img class="about-photo-slide active" src="./graduation-2023-new.jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
           <img class="about-photo-slide" src="./Attachment(1).jpeg" alt="Vanwayne Chaney Jr. graduation portrait" />
           <img class="about-photo-slide" src="./Attachment(2).jpg" alt="Vanwayne Chaney Jr. graduation portrait" />
+          <img class="about-photo-slide" src="./images/miami/miami-cec-talk.jpg" data-caption="Teaching AI at Miami University’s College of Engineering and Computing, September 2026" alt="Vanwayne Chaney Jr. teaching AI to engineering students at Miami University" />
+          <img class="about-photo-slide" src="./images/miami/miami-cec-wide.jpg" data-caption="Guest lecture, Miami University College of Engineering and Computing" alt="The lecture hall at Miami University during the AI talk" />
+          <img class="about-photo-slide" src="./images/miami/miami-cec-solo.jpg" data-caption="On stage at Miami University, September 2026" alt="Vanwayne Chaney Jr. speaking on stage at Miami University" />
+          <img class="about-photo-slide" src="./images/miami/miami-cec-room-b.jpg" data-caption="Miami University guest lecture, September 2026" alt="Vanwayne Chaney Jr. giving a guest lecture at Miami University" />
           <div class="about-photo-caption">Graduation portrait</div>
         </div>
       </div>
@@ -1878,16 +1902,24 @@
       </div>
 
       <div class="experience-grid">
+        <div class="experience-card experience-card-featured reveal">
+          <div>
+            <div class="experience-meta">September 2026</div>
+            <div class="experience-role">Guest Lecturer · AI for Engineering Students</div>
+            <div class="experience-org">Miami University College of Engineering and Computing · Oxford, Ohio</div>
+            <p class="experience-copy">Invited back to campus to teach first- and second-year engineering students how to actually use AI: what to build, what breaks, and how to talk about it when a recruiter asks. Stayed well past the end to work through questions one on one.</p>
+          </div>
+        </div>
         <div class="experience-card reveal reveal-delay-1">
           <div class="experience-meta">2023 — Present</div>
-          <div class="experience-role">IT Applications Programmer</div>
-          <div class="experience-org">Progressive Insurance · Remote · Mayfield Heights, Ohio</div>
+          <div class="experience-role">Software Engineer</div>
+          <div class="experience-org">Enterprise production systems · Cleveland, Ohio</div>
           <p class="experience-copy">Production software work, live-system support, business-facing application development, and the day-to-day discipline of building things that have to hold up.</p>
         </div>
         <div class="experience-card reveal reveal-delay-2">
           <div class="experience-meta">2022</div>
           <div class="experience-role">Software Engineer Intern</div>
-          <div class="experience-org">Rockwell Automation · Milwaukee, Wisconsin</div>
+          <div class="experience-org">Industrial automation · Milwaukee, Wisconsin</div>
           <p class="experience-copy">Hands-on engineering work inside a real industrial technology environment, with interface improvements, recurring reporting, and business-driven software tasks.</p>
         </div>
         <div class="experience-card reveal reveal-delay-3">
@@ -1917,7 +1949,7 @@
             <li>Computer Engineering Degree <span>Strong technical foundation from Miami University</span></li>
             <li>MBA In Progress <span>Business, operations, and strategy layered on top of the engineering base</span></li>
             <li>AWS Cloud Practitioner <span>Cloud fundamentals and infrastructure context</span></li>
-            <li>AI Certifications In Progress <span>Continuing to deepen the AI and cloud side with formal validation</span></li>
+            <li>AI Certified: Anthropic, OpenAI, Google <span>Credentials from all three major AI labs, layered on the engineering base</span></li>
           </ul>
         </div>
 
@@ -1926,6 +1958,7 @@
           <ul class="skills-list">
             <li>YouTube Tutorials <span>Practical content on AI use, systems, workflows, and real execution</span></li>
             <li>Public Build Mode <span>Teaching from experiments, shipped systems, and hands-on use instead of theory dumps</span></li>
+            <li>Guest Lectures <span>Invited to teach AI to engineering students at Miami University’s College of Engineering and Computing</span></li>
             <li>Daily AI Usage <span>AI is part of my actual workflow, not just something I talk about online</span></li>
             <li>VC2 Brand <span>The professional lane for AI systems, tools, and operator education with a local-first relationship mindset</span></li>
           </ul>
@@ -2068,6 +2101,8 @@
         aboutSlides[aboutSlideIndex].classList.remove('active');
         aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
         aboutSlides[aboutSlideIndex].classList.add('active');
+        const cap = document.querySelector('.about-photo-caption');
+        if (cap) cap.textContent = aboutSlides[aboutSlideIndex].dataset.caption || 'Graduation portrait';
       }, 3500);
     }
   </script>

@@ -618,6 +618,131 @@
       margin-top: 8px;
     }
 
+    /* ── PROOF BAND (Miami) ── */
+    .proof-band {
+      position: relative;
+      height: clamp(230px, 28vw, 380px);
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .proof-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+      display: block;
+    }
+
+    .proof-band::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,16,29,0.10) 0%, rgba(6,16,29,0) 35%, rgba(6,16,29,0.94) 100%);
+    }
+
+    .proof-band-text {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 26px;
+    }
+
+    .proof-band-text .section-label { margin-bottom: 6px; }
+
+    .proof-band-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--white);
+      margin: 0;
+      max-width: 720px;
+    }
+
+    .proof-band-sub {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-top: 6px;
+    }
+
+    /* ── RECOMMENDATIONS STRIP ── */
+    .recs-section {
+      padding: 56px 0 64px;
+      overflow: hidden;
+    }
+
+    .recs-header {
+      text-align: center;
+      padding: 0 24px;
+      margin-bottom: 28px;
+    }
+
+    .recs-header .section-title { margin-bottom: 0; }
+
+    .recs-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      padding: 0 8px;
+      animation: recs-scroll 75s linear infinite;
+    }
+
+    .recs-section:hover .recs-track,
+    .recs-section:focus-within .recs-track { animation-play-state: paused; }
+
+    .rec-card {
+      width: 330px;
+      flex: 0 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rec-src {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .rec-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.14rem;
+      line-height: 1.45;
+      color: var(--white);
+      margin: 0;
+      flex: 1;
+    }
+
+    .rec-name { font-size: 0.9rem; font-weight: 600; }
+
+    .rec-title { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+    @keyframes recs-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .recs-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; padding: 0 24px; }
+      .recs-track[aria-hidden="true"] { display: none; }
+    }
+
+    @media (max-width: 420px) {
+      .rec-card { width: 270px; padding: 18px 18px; }
+      .proof-band-text { padding: 0 20px 20px; }
+    }
+
     /* ── EMAIL CAPTURE ── */
     .email-section {
       background: var(--bg-2);
@@ -924,6 +1049,19 @@
 
     <div class="divider"></div>
 
+    <!-- PROOF BAND: Miami University talk -->
+    <section class="proof-band" id="speaking" aria-label="Speaking">
+      <picture>
+        <source media="(max-width: 640px)" srcset="./images/miami/miami-cec-talk-800.jpg" />
+        <img src="./images/miami/miami-cec-band.jpg" width="3168" height="792" loading="lazy" alt="Vanwayne Chaney Jr. teaching AI to engineering students at Miami University" />
+      </picture>
+      <div class="proof-band-text">
+        <p class="section-label">Speaking</p>
+        <h2 class="proof-band-title">Invited to teach AI at Miami University’s College of Engineering and Computing.</h2>
+        <p class="proof-band-sub">Guest lecture for first- and second-year engineering students · September 14, 2026 · Oxford, Ohio</p>
+      </div>
+    </section>
+
     <!-- CHOOSE YOUR PATH -->
     <div class="paths-section">
       <div class="paths-inner">
@@ -968,6 +1106,64 @@
         <p class="email-note">No spam. Unsubscribe anytime.</p>
       </div>
     </div>
+
+    <!-- RECOMMENDATIONS STRIP -->
+    <section class="recs-section" id="recommendations" aria-label="Recommendations">
+      <div class="recs-header">
+        <p class="section-label">In their words</p>
+        <h2 class="section-title">What people say after working with me.</h2>
+      </div>
+      <div class="recs-track">
+          <article class="rec-card">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“He even stayed well beyond the event to answer individual questions and connect with students, showing how invested he was in helping them succeed.”</p>
+            <div class="rec-name">Colleen Bush</div>
+            <div class="rec-title">Assistant Dean for External Relations and Communications, Miami University College of Engineering and Computing</div>
+          </article>
+          <article class="rec-card">
+            <div class="rec-src">Google review · ★★★★★</div>
+            <p class="rec-quote">“He took the time to understand how my business operates before building anything, and that made a huge difference.”</p>
+            <div class="rec-name">Sam Clemente</div>
+            <div class="rec-title">CLE Home Buyers</div>
+          </article>
+          <article class="rec-card">
+            <div class="rec-src">Client · thogc.com</div>
+            <p class="rec-quote">Built and handed off the church’s website, then handled the follow-through when the details changed.</p>
+            <div class="rec-name">Caleb Davis</div>
+            <div class="rec-title">Turner Construction · The House of God Church</div>
+          </article>
+          <article class="rec-card">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">Recommended on LinkedIn for the mentorship, the work ethic, and coming back to campus on his own time.</p>
+            <div class="rec-name">Seth Seward</div>
+            <div class="rec-title">Assistant Director of Alumni Relations, Miami University</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“He even stayed well beyond the event to answer individual questions and connect with students, showing how invested he was in helping them succeed.”</p>
+            <div class="rec-name">Colleen Bush</div>
+            <div class="rec-title">Assistant Dean for External Relations and Communications, Miami University College of Engineering and Computing</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">Google review · ★★★★★</div>
+            <p class="rec-quote">“He took the time to understand how my business operates before building anything, and that made a huge difference.”</p>
+            <div class="rec-name">Sam Clemente</div>
+            <div class="rec-title">CLE Home Buyers</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">Client · thogc.com</div>
+            <p class="rec-quote">Built and handed off the church’s website, then handled the follow-through when the details changed.</p>
+            <div class="rec-name">Caleb Davis</div>
+            <div class="rec-title">Turner Construction · The House of God Church</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">Recommended on LinkedIn for the mentorship, the work ethic, and coming back to campus on his own time.</p>
+            <div class="rec-name">Seth Seward</div>
+            <div class="rec-title">Assistant Director of Alumni Relations, Miami University</div>
+          </article>
+      </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>

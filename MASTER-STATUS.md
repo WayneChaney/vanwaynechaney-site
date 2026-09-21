@@ -1,3 +1,20 @@
+# 2026-09-21 — Miami talk on the site, STAGED (uncommitted, not deployed)
+
+- `index.html`: new **Speaking** section between the hero and "Two ways to work together" — three photos
+  from the 9/14 talk, Colleen Bush's quote, CTA to `intake.html`. CSS block sits above `EMAIL CAPTURE`.
+- `about.html`: full-width Guest Lecturer card at the top of the Experience grid; employer and intern
+  org names removed from the two cards below it (employer rule); cert line updated.
+- `miami.html`: post-talk version. Expired resume-review card removed. OG image now
+  `images/miami/og-miami.jpg`. Still `noindex` on purpose.
+- Photos: `images/miami/` (7 files). Source frames: DSCF1139, 1135 (top 14% cropped to kill slide
+  text), 1131, 1140.
+- 🔴 **How this site deploys is not written anywhere and could not be found.** Cloudflare Pages
+  (`_redirects` honored live), project not visible to the wrangler login on this machine, no GitHub
+  webhook. Origin is one commit behind local. First test is `git push`; if the homepage does not show
+  "Speaking" in a few minutes, the deploy is a direct upload from another Cloudflare account.
+- Local preview: `preview_start` config `vanwaynechaney-site` on port 8823 (added to
+  NebulaOS `.claude/launch.json`).
+
 # Current Direction — 2026-09-06
 
 ## Identity and Visual Decisions
