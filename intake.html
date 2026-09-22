@@ -198,6 +198,19 @@
       text-transform: uppercase;
     }
 
+    /* The consent text inherits `label`, which is uppercase for field labels.
+       On a four-field form that made the legal disclosure the loudest thing on
+       the page. A2P requires the disclosure to be present and clear — not
+       shouted, and all caps reads slower, not more seriously. */
+    label[for="smsConsent"] {
+      text-transform: none;
+      font-weight: 400;
+      font-size: 0.74rem;
+      line-height: 1.5;
+      letter-spacing: 0;
+      color: var(--muted);
+    }
+
     input, select, textarea {
       width: 100%;
       border: 1px solid rgba(201,168,76,0.15);
@@ -515,13 +528,13 @@
         <div class="form-head">
           <div class="eyebrow">Free Audit</div>
           <h1>Let's <span>Connect</span></h1>
-          <p>Tell us what you're trying to fix, build, or automate. This free audit gives me enough context to see what's broken and what the right next move is.</p>
+          <p>Tell me what you are trying to fix, build or automate. That gives me enough to see what is actually broken and what the right next move is.</p>
           <p style="font-size:0.8rem;color:var(--muted);opacity:0.75;margin-top:0.5rem;">I read every one of these myself, so I only take on a limited number of new builds at a time.</p>
         </div>
 
         <div class="offer-note">
           <strong>Free intake audit</strong>
-          <span>Drop your info, tell us what's broken, and we'll review the bottleneck before reaching back out.</span>
+          <span>Tell me what is broken. I look at the bottleneck before I come back to you.</span>
         </div>
 
         <form id="intakeForm" method="POST">
@@ -529,7 +542,7 @@
 
           <div class="grid-2">
             <div class="field">
-              <label for="name">Full Name</label>
+              <label for="name">Your name</label>
               <input id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div class="field">
@@ -538,117 +551,22 @@
             </div>
           </div>
 
-          <div class="grid-2">
-            <div class="field">
-              <label for="company">Company / Brand</label>
-              <input id="company" name="company" type="text" placeholder="Business name" />
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="text" placeholder="Optional" />
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="field">
-              <label for="website">Website</label>
-              <input id="website" name="website" type="text" placeholder="https://yourwebsite.com" />
-            </div>
-            <div class="field">
-              <label for="business_type">Business Type</label>
-              <select id="business_type" name="business_type">
-                <option value="">Select one</option>
-                <option>Service business</option>
-                <option>Agency</option>
-                <option>Contractor / trades</option>
-                <option>Fitness / coaching</option>
-                <option>Real estate</option>
-                <option>Personal brand</option>
-                <option>Ecommerce</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="field">
-              <label for="need">What do you need?</label>
-              <select id="need" name="need">
-                <option value="">Select one</option>
-                <option>Website or landing page</option>
-                <option>Lead intake form</option>
-                <option>AI workflow or automation</option>
-                <option>Follow-up system</option>
-                <option>AI phone / intake agent</option>
-                <option>Content or posting system</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="timeline">Timeline</label>
-              <select id="timeline" name="timeline">
-                <option value="">Select one</option>
-                <option>ASAP</option>
-                <option>This week</option>
-                <option>This month</option>
-                <option>Next 30 to 60 days</option>
-                <option>Just researching</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="field">
-              <label for="budget">Budget Range</label>
-              <select id="budget" name="budget">
-                <option value="">Select one</option>
-                <option>Under $500</option>
-                <option>$500 to $1,500</option>
-                <option>$1,500 to $3,000</option>
-                <option>$3,000 to $7,500</option>
-                <option>$7,500+</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="contact_pref">Preferred Contact</label>
-              <select id="contact_pref" name="contact_pref">
-                <option value="">Select one</option>
-                <option>Email</option>
-                <option>Phone</option>
-                <option>Text</option>
-              </select>
-            </div>
+          <div class="field">
+            <label for="phone">Phone <span style="font-weight:400;opacity:0.65;">&mdash; optional</span></label>
+            <input id="phone" name="phone" type="tel" placeholder="Only if you would rather I call" />
           </div>
 
           <div class="field">
-            <label for="problem">What's broken or slowing you down?</label>
-            <textarea id="problem" name="problem" placeholder="Tell me where the bottleneck is. Be specific about the problem, the workflow, or the thing leaking time or money." required></textarea>
+            <label for="problem">What job is eating your week?</label>
+            <textarea id="problem" name="problem" rows="4" placeholder="The thing somebody does by hand, over and over. Plain words are fine." required></textarea>
           </div>
 
-          <div class="field">
-            <label for="goal">What outcome do you want?</label>
-            <textarea id="goal" name="goal" placeholder="More leads, faster follow-up, cleaner intake, a better website, less manual work, better content workflow, or something else."></textarea>
-          </div>
-
-          <div class="form-meta">
-            <p>Be direct. The better the context, the better the next step.</p>
-          </div>
-
-          <div class="consent-check">
             <input type="checkbox" id="smsConsent" name="sms_consent" value="yes" />
             <label for="smsConsent">
               (Optional) By checking this box, I agree to receive SMS text messages from VC2 AI LLC including service follow-ups, lead qualification questions, appointment reminders, and review requests. This is not required to submit your audit request. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out at any time. View our <a href="./privacy.html" target="_blank">Privacy Policy</a> and <a href="./terms.html" target="_blank">Terms &amp; Conditions</a>.
             </label>
           </div>
-
-          <div class="submit-row">
-            <small>Submit this free audit once. I read it, looks for the real bottleneck, and reaches back out with the next move.</small>
             <button type="submit" id="submitBtn">Send My Free Audit →</button>
-          </div>
-
-          <div class="success-banner" id="successBanner">
-            Free audit received. I will review it and reach back out with the next step.
-          </div>
                   <p id="intakeFallback" style="display:none;margin-top:0.9rem;font-size:0.86rem;color:#4A5A6E;"></p>
         </form>
       </div>
@@ -665,7 +583,7 @@
       </div>
       <div class="after-card">
         <strong>Best submissions</strong>
-        <p>The strongest submissions are specific. Tell us what is slow, manual, inconsistent, or leaking money.</p>
+        <p>Be specific. What is slow, manual, inconsistent, or quietly costing you money?</p>
       </div>
     </section>
   </div>
