@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanwayne Chaney II — About</title>
+  <title>Vanwayne Chaney Jr. — About</title>
   <link rel="icon" type="image/png" href="./vc2_v_logo_transparent_tight.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:        #06101D;
-      --bg-2:      #0A1728;
-      --bg-card:   #0D1B2B;
-      --gold:      #C9A84C;
-      --gold-2:    #E8C56A;
-      --gold-dim:  rgba(201,168,76,0.12);
-      --white:     #F0EDE6;
-      --muted:     #93A0B3;
-      --border:    rgba(201,168,76,0.15);
+      --bg:        #FCFCFA;
+      --bg-2:      #E4EFF9;
+      --bg-card:   #FFFFFF;
+      --blue:      #2F6E9E;
+      --blue-deep: #1F4E78;
+      --gold:      #A8781F;
+      /* #A8781F measures 3.81:1 on #FCFCFA — under AA for small text.
+         Small uppercase labels use this darker ink (5.01:1); buttons, icons and
+         display text keep --gold so the brand look does not move. */
+      --gold-ink: #8F6618;
+      --gold-2:    #C9A24A;
+      --gold-dim:  rgba(47,110,158,0.10);
+      --white:     #0B1F3A;
+      --muted:     #4A5A6E;
+      --border:    rgba(11,31,58,0.14);
       --radius:    12px;
       --blue-glow: rgba(63, 157, 255, 0.18);
       --bar-h: 60px;
@@ -30,7 +36,7 @@
       left: 0;
       right: 0;
       height: var(--bar-h);
-      background: rgba(6,16,29,0.98);
+      background: rgba(252,252,250,0.98);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
@@ -120,9 +126,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(6,16,29,0.82);
+      background: rgba(252,252,250,0.82);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(201,168,76,0.08);
+      border-bottom: 1px solid rgba(47,110,158,0.09);
     }
 
     .nav-logo {
@@ -157,7 +163,7 @@
 
     .nav-cta {
       background: var(--gold);
-      color: #09090E !important;
+      color: #FCFCFA !important;
       padding: 0.55rem 1.4rem;
       border-radius: 6px;
       font-weight: 600 !important;
@@ -183,9 +189,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 60% at 75% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 75% 50%, rgba(47,110,158,0.07) 0%, transparent 70%),
         radial-gradient(ellipse 40% 80% at 10% 80%, rgba(40,111,194,0.12) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(3,10,22,0.18) 0%, rgba(3,10,22,0.72) 100%);
+        linear-gradient(180deg, rgba(228,239,249,0.5) 0%, rgba(252,252,250,0.92) 100%);
       pointer-events: none;
     }
 
@@ -195,8 +201,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(31,78,120,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,78,120,0.05) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
     }
@@ -209,7 +215,7 @@
       gap: 0.5rem;
       font-family: 'DM Mono', monospace;
       font-size: 0.75rem;
-      color: var(--gold);
+      color: var(--blue-deep);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -272,8 +278,8 @@
     }
 
     .btn-primary {
-      background: var(--gold);
-      color: #09090E;
+      background: var(--blue-deep);
+      color: #FCFCFA;
       padding: 0.85rem 2rem;
       border-radius: 8px;
       font-weight: 600;
@@ -324,11 +330,9 @@
     .hero-strip-item {
       padding: 1rem 0.85rem;
       border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(8,18,32,0.9);
-      border: 1px solid rgba(201,168,76,0.16);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 12px 24px rgba(0,0,0,0.18);
+      background: var(--bg-2);
+      border: 1px solid rgba(11,31,58,0.12);
+      box-shadow: 0 2px 10px rgba(11,31,58,0.06);
       text-align: center;
     }
 
@@ -508,11 +512,12 @@
     }
 
     .section-label {
+      color: var(--blue) !important;
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 1rem;
     }
 
@@ -534,8 +539,8 @@
     /* ─── ABOUT ─── */
     .about {
       background: var(--bg-2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(11,31,58,0.06);
+      border-bottom: 1px solid rgba(11,31,58,0.06);
     }
 
     .about-grid {
@@ -562,7 +567,7 @@
     }
 
     .about-photo-card {
-      background: linear-gradient(180deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+      background: linear-gradient(180deg, rgba(47,110,158,0.09), rgba(201,168,76,0.02));
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 1rem;
@@ -687,7 +692,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 0.45rem;
     }
 
@@ -731,7 +736,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 0.6rem;
     }
 
@@ -794,7 +799,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 1rem;
     }
 
@@ -821,8 +826,8 @@
     .what-section,
     .follow {
       background: var(--bg-2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(11,31,58,0.06);
+      border-bottom: 1px solid rgba(11,31,58,0.06);
     }
 
     .what-inner,
@@ -871,7 +876,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 1rem;
     }
 
@@ -970,7 +975,7 @@
       position: absolute;
       top: 1.25rem; right: 1.25rem;
       background: var(--gold);
-      color: #09090E;
+      color: #FCFCFA;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -1061,7 +1066,7 @@
 
     .product-card.featured .product-cta {
       background: var(--gold);
-      color: #09090E;
+      color: #FCFCFA;
       border-color: transparent;
     }
 
@@ -1070,7 +1075,7 @@
     /* ─── HOW IT WORKS ─── */
     .how {
       background: var(--bg-2);
-      border-top: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(11,31,58,0.06);
     }
 
     .how-inner {
@@ -1116,7 +1121,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--gold-ink);
       position: relative;
       z-index: 1;
       background: var(--bg);
@@ -1285,7 +1290,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-menu .mobile-cta {
       background: var(--gold);
-      color: #09090E;
+      color: #FCFCFA;
       padding: 0.9rem 2.5rem;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.9rem;
@@ -1324,9 +1329,9 @@
       }
       .stat-item {
         padding: 0.8rem 0.7rem;
-        border: 1px solid rgba(201,168,76,0.12);
+        border: 1px solid rgba(47,110,158,0.10);
         border-radius: 14px;
-        background: rgba(8,18,32,0.82);
+        background: var(--bg-2);
       }
       .stat-label { font-size: 0.68rem; line-height: 1.35; }
       .hero-strip { grid-template-columns: repeat(2, 1fr); max-width: none; margin-top: 1.5rem; }
@@ -1491,9 +1496,80 @@
       .footer-links a { font-size: 0.76rem; }
     }
   
+    /* â”€â”€ SITE INTRO + PAGE TRANSITION â”€â”€ */
+    #vc2Intro, #vc2Nav {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #0B1F3A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+    }
+
+    #vc2Intro.on, #vc2Nav.on {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.35s ease, visibility 0s;
+    }
+
+    #vc2Intro.out { opacity: 0; pointer-events: none; }
+
+    /* the page itself fades up once the overlay clears */
+    .page, body > main, body > section { animation: vc2FadeUp 0.6s ease both; }
+
+    @keyframes vc2FadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page, body > main, body > section { animation: none; }
+    }
+
+    #vc2Intro video, #vc2Nav video {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+
+    #vc2Skip {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,237,230,0.65);
+      background: transparent;
+      border: 1px solid rgba(240,237,230,0.3);
+      border-radius: 99px;
+      padding: 7px 16px;
+      cursor: pointer;
+    }
+
+    #vc2Skip:hover { color: var(--white); border-color: var(--gold); }
+
+    @media (prefers-reduced-motion: reduce) {
+      #vc2Intro, #vc2Nav { display: none !important; }
+    }
+
   </style>
 </head>
 <body class="page-about">
+  <!-- Page transition, fired by any link carrying data-page-transition. -->
+  <div id="vc2Nav" aria-hidden="true">
+    <video id="vc2NavVideo" muted playsinline preload="none">
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+
 
   <div class="page" id="page">
 
@@ -1508,7 +1584,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">
+    <a href="./index.html" data-page-transition class="nav-logo">
       <img src="./logo.jpg" alt="VCII" style="height:36px;width:36px;border-radius:50%;object-fit:cover;margin-right:0.5rem;vertical-align:middle;" />
       Vanwayne
     </a>
@@ -1528,11 +1604,11 @@
     <div class="hero-bg"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">About Wayne</div>
+      <div class="hero-eyebrow">About Vanwayne</div>
 
       <h1 class="hero-name">
         <div class="first">Vanwayne</div>
-        <div class="last">Chaney II</div>
+        <div class="last">Chaney Jr.</div>
       </h1>
 
       <p class="hero-tag">Computer Engineer · AI Systems Builder · Operator Mindset</p>
@@ -1547,7 +1623,7 @@
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:480px;margin-top:1rem;">
-        <a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">Buy Now</a>
+        <a href="./book.html" data-page-transition class="btn-primary" style="text-align:center;">Book a Time</a>
         <a href="./intake.html" data-page-transition class="btn-primary" style="text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk First</a>
       </div>
 
@@ -1573,7 +1649,7 @@
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">📞</div>
-          <div class="hero-strip-label">AI Phone Intake Agents</div>
+          <div class="hero-strip-label">Drop-and-Done Builds</div>
         </div>
         <div class="hero-strip-item">
           <div class="hero-strip-icon">⚙️</div>
@@ -1591,7 +1667,7 @@
     <div class="hero-photo">
       <div class="photo-frame" style="width:min(680px,100%);">
         <div class="hero-visual-card">
-          <img src="./vcii-banner.png" alt="Vanwayne Chaney Jr. AI systems for small business banner" />
+          <img src="./vcii-banner-real-estate.jpg" width="1983" height="793" alt="Vanwayne Chaney Jr. — AI for Real Estate Operators: deals, automation, smarter systems" />
         </div>
         <div class="photo-badge">
           <div class="badge-dot"></div>
@@ -1611,9 +1687,9 @@
         <div class="section-label">01</div>
         <h2 class="section-title">Who is Vanwayne Chaney Jr.?</h2>
         <div class="about-body">
-          <p><strong>I’m Wayne.</strong> I’m a software engineer, AI builder, and systems-minded operator from Cleveland, Ohio. I build AI workflows, digital tools, and business systems, but the real point of this page is simpler than that. It is to show you who I am, what shaped me, and why I work the way I do.</p>
-          <p>I care about building real relationships with real people, especially business owners and operators who are trying to tighten up their systems, save time, and stop losing money to sloppy follow-up or messy operations.</p>
-          <p>Through <strong>VC2</strong>, I focus on practical AI and operator tools that actually help. This is the background behind that: Cleveland roots, engineering discipline, a real interest in systems, and a builder mindset that comes from both work and life.</p>
+          <p><strong>I’m Vanwayne.</strong> I’m a computer engineer from Cleveland who builds AI systems for small businesses, trade companies, law firms and city governments across Northeast Ohio. Somebody at your business does a job by hand every week. I build the thing that does it instead, hand it over, and walk away.</p>
+          <p>That work is running right now. A staffing rep who spent an hour a week planning her route by hand does it in about two minutes. A village runs a civic assistant I built. This month I taught AI to engineering students at Miami University’s College of Engineering and Computing, and I’m certified across Anthropic, OpenAI and Google.</p>
+          <p>I work with a small number of people at a time, in person where I can. Cleveland roots, engineering discipline, and a preference for systems that keep paying after I leave. The rest of this page is where that came from.</p>
         </div>
       </div>
 
@@ -1644,12 +1720,12 @@
       <div class="ask-wayne-widget reveal reveal-delay-1">
         <div class="aw-messages" id="awMessages">
           <div class="aw-msg aw-msg--assistant">
-            <span>Hey — I'm Wayne's assistant. What do you want to know about him or what he builds?</span>
+            <span>Hey — I'm Vanwayne's assistant. What do you want to know about him or what he builds?</span>
           </div>
         </div>
         <div class="aw-starters" id="awStarters">
-          <button class="aw-starter" onclick="awSendStarter(this)">What's Wayne building right now?</button>
-          <button class="aw-starter" onclick="awSendStarter(this)">How does the AI Intake Agent work?</button>
+          <button class="aw-starter" onclick="awSendStarter(this)">What's Vanwayne building right now?</button>
+          <button class="aw-starter" onclick="awSendStarter(this)">What kind of work do you take on?</button>
           <button class="aw-starter" onclick="awSendStarter(this)">Can AI help my business?</button>
         </div>
         <form class="aw-form" id="awForm" onsubmit="awSubmit(event)">
@@ -1665,8 +1741,8 @@
   <style>
     .ask-wayne-section {
       padding: 6rem 2rem;
-      background: #0a0a0a;
-      border-top: 1px solid rgba(212,175,55,0.15);
+      background: var(--bg-2);
+      border-top: 1px solid rgba(11,31,58,0.12);
     }
     .ask-wayne-inner {
       max-width: 720px;
@@ -1676,8 +1752,8 @@
       margin-bottom: 2.5rem;
     }
     .ask-wayne-widget {
-      background: #111;
-      border: 1px solid rgba(212,175,55,0.25);
+      background: #FFFFFF;
+      border: 1px solid rgba(11,31,58,0.14);
       border-radius: 12px;
       overflow: hidden;
       display: flex;
@@ -1700,21 +1776,21 @@
       line-height: 1.55;
     }
     .aw-msg--assistant {
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.2);
-      color: #e8e8e8;
+      background: #EFF4F9;
+      border: 1px solid rgba(11,31,58,0.10);
+      color: #0B1F3A;
       align-self: flex-start;
     }
     .aw-msg--user {
-      background: rgba(212,175,55,0.18);
-      border: 1px solid rgba(212,175,55,0.35);
-      color: #fff;
+      background: var(--blue-deep);
+      border: 1px solid var(--blue-deep);
+      color: #FCFCFA;
       align-self: flex-end;
     }
     .aw-msg--thinking {
-      background: rgba(212,175,55,0.07);
-      border: 1px solid rgba(212,175,55,0.12);
-      color: #888;
+      background: #F4F7FA;
+      border: 1px solid rgba(11,31,58,0.08);
+      color: #4A5A6E;
       align-self: flex-start;
       font-style: italic;
     }
@@ -1726,8 +1802,8 @@
     }
     .aw-starter {
       background: transparent;
-      border: 1px solid rgba(212,175,55,0.3);
-      color: #d4af37;
+      border: 1px solid rgba(31,78,120,0.35);
+      color: var(--blue-deep);
       border-radius: 20px;
       padding: 0.4rem 0.9rem;
       font-size: 0.78rem;
@@ -1735,15 +1811,15 @@
       transition: background 0.2s, border-color 0.2s;
     }
     .aw-starter:hover {
-      background: rgba(212,175,55,0.1);
-      border-color: rgba(212,175,55,0.6);
+      background: rgba(47,110,158,0.10);
+      border-color: var(--blue);
     }
     .aw-form {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 1.5rem;
-      border-top: 1px solid rgba(212,175,55,0.15);
+      border-top: 1px solid rgba(11,31,58,0.12);
     }
     .aw-input {
       flex: 1;
@@ -1758,7 +1834,7 @@
       color: #555;
     }
     .aw-send {
-      background: #d4af37;
+      background: #1F4E78;
       border: none;
       border-radius: 8px;
       padding: 0.5rem 0.65rem;
@@ -1872,7 +1948,7 @@
           <div class="education-item">
             <div class="education-kicker">06</div>
             <div class="education-title">Certifications</div>
-            <div class="education-copy">Microsoft AI-901. Anthropic Academy: AI Fluency Framework &amp; Foundations, Claude 101, Introduction to Agent Skills, Introduction to Subagents, Introduction to Model Context Protocol, MCP Advanced Topics, AI Capabilities and Limitations, Teaching AI Fluency, Introduction to Claude Cowork. I use certifications to reinforce real shipped work, not replace it.</div>
+            <div class="education-copy">Certified across all four — <strong>Microsoft</strong>, <strong>Anthropic</strong>, <strong>OpenAI</strong> and <strong>Google</strong>. Microsoft AI-901. Anthropic: Model Context Protocol Advanced Topics, Introduction to Agent Skills, plus the Anthropic Academy track — AI Fluency Framework &amp; Foundations, Claude 101, Subagents, AI Capabilities and Limitations, Teaching AI Fluency, Claude Cowork. Google: Gemini Certified. OpenAI Academy: AI Foundations, Applied AI Foundations, Agents and Workflows. I use certifications to reinforce real shipped work, not replace it.</div>
           </div>
         </div>
       </div>
@@ -1998,7 +2074,7 @@
       <div class="follow-grid">
         <div class="follow-card reveal reveal-delay-1">
           <div class="follow-kicker">Question</div>
-          <div class="follow-title">Who is Wayne, really?</div>
+          <div class="follow-title">Who is Vanwayne, really?</div>
           <p class="follow-copy">A Cleveland-born builder shaped by hard work, family, engineering, and local business. Someone who cares about systems because he has seen what happens when real work depends on them.</p>
         </div>
 
@@ -2108,7 +2184,7 @@
   </script>
   <nav class="sticky-bar">
     <a href="./index.html" data-page-transition class="bar-item">
-      <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;" />
+      <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;"  alt="Vanwayne Chaney Jr." />
       Home
     </a>
     <a href="./services.html" data-page-transition class="bar-item">
@@ -2123,11 +2199,79 @@
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor"/></svg>
       Live Demos
     </a>
-    <a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="bar-item bar-consult">
+    <a href="./book.html" data-page-transition class="bar-item bar-consult">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Buy
+      Book
     </a>
   </nav>
+  <script>
+  /* Site intro + page transition.
+     Rules it must never break:
+       - once per browser session, not once per page view
+       - never blocks the page: a hard timeout always tears it down
+       - honours prefers-reduced-motion
+       - a video error dismisses instantly rather than trapping the visitor
+       - internal links only, never tel:/mailto:/external/new-tab */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* entry intro is homepage-only */
+    var intro = document.getElementById('vc2Intro');
+    if (intro) {
+      var seen;
+      try { seen = sessionStorage.getItem('vc2IntroSeen'); } catch (e) { seen = '1'; }
+      if (reduce || seen) {
+        intro.remove();
+      } else {
+        try { sessionStorage.setItem('vc2IntroSeen', '1'); } catch (e) {}
+        var v = document.getElementById('vc2IntroVideo');
+        var done = false;
+        var kill = function () {
+          if (done) return; done = true;
+          intro.classList.add('out');
+          setTimeout(function () { intro.remove(); }, 500);
+        };
+        intro.classList.add('on');
+        document.documentElement.style.overflow = 'hidden';
+        var release = function () { document.documentElement.style.overflow = ''; };
+        v.addEventListener('ended', function () { release(); kill(); });
+        v.addEventListener('error', function () { release(); kill(); });
+        document.getElementById('vc2Skip').addEventListener('click', function () { release(); kill(); });
+        /* the guarantee: whatever happens to the video, the page is usable in 7s */
+        setTimeout(function () { release(); kill(); }, 7000);
+        var play = v.play();
+        if (play && play.catch) { play.catch(function () { release(); kill(); }); }
+      }
+    }
+
+    /* ---- page transition ---- */
+    var nav = document.getElementById('vc2Nav');
+    if (nav && !reduce) {
+      var nv = document.getElementById('vc2NavVideo');
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[data-page-transition]') : null;
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        if (!href || href.charAt(0) === '#') return;
+        if (a.target === '_blank' || /^(https?:)?\/\//.test(href) || /^(tel:|mailto:)/.test(href)) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        var gone = false;
+        var go = function () { if (gone) return; gone = true; window.location.href = href; };
+        nav.classList.add('on');
+        nv.addEventListener('ended', go);
+        nv.addEventListener('error', go);
+        setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);  /* never strand anyone */
+        nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
+        nv.load();
+        var p = nv.play();
+        if (p && p.catch) { p.catch(go); }
+      });
+    }
+  })();
+  </script>
+  <!-- "Got questions?" chat bubble. One shared file so all pages stay in sync. -->
+  <script src="./chat.js" defer></script>
 </body>
 </html>
 

@@ -6,3 +6,15 @@ node_modules/
 _vercel_backup/
 download_deployment.py
 take-screenshots.js
+
+# Editing backups. Written while iterating, never part of the site.
+*.bak-*
+*.broken-json-bak
+
+# Large source media that no page references. Keep on disk, keep out of the
+# deploy — Cloudflare Pages caps a single file at 25 MB and these are dead weight.
+VC2_gold_logo_animation_4K.mp4
+VC2 Logo update
+VC2 final logo.webp
+vcii-banner-real-estate.png
+commercial/**/out/*.mp4

@@ -20,9 +20,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg:#06101D; --bg-2:#0A1728; --bg-card:#0D1B2B;
-      --gold:#C9A84C; --gold-2:#E8C56A; --gold-dim:rgba(201,168,76,0.12);
-      --white:#F0EDE6; --muted:#93A0B3; --border:rgba(201,168,76,0.15);
+      --bg:#FCFCFA; --bg-2:#E4EFF9; --bg-card:#FFFFFF;
+      --blue:#2F6E9E;--blue-deep:#1F4E78;--gold:#A8781F; --gold-2:#C9A24A; --gold-dim:rgba(47,110,158,0.10);
+      --white:#0B1F3A; --muted:#4A5A6E; --border:rgba(11,31,58,0.14);
       --radius:12px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -43,7 +43,7 @@
 
     .eyebrow{
       font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.18em;
-      text-transform:uppercase; color:var(--gold); margin-bottom:1.25rem; text-align:center;
+      text-transform:uppercase; color: var(--blue-deep); margin-bottom:1.25rem; text-align:center;
     }
 
     .photo{
@@ -149,9 +149,48 @@
       .photo{aspect-ratio:1/1}
       .promptbox pre{font-size:.68rem; max-height:200px}
     }
+    /* ── PAGE TRANSITION ── */
+    #vc2Nav {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #0B1F3A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+    }
+
+    #vc2Nav.on {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.35s ease, visibility 0s;
+    }
+
+    #vc2Nav video {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #vc2Nav { display: none !important; }
+    }
+
   </style>
 </head>
 <body>
+  <!-- Page transition, fired by any link carrying data-page-transition. -->
+  <div id="vc2Nav" aria-hidden="true">
+    <video id="vc2NavVideo" muted playsinline preload="none">
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+
   <main class="wrap">
 
     <p class="eyebrow">Miami University &middot; CEC &middot; Sept 14, 2026</p>
@@ -232,11 +271,6 @@ FORMAT: one section per company, scannable, no giant paragraphs. I'm reading thi
       </div>
     </a>
 
-    <p class="callline">
-      Want to hear the AI from the talk again?
-      <a href="tel:+12166161364">Call 216-616-1364</a> and try to stump it.
-    </p>
-
     <div class="rule"></div>
 
     <p class="note">
@@ -302,5 +336,37 @@ FORMAT: one section per company, scannable, no giant paragraphs. I'm reading thi
       });
     })();
   </script>
+  <script>
+  /* Page transition. Home gets the long intro, everything else the short clip.
+     Never traps anyone: hard timeout, error dismisses, reduced-motion opts out,
+     external and tel/mailto links pass straight through. */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var nav = document.getElementById('vc2Nav');
+    if (!nav) return;
+    var nv = document.getElementById('vc2NavVideo');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[data-page-transition]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#') return;
+      if (a.target === '_blank' || /^(https?:)?\/\//.test(href) || /^(tel:|mailto:)/.test(href)) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      var gone = false;
+      var go = function () { if (gone) return; gone = true; window.location.href = href; };
+      nav.classList.add('on');
+      nv.addEventListener('ended', go);
+      nv.addEventListener('error', go);
+      nv.src = /(^|\/)index\.html$|^\.\/?$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
+      nv.load();
+      setTimeout(go, /index\.html$|^\.\/?$/.test(href) ? 6500 : 4800);
+      var p = nv.play();
+      if (p && p.catch) { p.catch(go); }
+    });
+  })();
+  </script>
+  <!-- "Got questions?" chat bubble. One shared file so all pages stay in sync. -->
+  <script src="./chat.js" defer></script>
 </body>
 </html>

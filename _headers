@@ -8,6 +8,14 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  # Verified 2026-09-22 against a server actually sending this header: 7 pages,
+  # zero violations, Cal embed still loads on index and book, chat still renders.
+  # Only two third parties execute or render anything here — Cal and Google Fonts.
+  # The Vapi SDK was removed from live-demos.html the same day; do not re-add a
+  # CDN origin without testing the pages again.
+  # 🔴 'unsafe-inline' in script-src is a known weakness, not a decision. 27 inline
+  # onclick= handlers have to move to addEventListener before it can come out.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://app.cal.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://app.cal.com https://cal.com; media-src 'self'; frame-src https://app.cal.com https://cal.com; connect-src 'self' https://app.cal.com https://api.cal.com; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'
 
 # The missed-call calculator is fully self-contained and must never talk to a
 # third party. connect-src 'none' makes exfiltration impossible rather than

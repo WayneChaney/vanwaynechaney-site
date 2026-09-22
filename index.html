@@ -54,7 +54,7 @@
           "Workflow automation and custom internal tools",
           "Public records and document retrieval systems",
           "Spreadsheet and manual data entry replacement",
-          "AI voice receptionists",
+          "Website design and build for local business",
           "Missed call recovery and text-back automation",
           "Generative engine optimization",
           "AI search visibility for professional services"
@@ -67,11 +67,14 @@
         "@type": "ProfessionalService",
         "@id": "https://vanwaynechaney.com/#vc2",
         "name": "VC2 AI LLC",
-        "alternateName": "VC2 AI",
+        "alternateName": ["VC2 AI", "Zulvan", "VC2 AI LLC dba Zulvan"],
         "url": "https://vanwaynechaney.com/",
         "telephone": "+1-216-616-1364",
         "founder": { "@id": "https://vanwaynechaney.com/#vanwayne" },
         "areaServed": [
+          { "@type": "City", "name": "Oakwood Village", "addressRegion": "OH" },
+          { "@type": "City", "name": "Cleveland", "addressRegion": "OH" },
+          { "@type": "City", "name": "Akron", "addressRegion": "OH" },
           { "@type": "State", "name": "Ohio" },
           { "@type": "Country", "name": "United States" }
         ],
@@ -81,7 +84,7 @@
           "addressRegion": "OH",
           "addressCountry": "US"
         },
-        "description": "Builds workflow automation and custom internal tools for small businesses, professional services firms, and Ohio municipal government. Registered in SAM.gov and able to contract directly with government.",
+        "description": "AI consultant and automation builder in the Cleveland and Akron area. Builds workflow automation, websites and custom internal tools for small businesses, professional services firms and Ohio municipal government. Registered in SAM.gov and able to contract directly with government.",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Services",
@@ -90,8 +93,8 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "AI Voice Receptionist",
-                "description": "An AI that answers every inbound call around the clock, qualifies the caller, books the job, and texts the owner. Built for HVAC, plumbing, septic, locksmith, restoration, fencing, and water treatment."
+                "name": "Website Build",
+                "description": "A fast, mobile-first site for a local business, built and handed over complete: copy, layout, forms, and the follow-up wired in. Optional monthly support layer for changes after launch."
               }
             },
             {
@@ -145,14 +148,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #06101D;
-      --bg-2: #0A1728;
-      --bg-card: #0D1B2B;
-      --border: rgba(201,168,76,0.15);
-      --gold: #C9A84C;
-      --gold-2: #E8C56A;
-      --white: #F0EDE6;
-      --muted: #93A0B3;
+      --bg: #FCFCFA;
+      --bg-2: #E4EFF9;
+      --bg-card: #FFFFFF;
+      --border: rgba(11,31,58,0.14);
+      --blue: #2F6E9E;
+      --blue-deep: #1F4E78;
+      --gold: #A8781F;
+      /* #A8781F measures 3.81:1 on #FCFCFA — under AA for small text.
+         Small uppercase labels use this darker ink (5.01:1); buttons, icons and
+         display text keep --gold so the brand look does not move. */
+      --gold-ink: #8F6618;
+      --gold-2: #C9A24A;
+      --white: #0B1F3A;
+      --muted: #4A5A6E;
       --nav-h: 64px;
       --bar-h: 60px;
     }
@@ -174,7 +183,7 @@
       width: 100%;
       z-index: 100;
       height: var(--nav-h);
-      background: rgba(6,16,29,0.95);
+      background: rgba(252,252,250,0.96);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -258,7 +267,7 @@
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
-      color: var(--gold);
+      color: var(--blue-deep);
       text-transform: uppercase;
       margin-bottom: 20px;
     }
@@ -295,8 +304,8 @@
 
     .btn-primary {
       display: inline-block;
-      background: var(--gold);
-      color: #000;
+      background: var(--blue-deep);
+      color: #FCFCFA;
       font-weight: 700;
       font-size: 0.95rem;
       padding: 16px 32px;
@@ -344,8 +353,8 @@
       padding: 22px;
       border: 1px solid var(--border);
       border-radius: 18px;
-      background: linear-gradient(180deg, rgba(13,27,43,0.94), rgba(10,23,40,0.96));
-      box-shadow: 0 24px 60px rgba(0,0,0,0.32);
+      background: var(--bg-2);
+      box-shadow: 0 2px 14px rgba(11,31,58,0.07);
     }
 
     .hero-video-head {
@@ -358,7 +367,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
       margin-bottom: 10px;
     }
 
@@ -385,7 +394,7 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 14px rgba(11,31,58,0.07);
     }
 
     .hero-banner img {
@@ -402,10 +411,11 @@
     }
 
     .section-label {
+      color: var(--blue) !important;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.14em;
-      color: var(--gold);
+      color: var(--gold-ink);
       text-transform: uppercase;
       margin-bottom: 12px;
     }
@@ -517,7 +527,7 @@
       min-height: 56px;
       padding: 16px 24px;
       border-radius: 10px;
-      border: 1px solid rgba(201,168,76,0.14);
+      border: 1px solid rgba(11,31,58,0.14);
       text-decoration: none;
       transition: border-color 0.2s, transform 0.2s, opacity 0.2s;
       text-align: center;
@@ -543,131 +553,93 @@
     }
 
     /* ── PATHS ── */
-    .paths-section {
+    @media (max-width: 640px) {
+      .video-cta-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── BOOK: live calendar ── */
+    .book-section {
       padding: 0 24px 80px;
     }
 
-    .paths-inner {
+    .book-inner {
       max-width: 860px;
       margin: 0 auto;
     }
 
-    .paths-header {
+    .book-header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
-    .paths-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    @media (max-width: 640px) {
-      .paths-grid { grid-template-columns: 1fr; }
-      .video-cta-grid { grid-template-columns: 1fr; }
-    }
-
-    .path-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px 28px;
-      text-decoration: none;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
-      min-height: 200px;
-    }
-
-    .path-card:hover {
-      border-color: rgba(201,168,76,0.35);
-      transform: translateY(-2px);
-    }
-
-    .path-card.gold-card {
-      border-color: rgba(201,168,76,0.3);
-      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, var(--bg-card) 60%);
-    }
-
-    .path-icon {
-      font-size: 1.8rem;
-    }
-
-    .path-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-
-    .path-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .path-cta {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      margin-top: 8px;
-    }
-
-    /* ── PROOF BAND (Miami) ── */
-    .proof-band {
-      position: relative;
-      height: clamp(230px, 28vw, 380px);
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-card);
-    }
-
-    .proof-band img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 40%;
-      display: block;
-    }
-
-    .proof-band::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(6,16,29,0.10) 0%, rgba(6,16,29,0) 35%, rgba(6,16,29,0.94) 100%);
-    }
-
-    .proof-band-text {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      z-index: 1;
-      max-width: 960px;
+    .book-header .section-sub {
       margin: 0 auto;
-      padding: 0 24px 26px;
     }
 
-    .proof-band-text .section-label { margin-bottom: 6px; }
-
-    .proof-band-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--white);
-      margin: 0;
-      max-width: 720px;
+    .cal-wrap {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      min-height: 560px;
     }
 
-    .proof-band-sub {
+    #cal-inline {
+      width: 100%;
+      min-height: 560px;
+      overflow: auto;
+    }
+
+    /* Cal's iframe floors at ~900px on a phone and fills ~350 of it, whatever
+       layout you pass — the gap is inside their frame and unreachable from here.
+       So the phone gets a button that opens Cal full-screen instead of a box
+       full of white. Desktop keeps the embed, where it renders correctly. */
+    .cal-mobile { display: none; }
+
+    /* Cal's popup must clear the sticky nav and the bottom bar */
+    cal-modal-box { z-index: 100000 !important; }
+
+    @media (max-width: 767px) {
+      .cal-wrap { display: none; }
+      .cal-mobile {
+        display: block;
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--bg-card);
+        padding: 26px 20px;
+      }
+      .cal-mobile-when {
+        margin: 0 0 16px;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .cal-mobile-btn {
+        width: 100%;
+        max-width: 340px;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+    }
+
+    .book-fallback {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.9rem;
       color: var(--muted);
-      font-size: 0.86rem;
-      margin-top: 6px;
+    }
+
+    .book-fallback a {
+      color: var(--gold-ink);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 420px) {
+      .book-section { padding: 0 20px 60px; }
+      .cal-wrap, #cal-inline { min-height: 460px; }
     }
 
     /* ── RECOMMENDATIONS STRIP ── */
@@ -689,13 +661,10 @@
       gap: 16px;
       width: max-content;
       padding: 0 8px;
-      animation: recs-scroll 75s linear infinite;
+      animation: recs-scroll 42s linear infinite;
     }
 
-    .recs-section:hover .recs-track,
-    .recs-section:focus-within .recs-track { animation-play-state: paused; }
-
-    .rec-card {
+        .rec-card {
       width: 330px;
       flex: 0 0 auto;
       background: var(--bg-card);
@@ -712,7 +681,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-ink);
     }
 
     .rec-quote {
@@ -735,84 +704,114 @@
 
     @media (prefers-reduced-motion: reduce) {
       .recs-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; padding: 0 24px; }
-      .recs-track[aria-hidden="true"] { display: none; }
+      .rec-card[aria-hidden="true"] { display: none; }
     }
 
     @media (max-width: 420px) {
       .rec-card { width: 270px; padding: 18px 18px; }
-      .proof-band-text { padding: 0 20px 20px; }
     }
 
-    /* ── EMAIL CAPTURE ── */
-    .email-section {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 80px 24px;
+    /* ── TEACHING SLIDESHOW (replaces the static banner) ── */
+    .teach-show {
+      margin-top: 18px;
+      width: 100%;
+      max-width: 560px;
     }
 
-    .email-inner {
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .email-inner .section-title {
-      margin-bottom: 12px;
-    }
-
-    .email-inner .section-sub {
-      margin: 0 auto 32px;
-    }
-
-    .email-form {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .email-input {
-      flex: 1;
-      min-width: 220px;
-      background: rgba(255,255,255,0.05);
+    .teach-frame {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 18px;
-      color: var(--white);
-      font-size: 0.92rem;
-      font-family: 'Inter', sans-serif;
-      outline: none;
-      transition: border-color 0.2s;
+      box-shadow: 0 2px 14px rgba(11,31,58,0.07);
+      background: var(--bg-card);
     }
 
-    .email-input:focus {
-      border-color: rgba(201,168,76,0.4);
+    .teach-slide {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0s linear 0.5s;
     }
 
-    .email-input::placeholder { color: var(--muted); }
+    .teach-slide.active { opacity: 1; visibility: visible; transition: opacity 0.5s ease, visibility 0s; }
 
-    .email-btn {
-      background: var(--gold);
-      color: #000;
+    .teach-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .teach-cap {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      padding: 44px 20px 18px;
+      background: linear-gradient(180deg, rgba(11,31,58,0) 0%, rgba(11,31,58,0.92) 62%);
+      text-align: left;
+    }
+
+    .teach-kicker {
+      color: #E8C56A;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+      font-size: 0.64rem;
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 14px 24px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: opacity 0.2s;
-      white-space: nowrap;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
-    .email-btn:hover { opacity: 0.88; }
+    .teach-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: #FFFFFF;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.7);
+      margin: 0;
+    }
 
-    .email-note {
-      margin-top: 14px;
-      font-size: 0.75rem;
-      color: var(--muted);
-      opacity: 0.6;
+    .teach-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 12px rgba(0,0,0,0.65);
+      margin-top: 4px;
+    }
+
+    .teach-dots {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      gap: 7px;
+    }
+
+    .teach-dots button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(240,237,230,0.75);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .teach-dots button[aria-selected="true"] {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .teach-slide { transition: none; }
+    }
+
+    @media (max-width: 420px) {
+      .teach-cap { padding: 38px 16px 14px; }
     }
 
     /* ── FOOTER ── */
@@ -854,7 +853,7 @@
       left: 0;
       right: 0;
       height: var(--bar-h);
-      background: rgba(6,16,29,0.98);
+      background: rgba(252,252,250,0.97);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
@@ -945,7 +944,6 @@
       justify-content: center;
     }
 
-    .path-card { min-height: 180px; }
 
     /* Stack hero buttons vertically on small phones */
     @media (max-width: 420px) {
@@ -970,7 +968,7 @@
       }
 
       .section { padding: 60px 20px; }
-      .paths-section { padding: 0 20px 60px; }
+      .book-section { padding: 0 20px 60px; }
       .hero-video-block { padding: 16px; margin-top: 22px; }
       .hero-video-title { font-size: 1.3rem; }
       .hero-video-sub { font-size: 0.88rem; }
@@ -982,9 +980,90 @@
       .bar-item { padding: 6px 8px; font-size: 0.58rem; }
     }
   
+    /* ── SITE INTRO + PAGE TRANSITION ── */
+    #vc2Intro, #vc2Nav {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #05101f;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #vc2Intro.on, #vc2Nav.on { display: flex; }
+
+    #vc2Intro.out { opacity: 0; pointer-events: none; }
+
+    /* the page itself fades up once the overlay clears */
+    .page, body > main, body > section { animation: vc2FadeUp 0.6s ease both; }
+
+    @keyframes vc2FadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page, body > main, body > section { animation: none; }
+    }
+
+    #vc2Intro video, #vc2Nav video {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+
+    #vc2Skip {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,237,230,0.65);
+      background: transparent;
+      border: 1px solid rgba(240,237,230,0.3);
+      border-radius: 99px;
+      padding: 7px 16px;
+      cursor: pointer;
+    }
+
+    #vc2Skip:hover { color: var(--white); border-color: var(--gold); }
+
+    @media (prefers-reduced-motion: reduce) {
+      #vc2Intro, #vc2Nav { display: none !important; }
+    }
+
+  </style>
+
+  <style>
+    /* Cal.com's own branding bar - not on his site */
+    #cal-inline [data-testid="branding"],
+    #cal-inline .cal-branding,
+    #cal-inline a[href*="cal.com/?redirect"],
+    #cal-inline a[href^="https://cal.com"],
+    #cal-inline [class*="branding"] { display: none !important; }
   </style>
 </head>
 <body>
+  <!-- Site intro. Plays once per browser session, never blocks the page. -->
+  <div id="vc2Intro" aria-hidden="true">
+    <video id="vc2IntroVideo" muted playsinline preload="auto">
+      <source src="./intro-preloader.mp4" type="video/mp4" />
+    </video>
+    <button id="vc2Skip" type="button">Skip</button>
+  </div>
+
+  <!-- Page transition, fired by any link carrying data-page-transition. -->
+  <div id="vc2Nav" aria-hidden="true">
+    <video id="vc2NavVideo" muted playsinline preload="none">
+      <source src="./vc2-ai-intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+
 
   <!-- NAV -->
   <nav>
@@ -994,7 +1073,7 @@
       <li><a href="./about.html" data-page-transition>About</a></li>
       <li><a href="./live-demos.html" data-page-transition>Live Demos</a></li>
       <li><a href="./intake.html" data-page-transition>Contact Me</a></li>
-      <li><a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="nav-cta">Buy Now</a></li>
+      <li><a href="#book" class="nav-cta">Book a Time</a></li>
     </ul>
   </nav>
 
@@ -1004,8 +1083,8 @@
     <!-- HERO -->
     <section class="hero">
       <p class="hero-eyebrow">AI Workflow Engineer</p>
-      <h1 class="hero-title">Take <span>one job</span> off your team. Permanently.</h1>
-      <p class="hero-sub">I find the thing somebody at your business does by hand every week, and I build the thing that does it instead. Small businesses and city governments across Northeast Ohio.</p>
+      <h1 class="hero-title">Get <span>5 months</span> a&nbsp;year&nbsp;back.</h1>
+      <p class="hero-sub">One job, done by hand, is what&rsquo;s eating it. Payroll reporting on 3 public jobs runs 15 hours a week. Manual data entry cost one clerk 14. One rep I work with went from an hour a week planning her route to 2 minutes &mdash; and her stops went from 10 a day to 15. Small businesses, trade companies, law firms and city governments across Northeast Ohio.</p>
       <div class="hero-video-block">
         <div class="hero-video-head">
           <p class="hero-video-kicker">See It In Action</p>
@@ -1013,21 +1092,22 @@
           <p class="hero-video-sub">Built once, handed over, runs without me. That’s the whole product.</p>
         </div>
 
-        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;">
-          <iframe
-            src="https://www.youtube.com/embed/HqoTXXkzV1Q?autoplay=0&rel=0&modestbranding=1"
-            title="VC2 AI Demo"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="position:absolute;top:0;left:0;width:100%;height:100%;">
-          </iframe>
+        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0B1F3A;">
+          <video
+            src="./vc2-automation-promo.mp4"
+            poster="./images/miami/og-miami.jpg"
+            controls
+            playsinline
+            preload="metadata"
+            title="What one of these looks like"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+          </video>
         </div>
 
         <div class="video-cta-wrap">
           <div class="video-cta-grid">
             <a href="./live-demos.html" class="video-cta-card primary-lane">
-              <div class="video-cta-title">Hear the AI in Action</div>
+              <div class="video-cta-title">See the sites I built</div>
             </a>
           </div>
 
@@ -1035,13 +1115,49 @@
         </div>
       </div>
 
-      <p class="hero-note">Want to hear one running? <a href="tel:+12166161364">Call 216-616-1364</a> — that line is a system I built.</p>
-
       <div class="hero-banner">
-        <img src="./vcii-banner.png" alt="Vanwayne Chaney Jr. — AI For Operators" />
+        <img src="./vcii-banner-real-estate.jpg" width="1983" height="793" alt="Vanwayne Chaney Jr. — AI for Real Estate Operators: deals, automation, smarter systems" />
       </div>
 
-      <a href="https://zulvan.com/#book" class="btn-primary" style="display:block;text-align:center;max-width:420px;margin:1rem auto 0;">Book a System Audit</a>
+      <div class="teach-show">
+        <div class="teach-frame" id="teach" aria-roledescription="carousel" aria-label="Teaching">
+          <figure class="teach-slide active">
+            <img src="./images/slideshow/1-miami-full-room.jpg" width="1200" height="1200" alt="Vanwayne Chaney Jr. teaching a full lecture hall of engineering students at Miami University" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">1 · Speaking</p>
+              <h2 class="teach-title">Invited to teach AI at Miami University’s College of Engineering and Computing.</h2>
+              <p class="teach-sub">Guest lecture for engineering students · September 2026 · Oxford, Ohio</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/2-oakwood-kids.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. with summer program students holding their AI challenge certificates" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">2 · Teaching</p>
+              <h2 class="teach-title">Teaching AI workshops for local governments.</h2>
+              <p class="teach-sub">Every kid left with a certificate · Oakwood Community Center · July 2026</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/3-church-youth.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. running a hands-on AI session with middle and high school students" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">3 · Teaching</p>
+              <h2 class="teach-title">Hands-on AI with the middle and high schoolers.</h2>
+              <p class="teach-sub">They asked better questions than most grown folks would have · Church Family Week</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/4-miami-solo.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. speaking on stage at Miami University" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">4 · Speaking</p>
+              <h2 class="teach-title">Three years out, telling students what nobody told me.</h2>
+              <p class="teach-sub">Miami University · September 2026</p>
+            </figcaption>
+          </figure>
+          <div class="teach-dots" role="tablist" aria-label="Slides"></div>
+        </div>
+      </div>
+
+      <a href="#book" class="btn-primary" style="display:block;text-align:center;max-width:420px;margin:1rem auto 0;">Book a System Audit</a>
 
       <p class="hero-note">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
 
@@ -1049,63 +1165,26 @@
 
     <div class="divider"></div>
 
-    <!-- PROOF BAND: Miami University talk -->
-    <section class="proof-band" id="speaking" aria-label="Speaking">
-      <picture>
-        <source media="(max-width: 640px)" srcset="./images/miami/miami-cec-talk-800.jpg" />
-        <img src="./images/miami/miami-cec-band.jpg" width="3168" height="792" loading="lazy" alt="Vanwayne Chaney Jr. teaching AI to engineering students at Miami University" />
-      </picture>
-      <div class="proof-band-text">
-        <p class="section-label">Speaking</p>
-        <h2 class="proof-band-title">Invited to teach AI at Miami University’s College of Engineering and Computing.</h2>
-        <p class="proof-band-sub">Guest lecture for first- and second-year engineering students · September 14, 2026 · Oxford, Ohio</p>
-      </div>
-    </section>
-
-    <!-- CHOOSE YOUR PATH -->
-    <div class="paths-section">
-      <div class="paths-inner">
-        <div class="paths-header">
-          <p class="section-label">Where do you fit?</p>
-          <h2 class="section-title">Two ways to work together.</h2>
+    <!-- BOOK: live calendar -->
+    <div class="book-section" id="book">
+      <div class="book-inner">
+        <div class="book-header">
+          <p class="section-label">Book a time</p>
+          <h2 class="section-title">Pick a time that works. That’s the whole process.</h2>
+          <p class="section-sub">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
         </div>
-        <div class="paths-grid">
-
-          <a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="path-card gold-card">
-            <div class="path-icon">⚡</div>
-            <div class="path-title">Path 1: Buy Now</div>
-            <p class="path-desc">Already sold and ready to move? Skip the extra steps and go straight into the paid lane.</p>
-            <div class="path-cta">Buy Now / Start Setup →</div>
-          </a>
-
-          <a href="./book.html" data-page-transition class="path-card">
-            <div class="path-icon">📅</div>
-            <div class="path-title">Path 2: Talk First</div>
-            <p class="path-desc">Free 30-minute call. I find where the money's leaking and tell you what it'd take to fix it. No cost, no pressure, no pitch deck.</p>
-            <div class="path-cta">Book Free Consult →</div>
-          </a>
-
+        <div class="cal-wrap">
+          <div id="cal-inline"></div>
         </div>
-        <p class="paths-note" style="text-align:center;margin-top:1.25rem;font-size:0.95rem;opacity:0.75;">
-          Rather write it out than pick a time? <a href="./intake.html" data-page-transition style="text-decoration:underline;">Send the details instead →</a>
-        </p>
+        <div class="cal-mobile">
+          <p class="cal-mobile-when">Thirty minutes · free · Google Meet</p>
+          <button type="button" class="btn-primary cal-mobile-btn" data-cal-link="vanwaynechaney/vc2-ai-service-call" data-cal-config='{"theme":"light"}'>See open times</button>
+        </div>
+        <p class="book-fallback">Calendar not loading? <a href="https://cal.com/vanwaynechaney/vc2-ai-service-call" target="_blank" rel="noopener noreferrer">Open it in a new tab →</a> &nbsp;·&nbsp; Rather write it out? <a href="./intake.html" data-page-transition>Send the details →</a></p>
       </div>
     </div>
 
     <div class="divider"></div>
-
-    <!-- EMAIL CAPTURE -->
-    <div class="email-section">
-      <div class="email-inner">
-        <p class="section-label">Stay ahead</p>
-        <p class="section-sub">New workflows and setups straight to your inbox before they go public.</p>
-        <form class="email-form" onsubmit="return false;">
-          <input class="email-input" type="email" placeholder="your@email.com" />
-          <button class="email-btn" type="submit">Notify Me</button>
-        </form>
-        <p class="email-note">No spam. Unsubscribe anytime.</p>
-      </div>
-    </div>
 
     <!-- RECOMMENDATIONS STRIP -->
     <section class="recs-section" id="recommendations" aria-label="Recommendations">
@@ -1130,7 +1209,13 @@
             <div class="rec-src">Client · thogc.com</div>
             <p class="rec-quote">Built and handed off the church’s website, then handled the follow-through when the details changed.</p>
             <div class="rec-name">Caleb Davis</div>
-            <div class="rec-title">Turner Construction · The House of God Church</div>
+            <div class="rec-title">The House of God Church</div>
+          </article>
+          <article class="rec-card">
+            <div class="rec-src">Student, in writing</div>
+            <p class="rec-quote">“Thank you for your advice on adapting my elevator pitch! The STEM Career Fair went much better because of it!”</p>
+            <div class="rec-name">Polina Gorodnitskaya</div>
+            <div class="rec-title">Student, Miami University College of Engineering and Computing</div>
           </article>
           <article class="rec-card">
             <div class="rec-src">LinkedIn recommendation</div>
@@ -1154,7 +1239,13 @@
             <div class="rec-src">Client · thogc.com</div>
             <p class="rec-quote">Built and handed off the church’s website, then handled the follow-through when the details changed.</p>
             <div class="rec-name">Caleb Davis</div>
-            <div class="rec-title">Turner Construction · The House of God Church</div>
+            <div class="rec-title">The House of God Church</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">Student, in writing</div>
+            <p class="rec-quote">“Thank you for your advice on adapting my elevator pitch! The STEM Career Fair went much better because of it!”</p>
+            <div class="rec-name">Polina Gorodnitskaya</div>
+            <div class="rec-title">Student, Miami University College of Engineering and Computing</div>
           </article>
           <article class="rec-card" aria-hidden="true">
             <div class="rec-src">LinkedIn recommendation</div>
@@ -1180,7 +1271,7 @@
   <!-- STICKY BOTTOM BAR -->
   <nav class="sticky-bar">
     <a href="./index.html" data-page-transition class="bar-item active">
-      <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;" />
+      <img src="./vc2_v_logo_transparent_tight.png" style="width:20px;height:20px;object-fit:contain;"  alt="Vanwayne Chaney Jr." />
       Home
     </a>
     <a href="./services.html" data-page-transition class="bar-item">
@@ -1199,12 +1290,134 @@
       <svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.17L4 17.17V4z"/></svg>
       Contact Me
     </a>
-    <a href="https://buy.stripe.com/cNi3cw9Ztelj08Ngzr7wA00" target="_blank" rel="noopener noreferrer" class="bar-item bar-consult">
+    <a href="#book" class="bar-item bar-consult">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Buy
+      Book
     </a>
   </nav>
 
 
+  <script>
+    (function () {
+      var box = document.getElementById('teach');
+      if (!box) return;
+      var slides = box.querySelectorAll('.teach-slide');
+      var dots = box.querySelector('.teach-dots');
+      if (slides.length < 2) { if (dots) dots.remove(); return; }
+      var i = 0, timer = null, reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      slides.forEach(function (_, n) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', 'Slide ' + (n + 1));
+        b.addEventListener('click', function () { show(n); start(); });
+        dots.appendChild(b);
+      });
+      function show(n) {
+        slides[i].classList.remove('active'); dots.children[i].setAttribute('aria-selected', 'false');
+        i = (n + slides.length) % slides.length;
+        slides[i].classList.add('active'); dots.children[i].setAttribute('aria-selected', 'true');
+      }
+      function start() { if (timer) clearInterval(timer); if (!reduce) timer = setInterval(function () { show(i + 1); }, 3200); }
+      dots.children[0].setAttribute('aria-selected', 'true');
+      box.addEventListener('mouseenter', function () { clearInterval(timer); timer = null; });
+      box.addEventListener('mouseleave', start);
+      start();
+    })();
+  </script>
+  <!-- Cal.com inline embed. The plain link above it is the fallback if this fails. -->
+  <script type="text/javascript">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+        else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://cal.com" });
+  /* Phone gets the popup (data-cal-link on .cal-mobile-btn), desktop gets the
+     inline month view. Building the inline embed on a phone reserves ~900px of
+     mostly-empty iframe, so it is never built there. */
+  if (!window.matchMedia('(max-width: 767px)').matches) {
+    Cal("inline", { elementOrSelector: "#cal-inline", calLink: "vanwaynechaney/vc2-ai-service-call", layout: "month_view", config: { theme: "light" } });
+  }
+  Cal("ui", { hideBranding: true, theme: "light", hideEventTypeDetails: true, layout: "month_view" });
+  </script>
+  <script>
+  /* Site intro + page transition.
+     Rules it must never break:
+       - once per browser session, not once per page view
+       - never blocks the page: a hard timeout always tears it down
+       - honours prefers-reduced-motion
+       - a video error dismisses instantly rather than trapping the visitor
+       - internal links only, never tel:/mailto:/external/new-tab */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- entry intro ---- */
+    var intro = document.getElementById('vc2Intro');
+    if (intro) {
+      var seen;
+      try { seen = sessionStorage.getItem('vc2IntroSeen'); } catch (e) { seen = '1'; }
+      if (reduce || seen) {
+        intro.remove();
+      } else {
+        try { sessionStorage.setItem('vc2IntroSeen', '1'); } catch (e) {}
+        var v = document.getElementById('vc2IntroVideo');
+        var done = false;
+        var kill = function () {
+          if (done) return; done = true;
+          intro.classList.add('out');
+          setTimeout(function () { intro.remove(); }, 500);
+        };
+        intro.classList.add('on');
+        document.documentElement.style.overflow = 'hidden';
+        var release = function () { document.documentElement.style.overflow = ''; };
+        v.addEventListener('ended', function () { release(); kill(); });
+        v.addEventListener('error', function () { release(); kill(); });
+        document.getElementById('vc2Skip').addEventListener('click', function () { release(); kill(); });
+        /* the guarantee: whatever happens to the video, the page is usable in 7s */
+        setTimeout(function () { release(); kill(); }, 7000);
+        var play = v.play();
+        if (play && play.catch) { play.catch(function () { release(); kill(); }); }
+      }
+    }
+
+    /* ---- page transition ---- */
+    var nav = document.getElementById('vc2Nav');
+    if (nav && !reduce) {
+      var nv = document.getElementById('vc2NavVideo');
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[data-page-transition]') : null;
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        if (!href || href.charAt(0) === '#') return;
+        if (a.target === '_blank' || /^(https?:)?\/\//.test(href) || /^(tel:|mailto:)/.test(href)) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        var gone = false;
+        var go = function () { if (gone) return; gone = true; window.location.href = href; };
+        nav.classList.add('on');
+        nv.addEventListener('ended', go);
+        nv.addEventListener('error', go);
+        setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);  /* never strand anyone */
+        nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
+        nv.load();
+        var p = nv.play();
+        if (p && p.catch) { p.catch(go); }
+      });
+    }
+  })();
+  </script>
+  <!-- "Got questions?" chat bubble. One shared file so all pages stay in sync. -->
+  <script src="./chat.js" defer></script>
 </body>
 </html>
