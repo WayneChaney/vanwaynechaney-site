@@ -33,6 +33,54 @@
   Cache-Control: public, max-age=0, must-revalidate
   Service-Worker-Allowed: /tools/missed-call/
 
+# The six real-estate tools are the free REIA lead magnet: unlisted, never priced.
+# They were returning 200 with NO X-Robots-Tag, and robots.txt says Allow: /, so
+# Google was free to index the download pages and hand the magnet to anyone.
+# "Unlisted" has to be a header, not an intention.
+# 🔴 `/dl-*` did NOT match on Cloudflare Pages — verified live, while the
+# identically shaped `/archive/*` rule did. Listed explicitly instead of
+# guessing at the glob. Each page also carries a robots meta tag.
+/dl-apr-5k1x
+  X-Robots-Tag: noindex, nofollow
+
+/dl-apr-5k1x.html
+  X-Robots-Tag: noindex, nofollow
+
+/dl-cb-4n2k
+  X-Robots-Tag: noindex, nofollow
+
+/dl-cb-4n2k.html
+  X-Robots-Tag: noindex, nofollow
+
+/dl-reb-9x3k
+  X-Robots-Tag: noindex, nofollow
+
+/dl-reb-9x3k.html
+  X-Robots-Tag: noindex, nofollow
+
+/dl-ret-2m7n
+  X-Robots-Tag: noindex, nofollow
+
+/dl-ret-2m7n.html
+  X-Robots-Tag: noindex, nofollow
+
+/dl-rpt-7k2x
+  X-Robots-Tag: noindex, nofollow
+
+/dl-rpt-7k2x.html
+  X-Robots-Tag: noindex, nofollow
+
+/dl-wpl-4n8m
+  X-Robots-Tag: noindex, nofollow
+
+/dl-wpl-4n8m.html
+  X-Robots-Tag: noindex, nofollow
+
+# Nothing sensitive in it, but there is no reason to publish the list of files
+# kept out of the deploy.
+/.gitignore
+  X-Robots-Tag: noindex, nofollow
+
 # Archived pages. Kept on disk for reference, kept out of search and out of
 # what AI assistants read when deciding what this business does.
 /archive/*
