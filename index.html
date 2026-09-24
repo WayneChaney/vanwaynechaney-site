@@ -637,6 +637,31 @@
       }
     }
 
+    .book-cta {
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--bg-card);
+      padding: 30px 24px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .book-cta-when {
+      margin: 0 0 18px;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .book-cta-btn {
+      display: block;
+      max-width: 340px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
     .book-fallback {
       margin-top: 16px;
       text-align: center;
@@ -1110,10 +1135,10 @@
         <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0B1F3A;">
           <video
             src="./vc2-automation-promo.mp4"
-            poster="./images/miami/og-miami.jpg"
+            poster="./images/miami/miami-cec-room-full.jpg"
             controls
             playsinline
-            preload="metadata"
+            preload="none"
             title="What one of these looks like"
             style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
           </video>
@@ -1122,11 +1147,11 @@
         <div class="video-cta-wrap">
           <div class="video-cta-grid">
             <a href="./live-demos.html" class="video-cta-card primary-lane">
-              <div class="video-cta-title">See the sites I built</div>
+              <div class="video-cta-title">See the work</div>
             </a>
           </div>
 
-          <p class="video-cta-note">Real sites, live and clickable.</p>
+          <p class="video-cta-note">Real sites I built, live and clickable.</p>
         </div>
       </div>
 
@@ -1174,7 +1199,6 @@
 
       <a href="#book" class="btn-primary" style="display:block;text-align:center;max-width:420px;margin:1rem auto 0;">Book a System Audit</a>
 
-      <p class="hero-note">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
 
     </section>
 
@@ -1188,14 +1212,14 @@
           <h2 class="section-title">Pick a time that works. That’s the whole process.</h2>
           <p class="section-sub">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
         </div>
-        <div class="cal-wrap">
-          <div id="cal-inline"></div>
+        <!-- The inline Cal embed lived here. It reserved a tall box, printed
+             "Cal.com" underneath (hiding that branding needs a paid plan) and
+             pushed the whole page down. book.html already has the calendar. -->
+        <div class="book-cta">
+          <p class="book-cta-when">Thirty minutes · free · Google Meet</p>
+          <a href="./book.html" data-page-transition class="btn-primary book-cta-btn">See open times</a>
+          <p class="book-fallback">Rather write it out? <a href="./intake.html" data-page-transition>Send the details →</a></p>
         </div>
-        <div class="cal-mobile">
-          <p class="cal-mobile-when">Thirty minutes · free · Google Meet</p>
-          <button type="button" class="btn-primary cal-mobile-btn" data-cal-link="vanwaynechaney/vc2-ai-service-call" data-cal-config='{"theme":"light"}'>See open times</button>
-        </div>
-        <p class="book-fallback">Calendar not loading? <a href="https://cal.com/vanwaynechaney/vc2-ai-service-call" target="_blank" rel="noopener noreferrer">Open it in a new tab →</a> &nbsp;·&nbsp; Rather write it out? <a href="./intake.html" data-page-transition>Send the details →</a></p>
       </div>
     </div>
 
@@ -1238,6 +1262,12 @@
             <div class="rec-name">Seth Seward</div>
             <div class="rec-title">Assistant Director of Alumni Relations, Miami University</div>
           </article>
+          <article class="rec-card">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“Listening to his brief on the usage of AI in the modern workplace, to 25 future Miami University engineering graduates, allowed me to think creatively about how I can also optimize my future business pursuits with AI.”</p>
+            <div class="rec-name">Matthew Ament</div>
+            <div class="rec-title">Miami University College of Engineering and Computing</div>
+          </article>
           <article class="rec-card" aria-hidden="true">
             <div class="rec-src">LinkedIn recommendation</div>
             <p class="rec-quote">“He even stayed well beyond the event to answer individual questions and connect with students, showing how invested he was in helping them succeed.”</p>
@@ -1267,6 +1297,12 @@
             <p class="rec-quote">Recommended on LinkedIn for the mentorship, the work ethic, and coming back to campus on his own time.</p>
             <div class="rec-name">Seth Seward</div>
             <div class="rec-title">Assistant Director of Alumni Relations, Miami University</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“Listening to his brief on the usage of AI in the modern workplace, to 25 future Miami University engineering graduates, allowed me to think creatively about how I can also optimize my future business pursuits with AI.”</p>
+            <div class="rec-name">Matthew Ament</div>
+            <div class="rec-title">Miami University College of Engineering and Computing</div>
           </article>
       </div>
     </section>
