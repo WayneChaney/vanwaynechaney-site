@@ -118,7 +118,7 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Municipal Process Automation",
-                "description": "Meeting minutes, public records request triage, ordinance notices, and certificate of insurance tracking for small Ohio villages."
+                "description": "Meeting minutes, public records request triage, ordinance notices, and contractor compliance certificate tracking for small Ohio villages."
               }
             },
             {
@@ -1132,10 +1132,10 @@
           <p class="hero-video-sub">Built once, handed over, runs without me. That’s the whole product.</p>
         </div>
 
-        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0B1F3A;">
+        <div id="promoBox" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0B1F3A;">
           <video
             src="./vc2-automation-promo.mp4"
-            poster="./images/miami/miami-cec-room-full.jpg"
+            id="promoVideo" poster="./images/miami/miami-cec-room-full.jpg"
             controls
             playsinline
             preload="none"
@@ -1155,9 +1155,6 @@
         </div>
       </div>
 
-      <div class="hero-banner">
-        <img src="./vcii-banner-real-estate.jpg" width="1983" height="793" alt="Vanwayne Chaney Jr. — AI for Real Estate Operators: deals, automation, smarter systems" />
-      </div>
 
       <div class="teach-show">
         <div class="teach-frame" id="teach" aria-roledescription="carousel" aria-label="Teaching">
@@ -1268,6 +1265,12 @@
             <div class="rec-name">Matthew Ament</div>
             <div class="rec-title">Miami University College of Engineering and Computing</div>
           </article>
+          <article class="rec-card">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“I've known Wayne since high school. Since then he's been driven to build several businesses. He's very outgoing and connects well with everyone around him. I have no doubt that he will have massive success in life.”</p>
+            <div class="rec-name">Stefan Hendricks</div>
+            <div class="rec-title">Has known Vanwayne since high school</div>
+          </article>
           <article class="rec-card" aria-hidden="true">
             <div class="rec-src">LinkedIn recommendation</div>
             <p class="rec-quote">“He even stayed well beyond the event to answer individual questions and connect with students, showing how invested he was in helping them succeed.”</p>
@@ -1303,6 +1306,12 @@
             <p class="rec-quote">“Listening to his brief on the usage of AI in the modern workplace, to 25 future Miami University engineering graduates, allowed me to think creatively about how I can also optimize my future business pursuits with AI.”</p>
             <div class="rec-name">Matthew Ament</div>
             <div class="rec-title">Miami University College of Engineering and Computing</div>
+          </article>
+          <article class="rec-card" aria-hidden="true">
+            <div class="rec-src">LinkedIn recommendation</div>
+            <p class="rec-quote">“I've known Wayne since high school. Since then he's been driven to build several businesses. He's very outgoing and connects well with everyone around him. I have no doubt that he will have massive success in life.”</p>
+            <div class="rec-name">Stefan Hendricks</div>
+            <div class="rec-title">Has known Vanwayne since high school</div>
           </article>
       </div>
     </section>
@@ -1470,5 +1479,20 @@
   </script>
   <!-- "Got questions?" chat bubble. One shared file so all pages stay in sync. -->
   <script src="./chat.js" defer></script>
+
+  <script>
+  /* The banner is 2.5:1. On a phone that box is ~136px tall and the controls bar
+     covers half of it, so the phone keeps the lecture-hall frame and only a wide
+     screen gets the banner. `poster` takes no media query, hence the swap. */
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(min-width: 768px)').matches) return;
+    var v = document.getElementById('promoVideo');
+    var box = document.getElementById('promoBox');
+    if (!v || !box) return;
+    v.poster = './vcii-banner-real-estate.jpg';
+    v.style.objectFit = 'contain';
+    box.style.aspectRatio = '1983 / 793';
+  })();
+  </script>
 </body>
 </html>
