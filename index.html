@@ -514,6 +514,14 @@
       gap: 10px;
     }
 
+    .demo-lane {
+      background: transparent;
+      border-color: var(--gold-ink, #8F6618);
+      color: var(--gold-ink, #8F6618);
+    }
+
+    .demo-lane:hover { border-color: var(--blue-deep, #1F4E78); color: var(--blue-deep, #1F4E78); }
+
     .video-cta-note {
       text-align: center;
       color: var(--muted);
@@ -1149,9 +1157,15 @@
             <a href="./live-demos.html" class="video-cta-card primary-lane">
               <div class="video-cta-title">See the work</div>
             </a>
+            <!-- The demo line. This is an EXAMPLE of an automation answering a
+                 real phone, not a product for sale - the receptionist was
+                 retired 2026-09-12. Label it as a demo, never as an offer. -->
+            <a href="tel:+12166161364" class="video-cta-card demo-lane">
+              <div class="video-cta-title">Try one &mdash; call (216) 616-1364</div>
+            </a>
           </div>
 
-          <p class="video-cta-note">Real sites I built, live and clickable.</p>
+          <p class="video-cta-note">Real automation, running right now. Call the line and one of them picks up.</p>
         </div>
       </div>
 
