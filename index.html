@@ -1135,12 +1135,12 @@
         <div id="promoBox" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0B1F3A;">
           <video
             src="./vc2-automation-promo.mp4"
-            id="promoVideo" poster="./images/miami/miami-cec-room-full.jpg"
+            id="promoVideo" poster="./vcii-banner-real-estate.jpg"
             controls
             playsinline
             preload="none"
             title="What one of these looks like"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:52% center;">
           </video>
         </div>
 
@@ -1481,16 +1481,18 @@
   <script src="./chat.js" defer></script>
 
   <script>
-  /* The banner is 2.5:1. On a phone that box is ~136px tall and the controls bar
-     covers half of it, so the phone keeps the lecture-hall frame and only a wide
-     screen gets the banner. `poster` takes no media query, hence the swap. */
+  /* The banner is the poster at every width. Above 768px the box takes the
+     banner's own 2.5:1 shape so nothing is cropped; below it the box stays 16:9
+     and the banner fills it, which crops the outer panels and keeps his face,
+     the VCII mark and the headline legible. */
   (function () {
     if (!window.matchMedia || !window.matchMedia('(min-width: 768px)').matches) return;
     var v = document.getElementById('promoVideo');
     var box = document.getElementById('promoBox');
     if (!v || !box) return;
-    v.poster = './vcii-banner-real-estate.jpg';
+    /* Wide enough to show the whole banner: take its own shape and stop cropping. */
     v.style.objectFit = 'contain';
+    v.style.objectPosition = 'center';
     box.style.aspectRatio = '1983 / 793';
   })();
   </script>
