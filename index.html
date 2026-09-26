@@ -618,6 +618,8 @@
       overflow: auto;
     }
 
+    #cal-inline iframe { display: block; }
+
     /* Cal's iframe floors at ~900px on a phone and fills ~350 of it, whatever
        layout you pass — the gap is inside their frame and unreachable from here.
        So the phone gets a button that opens Cal full-screen instead of a box
@@ -655,10 +657,20 @@
 
     /* The calendar itself. Hidden on a phone, where Cal reserves ~900px and
        fills about 350 of it; that width gets the direct link underneath. */
+    /* 🔴 The "Cal.com" line at the foot of the embed. `hideBranding: true` is
+       already passed and it is a PAID-plan flag, so it does nothing here, and
+       the badge is inside a cross-origin iframe where no selector reaches it.
+       The frame is pulled up by the height of its own footer band and the box
+       clips it. Measured, not guessed: the badge sits ~77px off the bottom and
+       the last slot ends ~122px off it, so there is real clearance.
+       ⚠️ If Cal ever changes that footer this crops the wrong thing — check the
+       bottom of the calendar after any Cal update. The clean fix is their paid
+       plan, which makes hideBranding actually work. */
     #cal-inline {
       width: 100%;
-      min-height: 640px;
+      min-height: 320px;
       margin: 0 auto 1rem;
+      overflow: hidden;
       max-width: 880px;
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -716,7 +728,7 @@
 
     @media (max-width: 420px) {
       .book-section { padding: 0 20px 40px; }
-      .cal-wrap, #cal-inline { min-height: 460px; } /* floor only - Cal sizes its own frame taller */
+      .cal-wrap, #cal-inline { min-height: 320px; } /* floor only - the clip script sets the real height */
     }
 
     /* ── RECOMMENDATIONS STRIP ── */
@@ -779,9 +791,16 @@
       to   { transform: translateX(-50%); }
     }
 
+    /* Reduce Motion used to stop this strip dead and wrap the cards into a
+       grid. Wayne's call 2026-09-26: it keeps sliding, just slower - 42s to 95s,
+       a crawl rather than a stop.
+       🔴 This is the one place on the site that overrides an accessibility
+       setting somebody deliberately turned on. A slow, constant, one-direction
+       slide is the gentlest kind of motion there is - what Reduce Motion exists
+       to kill is parallax, zoom and things that fly in. If anyone ever reports
+       it making them ill, put `animation: none` back and do not argue. */
     @media (prefers-reduced-motion: reduce) {
-      .recs-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; padding: 0 24px; }
-      .rec-card[aria-hidden="true"] { display: none; }
+      .recs-track { animation-duration: 95s; }
     }
 
     @media (max-width: 420px) {
@@ -1571,6 +1590,49 @@
       links[i].setAttribute('target', '_blank');
       links[i].setAttribute('rel', 'noopener noreferrer');
     }
+  })();
+  </script>
+
+  <script>
+  /* Crop the "Cal.com" footer off the embed.
+     🔴 `hideBranding: true` is already passed to Cal("ui") and it is a PAID-plan
+     flag, so it does nothing on this account. The badge lives inside a
+     cross-origin iframe, so no selector and no negative margin reaches it - the
+     only thing that works from out here is making the BOX shorter than the
+     frame and hiding the overflow.
+     34px, measured against the FRAME and not the box. Measuring against the box
+     gave 104, which ate a whole time slot, and 52 still clipped the last row on
+     a phone where Cal's footer sits tighter.
+     🔴 If this ever has to move, move it DOWN. A sliver of badge is a cosmetic
+     problem; a clipped row is a slot nobody can book.
+     ⚠️ If Cal changes that footer this crops the wrong thing. Look at the bottom
+     of the calendar after any Cal update. The clean fix is their paid plan. */
+  (function () {
+    var box = document.getElementById('cal-inline');
+    if (!box) return;
+    /* Cal lays the footer out differently at the two widths, so one number
+       does not fit both: 52 clears it on desktop but eats the last row on a
+       phone, and 34 keeps every phone row but leaves the badge peeking on
+       desktop. Both measured at 1440 and 390. */
+    function crop() { return window.innerWidth >= 768 ? 52 : 34; }
+    function fit() {
+      var f = box.querySelector('iframe');
+      if (!f) return;
+      var h = f.getBoundingClientRect().height;
+      var c = crop();
+      if (h > c + 320) { box.style.height = (h - c) + 'px'; }
+    }
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(fit);
+      var seen = null;
+      new MutationObserver(function () {
+        var f = box.querySelector('iframe');
+        if (f && f !== seen) { seen = f; ro.observe(f); fit(); }
+      }).observe(box, {childList: true, subtree: true});
+    }
+    /* belt and braces for a browser without ResizeObserver */
+    var tries = 0, t = setInterval(function () { fit(); if (++tries > 20) clearInterval(t); }, 500);
+    window.addEventListener('resize', fit);
   })();
   </script>
 </body>
