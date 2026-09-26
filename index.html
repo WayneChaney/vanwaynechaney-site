@@ -750,7 +750,7 @@
       gap: 16px;
       width: max-content;
       padding: 0 8px;
-      animation: recs-scroll 42s linear infinite;
+      animation: recs-scroll 26s linear infinite;
     }
 
         .rec-card {
@@ -800,7 +800,10 @@
        to kill is parallax, zoom and things that fly in. If anyone ever reports
        it making them ill, put `animation: none` back and do not argue. */
     @media (prefers-reduced-motion: reduce) {
-      .recs-track { animation-duration: 95s; }
+      /* Was 95s, a crawl. Wayne, 2026-09-26: "it needs to move faster." Same
+         speed as everywhere else now - the override was already made, and
+         slowing it down on top of that just made it look broken. */
+      .recs-track { animation-duration: 26s; }
     }
 
     @media (max-width: 420px) {
