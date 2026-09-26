@@ -46,9 +46,15 @@
       a: "Yes. There is a civic assistant running in production for Oakwood Village right now.\n\nVC2 AI LLC is registered on SAM.gov and cleared to hold government contracts, with an active Ohio BWC policy and RITA registration, so a village can contract directly without a middleman."
     },
     {
+      /* Wayne, 2026-09-25: this branch used to answer "sites" to a question that
+         was never only about sites. It asks back now, because the two things are
+         bought by different people and the automation is the one he sells. */
       q: 'Can I see work you have done?',
-      a: "Yes — the Website Examples page has real sites, live and clickable. Not mockups.",
-      link: { href: './live-demos.html', label: 'See the sites →' }
+      a: "Which kind — websites, or an automation?\n\nThe websites are live and clickable. Real sites, not mockups.\n\nThe automation you can test on the spot: call the line and one of them picks up and talks to you.",
+      links: [
+        { href: './live-demos.html', label: 'Websites →' },
+        { href: 'tel:+12166161364', label: 'Test an automation: (216) 616-1364' }
+      ]
     },
     {
       q: 'Something else',
@@ -199,9 +205,12 @@
       opts.innerHTML = '';
       setTimeout(function () {
         say('them', t.a);
-        if (t.link) {
-          var a = el('a', 'vc2chat-opt', t.link.label);
-          a.href = t.link.href;
+        /* `links` is the list form; `link` stays supported so an older single
+           entry keeps rendering. Both produce the same option button. */
+        var ls = t.links || (t.link ? [t.link] : []);
+        for (var li = 0; li < ls.length; li++) {
+          var a = el('a', 'vc2chat-opt', ls[li].label);
+          a.href = ls[li].href;
           opts.appendChild(a);
         }
         if (t.ask) {

@@ -18,3 +18,14 @@ VC2 Logo update
 VC2 final logo.webp
 vcii-banner-real-estate.png
 commercial/**/out/*.mp4
+
+# Promo working files. Cloudflare Pages publishes EVERY file in the project, so
+# anything committed under commercial/ becomes a public URL on the domain -
+# SCRIPT.md and GEMINI-PROMPTS.md already serve 200 today. Scripts, wardrobe
+# notes and the Remotion source are internal; only the rendered output belongs
+# on the site, and that lives in media/.
+commercial/**/*.md
+commercial/**/remotion/src/
+commercial/**/remotion/*.mjs
+commercial/**/remotion/out/
+commercial/media/

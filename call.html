@@ -130,5 +130,26 @@
   });
 })();
 </script>
+
+  <script>
+  /* One tap to the calendar on a phone.
+     Wayne, 2026-09-25: he tapped "See open times", landed on book.html, and the
+     first thing there was another button saying "See open times". book.html
+     exists because Cal's inline embed only renders right on desktop - on a
+     phone it was always going to hand off to Cal anyway, so it hands off now
+     instead of after an extra page and an extra tap.
+     Desktop is untouched. JS off falls back to book.html, which still works. */
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 767px)').matches) return;
+    var cal = 'https://cal.com/vanwaynechaney/vc2-ai-service-call';
+    var links = document.querySelectorAll('a[href$="book.html"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute('href', cal);
+      links[i].removeAttribute('data-page-transition');
+      links[i].setAttribute('target', '_blank');
+      links[i].setAttribute('rel', 'noopener noreferrer');
+    }
+  })();
+  </script>
 </body>
 </html>
