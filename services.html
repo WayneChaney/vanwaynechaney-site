@@ -644,17 +644,17 @@
       <h2 class="section-title">Simple. No tech speak.</h2>
       <div class="steps-grid">
         <div class="step-card">
-          <p class="step-num">// 01</p>
+          <p class="step-num">01</p>
           <h3 class="step-title">Map your workflow</h3>
           <p class="step-desc">We figure out exactly where leads are falling through — missed calls, slow follow-ups, no-shows. Every business has a different leak.</p>
         </div>
         <div class="step-card">
-          <p class="step-num">// 02</p>
+          <p class="step-num">02</p>
           <h3 class="step-title">Scope the build</h3>
           <p class="step-desc">No guessing. We scope exactly what needs to be built to fix it — nothing extra, nothing missing. Price comes after the scope.</p>
         </div>
         <div class="step-card">
-          <p class="step-num">// 03</p>
+          <p class="step-num">03</p>
           <h3 class="step-title">We build, you run it</h3>
           <p class="step-desc">We build the system, walk you through it, and hand it off. You run your business. The AI handles the follow-up.</p>
         </div>
@@ -791,7 +791,14 @@
         nav.classList.add('on');
         nv.addEventListener('ended', go);
         nv.addEventListener('error', go);
-        setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);  /* never strand anyone */
+        /* Wayne, 2026-09-26: end it a second early. The clip runs its last
+           second after the point anyone is still watching it. */
+        nv.addEventListener('loadedmetadata', function () {
+          if (isFinite(nv.duration) && nv.duration > 1.2) {
+            setTimeout(go, (nv.duration - 1) * 1000);
+          }
+        });
+        setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 5500 : 3800);  /* never strand anyone */
         nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
         nv.load();
         var p = nv.play();

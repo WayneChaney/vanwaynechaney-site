@@ -70,7 +70,7 @@
   .cal-mobile{display:none}
   cal-modal-box{z-index:100000 !important}
   @media (max-width:767px){
-    #cal-inline{display:none}
+    /* The calendar stays open on a phone. Wayne's call 2026-09-26. */
     .cal-mobile{display:block;text-align:center;border:1px solid var(--border,#d9e3ee);
       border-radius:14px;background:#fff;padding:24px 18px}
     .cal-mobile-when{margin:0 0 14px;font-size:.8rem;letter-spacing:.06em;
@@ -242,10 +242,6 @@
        should not be underneath a wall of text. -->
   <section class="cal-block" id="pick">
     <div id="cal-inline"></div>
-    <div class="cal-mobile">
-      <p class="cal-mobile-when">Thirty minutes &middot; free &middot; Google Meet</p>
-      <button type="button" class="cal-mobile-btn" data-cal-link="vanwaynechaney/vc2-ai-service-call" data-cal-config='{"theme":"light"}'>See open times</button>
-    </div>
     <span class="cal-fallback">
       Calendar not loading? <a href="https://cal.com/vanwaynechaney/vc2-ai-service-call" target="_blank" rel="noopener noreferrer">Open it in a new tab →</a>
     </span>
@@ -318,7 +314,7 @@ Cal("init", { origin: "https://cal.com" });
 
 /* Phone books through the popup (data-cal-link on .cal-mobile-btn). Building the
    inline embed there reserves ~1250px of mostly-empty iframe, so it is not built. */
-if (!window.matchMedia('(max-width: 767px)').matches) {
+{
   Cal("inline", {
     elementOrSelector: "#cal-inline",
     calLink: "vanwaynechaney/vc2-ai-service-call",
@@ -351,9 +347,16 @@ Cal("ui", { hideBranding: true, theme: "light", hideEventTypeDetails: true, layo
       nav.classList.add('on');
       nv.addEventListener('ended', go);
       nv.addEventListener('error', go);
+      /* Wayne, 2026-09-26: end it a second early. The clip runs its last second
+         after the point anyone is still watching it. */
+      nv.addEventListener('loadedmetadata', function () {
+        if (isFinite(nv.duration) && nv.duration > 1.2) {
+          setTimeout(go, (nv.duration - 1) * 1000);
+        }
+      });
       nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
       nv.load();
-      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);
+      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 5500 : 3800);
       var p = nv.play();
       if (p && p.catch) { p.catch(go); }
     });

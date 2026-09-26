@@ -1596,7 +1596,7 @@
   <section id="automations" style="border-top:1px solid rgba(11,31,58,0.06);">
     <div class="products" style="max-width:1200px;margin:0 auto;">
       <div class="products-header reveal">
-        <div class="section-label">// 001 &mdash; Automations</div>
+        <div class="section-label">001 &mdash; Automations</div>
         <h2 class="section-title">Automations. Watch one run.</h2>
       </div>
 
@@ -1650,7 +1650,7 @@
   <section id="websites" style="background:var(--bg-2);border-top:1px solid rgba(11,31,58,0.06);">
     <div class="products" style="max-width:1200px;margin:0 auto;">
       <div class="products-header reveal">
-        <div class="section-label">// 002 — The Work</div>
+        <div class="section-label">002 — The Work</div>
         <h2 class="section-title">Sites I built. Click any of them.</h2>
       </div>
 
@@ -1714,7 +1714,7 @@
   <section class="how" id="how">
     <div class="how-inner">
       <div class="how-header reveal">
-        <div class="section-label">// 008 — Process</div>
+        <div class="section-label">008 — Process</div>
         <h2 class="section-title">See it work. Map the leak. Then build the fix.</h2>
         <p class="section-sub">The goal is not more tools. The goal is fewer missed leads, faster response, and a cleaner system that actually helps the business run.</p>
       </div>
@@ -1742,7 +1742,7 @@
   <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="cta-inner reveal">
-      <div class="section-label">// 009 — Next Step</div>
+      <div class="section-label">009 — Next Step</div>
       <h2 class="section-title">If the examples feel strong, the next step is a short audit.</h2>
       <p class="section-sub">We do not need to guess. We can map the leak, decide whether a website, an automation, or a follow-up layer matters most, and build the right thing first.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
@@ -1753,7 +1753,7 @@
 
   <section style="padding:2rem 1.5rem 3rem;background:var(--bg);border-top:1px solid rgba(255,255,255,0.05);">
     <div style="max-width:1100px;margin:0 auto;padding:1.25rem 1.25rem 1.35rem;border:1px solid rgba(201,168,76,0.16);border-radius:16px;background:rgba(255,255,255,0.02);">
-      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;color:var(--gold);margin-bottom:0.85rem;">// DISCLAIMER</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;color:var(--gold);margin-bottom:0.85rem;">DISCLAIMER</div>
       <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:0.65rem;">Demos on this page are representative examples for design and positioning only, built on sample data. Final builds, revisions, integrations, timelines, and launch scope depend on project requirements and signed agreement.</p>
       <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;margin:0;">Client is responsible for final content accuracy, legal compliance, domain ownership, platform access, and any required third-party subscriptions or services.</p>
     </div>
@@ -1882,9 +1882,16 @@
       nav.classList.add('on');
       nv.addEventListener('ended', go);
       nv.addEventListener('error', go);
+      /* Wayne, 2026-09-26: end it a second early. The clip runs its last second
+         after the point anyone is still watching it. */
+      nv.addEventListener('loadedmetadata', function () {
+        if (isFinite(nv.duration) && nv.duration > 1.2) {
+          setTimeout(go, (nv.duration - 1) * 1000);
+        }
+      });
       nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
       nv.load();
-      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);
+      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 5500 : 3800);
       var p = nv.play();
       if (p && p.catch) { p.catch(go); }
     });

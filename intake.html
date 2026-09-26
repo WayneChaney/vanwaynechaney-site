@@ -677,9 +677,16 @@
       nav.classList.add('on');
       nv.addEventListener('ended', go);
       nv.addEventListener('error', go);
+      /* Wayne, 2026-09-26: end it a second early. The clip runs its last second
+         after the point anyone is still watching it. */
+      nv.addEventListener('loadedmetadata', function () {
+        if (isFinite(nv.duration) && nv.duration > 1.2) {
+          setTimeout(go, (nv.duration - 1) * 1000);
+        }
+      });
       nv.src = /(^|\/)index\.html$|^\.\/?$|^\/$/.test(href) ? './intro-preloader.mp4' : './vc2-ai-intro.mp4';
       nv.load();
-      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 6500 : 4800);
+      setTimeout(go, /index\.html$|^\.\/?$|^\/$/.test(href) ? 5500 : 3800);
       var p = nv.play();
       if (p && p.catch) { p.catch(go); }
     });
