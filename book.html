@@ -234,9 +234,9 @@
 
 <main class="wrap">
 
-  <div class="label">VC2 AI · Cleveland, Ohio</div>
+  <div class="label">VC2 · Cleveland, Ohio</div>
   <h1>Let's find out where the money's going.</h1>
-  <p class="sub">Free 30-minute consultation.</p>
+  <p class="sub">Free 30-minute consultation. Three quick questions, then pick a time.</p>
 
   <!-- Calendar sits first on purpose: on a phone, the thing they came for
        should not be underneath a wall of text. -->
@@ -260,7 +260,7 @@
   <div class="proof">
     <div>
       <span class="k">Federally registered</span>
-      <p>VC2 AI LLC is registered on SAM.gov and cleared to hold government contracts.</p>
+      <p>My business is set up and compliant for government contracts, and I'm applying for them now.</p>
     </div>
     <div>
       <span class="k">Ohio covered</span>
@@ -312,19 +312,11 @@
 
 Cal("init", { origin: "https://cal.com" });
 
-/* Phone books through the popup (data-cal-link on .cal-mobile-btn). Building the
-   inline embed there reserves ~1250px of mostly-empty iframe, so it is not built. */
-{
-  Cal("inline", {
-    elementOrSelector: "#cal-inline",
-    calLink: "vanwaynechaney/vc2-ai-service-call",
-    layout: "month_view",
-    config: { theme: "light" }
-  });
-}
-
+/* The calendar is built by book-gate.js AFTER the three questions, pre-filled
+   with the answers. Do not build it here too. Wayne, 2026-09-26. */
 Cal("ui", { hideBranding: true, theme: "light", hideEventTypeDetails: true, layout: "month_view" });
 </script>
+<script src="./book-gate.js"></script>
   <script>
   /* Page transition. Home gets the long intro, everything else the short clip.
      Never traps anyone: hard timeout, error dismisses, reduced-motion opts out,

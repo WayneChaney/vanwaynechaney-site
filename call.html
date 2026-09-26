@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Book a Call — Vanwayne Chaney Jr.</title>
-<meta name="description" content="Call Vanwayne Chaney Jr.'s AI at 216-616-1364. Ask it about him, or call in like a customer and let it book you.">
+<meta name="description" content="Book a free 30-minute call with Vanwayne Chaney Jr. Three quick questions, then pick a time.">
 <meta name="robots" content="noindex">
 
 <meta property="og:title" content="Book a Call — Vanwayne Chaney Jr.">
-<meta property="og:description" content="216-616-1364. Ask it about me, or call in like a customer and let it book you.">
+<meta property="og:description" content="Thirty minutes, free. Three quick questions, then pick a time.">
 <meta property="og:image" content="https://vanwaynechaney.com/og-call.jpg">
 <meta property="og:url" content="https://vanwaynechaney.com/call">
 <meta property="og:type" content="website">
@@ -68,88 +68,24 @@
 </head>
 <body>
   <main class="wrap">
-    <div class="label">VC2 AI · Cleveland</div>
+    <div class="label">VC2 · Cleveland</div>
     <h1>Let&rsquo;s talk</h1>
     <p class="sub" id="sub">Thirty minutes, free. Tell me what job is eating your week and I&rsquo;ll tell you what I&rsquo;d automate first.</p>
 
     <!-- This page was "Call My AI" and pointed at the demo line. The AI does not
          reliably answer, so the page was promising something it could not keep.
          It is a printed short link, so the page stays and the action changed. -->
-    <a href="https://cal.com/vanwaynechaney/vc2-ai-service-call" class="btn" id="callBtn" target="_blank" rel="noopener noreferrer">Pick a time</a>
-    <a href="/book.html" class="num">See open times &rarr;</a>
+    <a href="/book.html#pick" class="btn" id="callBtn">Pick a time</a>
 
     <p class="note" id="note"></p>
     <a href="/" class="back">See what else I build</a>
   </main>
 
-<script>
-/* --------------------------------------------------------------------------
-   /call — the short link. Say it out loud, put it on a card.
+<!-- The "dial the AI line" script that lived here was removed 2026-09-26. On a
+     computer it told people to "dial the number below", with no number on the
+     page, and hid the only booking button. This page books now; it does not call. -->
 
-   NO AUTO-DIAL. This was tried and it is strictly worse.
-
-   iOS answers a programmatic tel: navigation with a security warning reading
-   "This website has been blocked from automatically starting a call," with
-   Ignore / Allow Call. So auto-dialing costs an EXTRA tap AND brands the site
-   as something that tried to do it behind your back. Verified on a real
-   iPhone 2026-08-09. Deep Research #306 called this correctly.
-
-   A plain tap on the button below gets the ordinary "Call (216) 616-1364?"
-   confirm instead — one tap, no warning, no suspicion. That confirm itself is
-   an iOS/Android anti-toll-fraud guarantee and cannot be removed by any site.
-   One tap is the floor. Do not try to beat it again.
-
-   DESKTOP -> shows the number to read off, since desktops cannot place calls.
-   -------------------------------------------------------------------------- */
-(function () {
-  var isTouch = window.matchMedia &&
-                window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  var note = document.getElementById('note');
-
-  if (!isTouch) {
-    document.getElementById('sub').textContent =
-      'Grab your phone and dial the number below — it answers on the first ring.';
-    document.getElementById('callBtn').style.display = 'none';
-    if (note) note.textContent = 'You are on a computer, so it cannot dial for you.';
-    return;
-  }
-
-  if (note) note.textContent = 'One tap. It answers on the first ring.';
-
-  /* When the call ends and they come back to this tab, move them onto the
-     site rather than leaving them on a page whose only job is already done.
-     Only fires if they actually left for the dialer — someone who never
-     called is reading, and gets left alone. */
-  var leftForDialer = false;
-
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { leftForDialer = true; return; }
-    if (!leftForDialer) return;
-    if (note) note.textContent = 'Taking you to the site…';
-    setTimeout(function () { window.location.replace('/'); }, 1200);
-  });
-})();
-</script>
-
-  <script>
-  /* One tap to the calendar on a phone.
-     Wayne, 2026-09-25: he tapped "See open times", landed on book.html, and the
-     first thing there was another button saying "See open times". book.html
-     exists because Cal's inline embed only renders right on desktop - on a
-     phone it was always going to hand off to Cal anyway, so it hands off now
-     instead of after an extra page and an extra tap.
-     Desktop is untouched. JS off falls back to book.html, which still works. */
-  (function () {
-    if (!window.matchMedia || !window.matchMedia('(max-width: 767px)').matches) return;
-    var cal = 'https://cal.com/vanwaynechaney/vc2-ai-service-call';
-    var links = document.querySelectorAll('a[href$="book.html"]');
-    for (var i = 0; i < links.length; i++) {
-      links[i].setAttribute('href', cal);
-      links[i].removeAttribute('data-page-transition');
-      links[i].setAttribute('target', '_blank');
-      links[i].setAttribute('rel', 'noopener noreferrer');
-    }
-  })();
-  </script>
+  <!-- The phone used to jump straight to cal.com (2026-09-25). Removed 2026-09-26:
+       that skips the three questions on book.html. -->
 </body>
 </html>

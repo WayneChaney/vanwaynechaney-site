@@ -17,7 +17,7 @@
   <meta property="og:image" content="https://vanwaynechaney.com/og-home.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="VC2 AI logo beside the name Vanwayne Chaney Jr., AI Workflow Engineer." />
+  <meta property="og:image:alt" content="VC2 logo beside the name Vanwayne Chaney Jr., AI Workflow Engineer." />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Vanwayne Chaney Jr. — AI Workflow Engineer" />
@@ -66,8 +66,8 @@
       {
         "@type": "ProfessionalService",
         "@id": "https://vanwaynechaney.com/#vc2",
-        "name": "VC2 AI LLC",
-        "alternateName": ["VC2 AI", "Zulvan", "VC2 AI LLC dba Zulvan"],
+        "name": "VC2",
+        "alternateName": ["VC2 AI", "Zulvan"],
         "url": "https://vanwaynechaney.com/",
         "telephone": "+1-216-616-1364",
         "founder": { "@id": "https://vanwaynechaney.com/#vanwayne" },
@@ -1274,15 +1274,13 @@
       <div class="book-inner">
         <div class="book-header">
           <p class="section-label">Book a time</p>
-          <h2 class="section-title">Pick a time that works. That’s the whole process.</h2>
+          <h2 class="section-title">Three quick questions, then pick a time.</h2>
           <p class="section-sub">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
         </div>
         <!-- The calendar is ON the homepage. Wayne, 2026-09-26: "this could just
-             be on the main page for them to choose a slot."
-             🔴 The embed is DESKTOP ONLY and that is not laziness: Cal's iframe
-             floors near 900px on a phone and fills about 350 of it whatever
-             layout you pass, because the gap is inside their frame. The phone
-             gets a direct link instead - one tap, no middle page. -->
+             be on the main page for them to choose a slot." Later the same day:
+             three quick questions first (book-gate.js), then the calendar opens
+             here pre-filled, at every width. -->
         <div id="cal-inline"></div>
 
         <div class="book-cta">
@@ -1474,14 +1472,11 @@
     };
   })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", { origin: "https://cal.com" });
-  /* Phone gets the popup (data-cal-link on .cal-mobile-btn), desktop gets the
-     inline month view. Building the inline embed on a phone reserves ~900px of
-     mostly-empty iframe, so it is never built there. */
-  /* Built at every width now. The phone version is tall and that is accepted:
-     a calendar someone can use beats a button that costs them a tap. */
-  Cal("inline", { elementOrSelector: "#cal-inline", calLink: "vanwaynechaney/vc2-ai-service-call", layout: "month_view", config: { theme: "light" } });
+  /* The calendar is built by book-gate.js AFTER the three questions, pre-filled
+     with the answers, at every width. Do not build it here too. Wayne, 2026-09-26. */
   Cal("ui", { hideBranding: true, theme: "light", hideEventTypeDetails: true, layout: "month_view" });
   </script>
+  <script src="./book-gate.js"></script>
   <script>
   /* Site intro + page transition.
      Rules it must never break:
@@ -1575,26 +1570,9 @@
   })();
   </script>
 
-  <script>
-  /* One tap to the calendar on a phone.
-     Wayne, 2026-09-25: he tapped "See open times", landed on book.html, and the
-     first thing there was another button saying "See open times". book.html
-     exists because Cal's inline embed only renders right on desktop - on a
-     phone it was always going to hand off to Cal anyway, so it hands off now
-     instead of after an extra page and an extra tap.
-     Desktop is untouched. JS off falls back to book.html, which still works. */
-  (function () {
-    if (!window.matchMedia || !window.matchMedia('(max-width: 767px)').matches) return;
-    var cal = 'https://cal.com/vanwaynechaney/vc2-ai-service-call';
-    var links = document.querySelectorAll('a[href$="book.html"]');
-    for (var i = 0; i < links.length; i++) {
-      links[i].setAttribute('href', cal);
-      links[i].removeAttribute('data-page-transition');
-      links[i].setAttribute('target', '_blank');
-      links[i].setAttribute('rel', 'noopener noreferrer');
-    }
-  })();
-  </script>
+  <!-- The phone used to skip book.html and go straight to cal.com (2026-09-25).
+       Removed 2026-09-26: straight to cal.com skips the three questions, and
+       book.html now opens on the questions, not on a second "See open times". -->
 
   <script>
   /* Crop the "Cal.com" footer off the embed.

@@ -6,7 +6,8 @@
    things people actually ask before they book, then hands them the calendar.
 
    No backend, no API key, no model call, nothing to keep running.
-     - Booking goes to Cal.com, which emails Vanwayne on every booking.
+     - Booking goes through the three questions (book-gate.js), then Cal.com,
+       which emails Vanwayne on every booking.
      - "Send it to me instead" opens the visitor's own mail app with the whole
        conversation already written into the body, addressed to vanwaynec01.
    The Zapier hook the intake form used is dead (HTTP 404, verified 2026-09-22),
@@ -19,7 +20,6 @@
 (function () {
   'use strict';
 
-  var CAL = 'https://cal.com/vanwaynechaney/vc2-ai-service-call';
   var MAIL = 'vanwaynec01@gmail.com';
 
   if (window.__vc2Chat) return;
@@ -43,7 +43,7 @@
     },
     {
       q: 'Do you work with cities and villages?',
-      a: "Yes. There is a civic assistant running in production for Oakwood Village right now.\n\nVC2 AI LLC is registered on SAM.gov and cleared to hold government contracts, with an active Ohio BWC policy and RITA registration, so a village can contract directly without a middleman."
+      a: "Yes. There is a civic assistant running in production for Oakwood Village right now.\n\nMy business is set up and compliant for government contracts, and I'm applying for them now. It carries an active Ohio BWC policy and RITA registration, so a village can contract with me directly, no middleman."
     },
     {
       /* Wayne, 2026-09-25: this branch used to answer "sites" to a question that
@@ -183,9 +183,17 @@
 
     function bookRow() {
       var a = el('a', 'vc2chat-opt vc2chat-book', 'Pick a time — 30 min, free →');
-      a.href = CAL;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
+      /* The calendar opens after three quick questions (book-gate.js), so this goes
+         to the questions, never straight to cal.com. On a page that has them it
+         scrolls there and closes the chat. 2026-09-26. */
+      var gate = document.getElementById('cal-inline');
+      var sec = gate && gate.parentNode && gate.parentNode.closest ? gate.parentNode.closest('[id]') : null;
+      if (sec) {
+        a.href = '#' + sec.id;
+        a.addEventListener('click', function () { close(); });
+      } else {
+        a.href = '/book.html#pick';
+      }
       opts.appendChild(a);
     }
 
