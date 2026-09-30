@@ -9,7 +9,7 @@ Anyone can call the AI receptionist he built and talk to it: **216-616-1364**. I
 - **AI phone receptionist** for businesses that lose money to missed calls. Answers every call around the clock, qualifies the caller, books the job, and texts the owner. Built for HVAC, plumbing, septic, locksmith, restoration, fencing, and water treatment.
 - **Missed-call text-back** so a call that goes unanswered gets an immediate text instead of becoming a lost lead.
 - **Workflow automation** — review requests, lead form follow-up, estimate recovery, invoice chasing, owner alerts.
-- **Municipal automation** for small Ohio villages: meeting minutes, public records request triage, ordinance notices, certificate of insurance tracking.
+- **Municipal automation** for small Ohio villages: meeting minutes, public records request triage, ordinance notices, contractor compliance certificate tracking.
 - **AI search visibility (GEO)** for professional service firms whose sites are technically invisible to AI assistants.
 
 ## Who he works with

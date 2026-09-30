@@ -29,3 +29,6 @@ commercial/**/remotion/src/
 commercial/**/remotion/*.mjs
 commercial/**/remotion/out/
 commercial/media/
+
+# Old page versions. Pages serves every committed file, and these name the employer.
+archive/
