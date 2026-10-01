@@ -42,8 +42,10 @@
       a: "A website is usually live on a real URL inside two weeks.\n\nAutomation depends on how tangled the current process is. That is most of what the first call is for — working out whether it is a two-week build or a two-day one."
     },
     {
-      q: 'Do you work with cities and villages?',
-      a: "Yes. There is a civic assistant running in production for Oakwood Village right now.\n\nMy business is set up and compliant for government contracts, and I'm applying for them now. It carries an active Ohio BWC policy and RITA registration, so a village can contract with me directly, no middleman."
+      /* Wayne, 2026-09-30: "Stop focusing on city governments... just what businesses do you work
+         with?" This used to be "Do you work with cities and villages?" */
+      q: 'What kind of businesses do you work with?',
+      a: "Mostly small businesses with about 5 to 50 people. Real estate teams, offices, trades and construction, law firms, churches, coaches and local shops, all around Northeast Ohio.\n\nIf somebody there does the same job by hand every week, that is the fit."
     },
     {
       /* Wayne, 2026-09-25: this branch used to answer "sites" to a question that
