@@ -17,8 +17,12 @@
    reach Vanwayne on the booking. Someone who answers and leaves is not captured.
 */
 (function () {
-  var CAL_LINK = 'vanwaynechaney/vc2-ai-service-call';
-  var CAL_URL = 'https://cal.com/' + CAL_LINK;
+  /* 2026-10-02, Wayne: "switch it all to the same one." The calendar is GoHighLevel now, so every
+     booking lands in the Zulvan Sales pipeline with its reminders. Cal.com stays alive only for
+     bookings made before the switch. GHL pre-fills first/last name from the URL but NOT the notes
+     box (tested), so the other two answers ride along as utm_ tags, which GHL saves on the contact. */
+  var GHL_URL = 'https://api.leadconnectorhq.com/widget/booking/uWWwDuZpcofQGvxm9VNm';
+  var SITE = 'vanwaynechaney.com';
   var KEY = 'vc2BookAnswers';
   var LOOKING = ['Automate a job', 'A website', 'A custom tool', 'Not sure yet'];
 
@@ -61,7 +65,7 @@
 
   /* The "calendar not loading?" link and any other direct Cal link on the page
      would skip the questions, so they wait too, and come back pre-filled. */
-  var directLinks = document.querySelectorAll('a[href^="' + CAL_URL + '"]');
+  var directLinks = document.querySelectorAll('a[href^="' + GHL_URL + '"]');
   var fallback = box.parentNode.querySelector('.cal-fallback');
 
   function showCalendarParts(on) {
@@ -135,14 +139,13 @@
 
   /* ---- after the answers ---- */
   function open(a, scroll) {
-    var notes = 'Looking for: ' + a.look + '\nBusiness: ' + a.biz;
-    var qs = '?name=' + encodeURIComponent(a.name) + '&notes=' + encodeURIComponent(notes);
-    for (var i = 0; i < directLinks.length; i++) directLinks[i].href = CAL_URL + qs;
-
-    if (typeof window.Cal !== 'function') {   /* embed script blocked: hand off, still pre-filled */
-      window.location.href = CAL_URL + qs;
-      return;
-    }
+    var parts = a.name.split(/\s+/);
+    var first = parts.shift() || '';
+    var url = GHL_URL + '?first_name=' + encodeURIComponent(first) +
+      (parts.length ? '&last_name=' + encodeURIComponent(parts.join(' ')) : '') +
+      '&utm_source=' + encodeURIComponent(SITE) + '&utm_medium=book-gate' +
+      '&utm_campaign=' + encodeURIComponent(a.look) + '&utm_content=' + encodeURIComponent(a.biz);
+    for (var i = 0; i < directLinks.length; i++) directLinks[i].href = url;
 
     form.style.display = 'none';
     done.textContent = '';
@@ -164,13 +167,32 @@
     showCalendarParts(true);
 
     box.innerHTML = '';
-    window.Cal('inline', {
-      elementOrSelector: '#cal-inline',
-      calLink: CAL_LINK,
-      layout: 'month_view',
-      config: { theme: 'light', name: a.name, notes: notes }
-    });
-    window.Cal('ui', { hideBranding: true, theme: 'light', hideEventTypeDetails: true, layout: 'month_view' });
+    var frame = document.createElement('iframe');
+    frame.src = url;
+    frame.title = 'Pick a time';
+    frame.id = 'uWWwDuZpcofQGvxm9VNm_' + Date.now();
+    frame.setAttribute('scrolling', 'no');
+    frame.style.cssText = 'width:100%;border:none;overflow:hidden;display:block;min-height:720px';
+    box.appendChild(frame);
+    /* The widget posts its own height ("highlevel.setHeight"), but GHL's form_embed.js left the
+       frame at 720px on a phone and cut off the time slots. So the page sizes it. */
+    if (!window.__ghlSize) {
+      window.__ghlSize = true;
+      window.addEventListener('message', function (e) {
+        if (e.origin !== 'https://api.leadconnectorhq.com') return;
+        var d = e.data;
+        if (!d || d[0] !== 'highlevel.setHeight' || !d[1] || !(d[1].height > 0)) return;
+        var f = box.querySelector('iframe');
+        if (f) { f.style.minHeight = '0'; f.style.height = Math.ceil(d[1].height) + 'px'; }
+      });
+    }
+    /* form_embed.js answers the widget's query-param and contact requests. */
+    if (!document.getElementById('ghl-embed-js')) {
+      var sc = document.createElement('script');
+      sc.id = 'ghl-embed-js';
+      sc.src = 'https://link.msgsndr.com/js/form_embed.js';
+      document.body.appendChild(sc);
+    }
 
     if (scroll && done.scrollIntoView) done.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
