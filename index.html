@@ -252,7 +252,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 60px 24px 80px;
+      padding: 60px 24px 8px;
       position: relative;
     }
 
@@ -811,6 +811,16 @@
       .rec-card { width: 270px; padding: 18px 18px; }
     }
 
+    /* Second half of the hero (teaching photos + book button), split off so the
+       reviews strip can run full width between the video and the photos. */
+    .hero-more {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px 80px;
+    }
+
     /* ── TEACHING SLIDESHOW (replaces the static banner) ── */
     .teach-show {
       margin-top: 18px;
@@ -1227,74 +1237,9 @@
       </div>
 
 
-      <div class="teach-show">
-        <div class="teach-frame" id="teach" aria-roledescription="carousel" aria-label="Teaching">
-          <figure class="teach-slide active">
-            <img src="./images/slideshow/1-miami-full-room.jpg" width="1200" height="1200" alt="Vanwayne Chaney Jr. teaching a full lecture hall of engineering students at Miami University" />
-            <figcaption class="teach-cap">
-              <p class="teach-kicker">1 · Speaking</p>
-              <h2 class="teach-title">Invited to teach AI at Miami University’s College of Engineering and Computing.</h2>
-              <p class="teach-sub">Guest lecture for engineering students · September 2026 · Oxford, Ohio</p>
-            </figcaption>
-          </figure>
-          <figure class="teach-slide">
-            <img src="./images/slideshow/2-oakwood-kids.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. with summer program students holding their AI challenge certificates" />
-            <figcaption class="teach-cap">
-              <p class="teach-kicker">2 · Teaching</p>
-              <h2 class="teach-title">Teaching AI workshops for local governments.</h2>
-              <p class="teach-sub">Every kid left with a certificate · Oakwood Community Center · July 2026</p>
-            </figcaption>
-          </figure>
-          <figure class="teach-slide">
-            <img src="./images/slideshow/3-church-youth.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. running a hands-on AI session with middle and high school students" />
-            <figcaption class="teach-cap">
-              <p class="teach-kicker">3 · Teaching</p>
-              <h2 class="teach-title">Hands-on AI with the middle and high schoolers.</h2>
-              <p class="teach-sub">They asked better questions than most grown folks would have · Church Family Week</p>
-            </figcaption>
-          </figure>
-          <figure class="teach-slide">
-            <img src="./images/slideshow/4-miami-solo.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. speaking on stage at Miami University" />
-            <figcaption class="teach-cap">
-              <p class="teach-kicker">4 · Speaking</p>
-              <h2 class="teach-title">Three years out, telling students what nobody told me.</h2>
-              <p class="teach-sub">Miami University · September 2026</p>
-            </figcaption>
-          </figure>
-          <div class="teach-dots" role="tablist" aria-label="Slides"></div>
-        </div>
-      </div>
-
-      <a href="#book" class="btn-primary" style="display:block;text-align:center;max-width:420px;margin:1rem auto 0;">Book a System Audit</a>
-
-
     </section>
 
-    <div class="divider"></div>
-
-    <!-- BOOK: live calendar -->
-    <div class="book-section" id="book">
-      <div class="book-inner">
-        <div class="book-header">
-          <p class="section-label">Book a time</p>
-          <h2 class="section-title">Three quick questions, then pick a time.</h2>
-          <p class="section-sub">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
-        </div>
-        <!-- The calendar is ON the homepage. Wayne, 2026-09-26: "this could just
-             be on the main page for them to choose a slot." Later the same day:
-             three quick questions first (book-gate.js), then the calendar opens
-             here pre-filled, at every width. -->
-        <div id="cal-inline"></div>
-
-        <div class="book-cta">
-          <p class="book-fallback">Rather write it out? <a href="./intake.html" data-page-transition>Send the details →</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- RECOMMENDATIONS STRIP -->
+    <!-- Reviews sit right under the video so the proof comes before the booking ask (moved up 2026-10-26). -->
     <section class="recs-section" id="recommendations" aria-label="Recommendations">
       <div class="recs-header">
         <p class="section-label">In their words</p>
@@ -1399,6 +1344,72 @@
           </article>
       </div>
     </section>
+
+    <section class="hero-more">
+      <div class="teach-show">
+        <div class="teach-frame" id="teach" aria-roledescription="carousel" aria-label="Teaching">
+          <figure class="teach-slide active">
+            <img src="./images/slideshow/1-miami-full-room.jpg" width="1200" height="1200" alt="Vanwayne Chaney Jr. teaching a full lecture hall of engineering students at Miami University" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">1 · Speaking</p>
+              <h2 class="teach-title">Invited to teach AI at Miami University’s College of Engineering and Computing.</h2>
+              <p class="teach-sub">Guest lecture for engineering students · September 2026 · Oxford, Ohio</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/2-oakwood-kids.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. with summer program students holding their AI challenge certificates" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">2 · Teaching</p>
+              <h2 class="teach-title">Teaching AI workshops for local governments.</h2>
+              <p class="teach-sub">Every kid left with a certificate · Oakwood Community Center · July 2026</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/3-church-youth.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. running a hands-on AI session with middle and high school students" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">3 · Teaching</p>
+              <h2 class="teach-title">Hands-on AI with the middle and high schoolers.</h2>
+              <p class="teach-sub">They asked better questions than most grown folks would have · Church Family Week</p>
+            </figcaption>
+          </figure>
+          <figure class="teach-slide">
+            <img src="./images/slideshow/4-miami-solo.jpg" width="1200" height="1200" loading="lazy" alt="Vanwayne Chaney Jr. speaking on stage at Miami University" />
+            <figcaption class="teach-cap">
+              <p class="teach-kicker">4 · Speaking</p>
+              <h2 class="teach-title">Three years out, telling students what nobody told me.</h2>
+              <p class="teach-sub">Miami University · September 2026</p>
+            </figcaption>
+          </figure>
+          <div class="teach-dots" role="tablist" aria-label="Slides"></div>
+        </div>
+      </div>
+
+      <a href="#book" class="btn-primary" style="display:block;text-align:center;max-width:420px;margin:1rem auto 0;">Book a System Audit</a>
+
+
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- BOOK: live calendar -->
+    <div class="book-section" id="book">
+      <div class="book-inner">
+        <div class="book-header">
+          <p class="section-label">Book a time</p>
+          <h2 class="section-title">Three quick questions, then pick a time.</h2>
+          <p class="section-sub">Thirty minutes, free. I tell you what I’d automate first and what it would take. No pitch deck.</p>
+        </div>
+        <!-- The calendar is ON the homepage. Wayne, 2026-09-26: "this could just
+             be on the main page for them to choose a slot." Later the same day:
+             three quick questions first (book-gate.js), then the calendar opens
+             here pre-filled, at every width. -->
+        <div id="cal-inline"></div>
+
+        <div class="book-cta">
+          <p class="book-fallback">Rather write it out? <a href="./intake.html" data-page-transition>Send the details →</a></p>
+        </div>
+      </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
