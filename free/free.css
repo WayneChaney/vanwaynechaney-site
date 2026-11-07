@@ -31,6 +31,8 @@ li strong { color: var(--white); }
 .example .tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; color: var(--gold); display: block; margin-bottom: 4px; }
 .ask { text-align: center; background: var(--panel); border: 1px solid var(--gold); border-radius: 14px; padding: 28px 20px; margin-top: 36px; }
 .ask h2 { margin-bottom: 8px; }
+.signup { margin: 28px 0; }
+.signup h2 { font-size: 1.5rem; }
 .btn { display: inline-block; margin-top: 10px; background: var(--gold); color: #06101d; font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 999px; }
 .btn:hover { filter: brightness(1.08); }
 .alt { display: block; margin-top: 14px; font-size: 0.92rem; }
